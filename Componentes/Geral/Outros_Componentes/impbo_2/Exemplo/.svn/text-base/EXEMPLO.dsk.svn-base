@@ -1,0 +1,66 @@
+[Main Window]
+Create=1
+Visible=1
+State=0
+Left=0
+Top=0
+Width=800
+Height=105
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=792
+ClientHeight=78
+
+[PropertyInspector]
+Create=1
+Visible=1
+State=0
+Left=1
+Top=108
+Width=234
+Height=386
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=224
+ClientHeight=360
+TBDockHeight=386
+LRDockWidth=190
+Dockable=1
+SplitPos=106
+
+[Closed Files]
+File_0=SourceModule,'C:\RDprint-D5\exemplos\UMENU.pas',0,1,1,52,5,1,0
+File_1=SourceModule,'C:\RDprint-D5\exemplos\BRADESCO.pas',0,1,132,82,137,1,0
+File_2=SourceModule,'C:\RDCheck\exemplo\U_VALIDA.pas',0,1,1,50,2,1,0
+File_3=SourceModule,'C:\RDCheck\RDCheck.pas',0,1,1,38,7,0,0
+File_4=SourceModule,'c:\arquivos de programas\borland\delphi5\source\rtl\Sys\system.pas',0,1,4252,43,4257,0,0
+File_5=SourceModule,'C:\RDprint-D5\RDprint.pas',0,1,1741,35,1742,0,0
+File_6=SourceModule,'C:\RDprint-D5\RDprogr.pas',0,1,15,33,17,1,0
+File_7=SourceModule,'C:\tbprint\TbPrint.pas',0,1,1859,27,1862,0,0
+File_8=SourceModule,'C:\Arquivos de programas\Woll2Woll\ip2000d5\source\wwdbgrid.pas',0,1,2589,39,2589,0,0
+File_9=SourceModule,'C:\DELPHI\componentes\Originais\Delphi4\ScrollText.pas',0,1,324,33,328,0,0
+
+[Modules]
+Count=0
+EditWindowCount=0
+
+[C:\Arquivos de programas\Borland\Delphi4\Projects\ProjectGroup1.bpg]
+FormState=0
+FormOnTop=0
+
+[C:\RDprint-D4\exemplos\EXEMPLO.dpr]
+FormState=0
+FormOnTop=0
+
+[DockHosts]
+DockHostCount=0
+
+[Watches]
+Count=0
+
+[Breakpoints]
+Count=0
+
+[AddressBreakpoints]
+Count=0
+

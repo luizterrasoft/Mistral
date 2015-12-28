@@ -1,0 +1,271 @@
+object DMVendas: TDMVendas
+  OldCreateOrder = False
+  Left = 115
+  Top = 90
+  Height = 375
+  Width = 544
+  object qVendas: TQuery
+    AfterScroll = qVendasAfterScroll
+    OnCalcFields = qVendasCalcFields
+    DatabaseName = 'ESTOQUE'
+    SQL.Strings = (
+      'SELECT *'
+      'FROM VENDAS')
+    Left = 48
+    Top = 32
+    object qVendasVE_CAIX: TFloatField
+      FieldName = 'VE_CAIX'
+      Origin = 'CAIXA.VENDAS.VE_CAIX'
+    end
+    object qVendasVE_LOJA: TFloatField
+      FieldName = 'VE_LOJA'
+      Origin = 'CAIXA.VENDAS.VE_LOJA'
+      DisplayFormat = '00'
+    end
+    object qVendasVE_CODI: TFloatField
+      FieldName = 'VE_CODI'
+      Origin = 'CAIXA.VENDAS.VE_CODI'
+    end
+    object qVendasVE_DATA: TDateTimeField
+      FieldName = 'VE_DATA'
+      Origin = 'CAIXA.VENDAS.VE_DATA'
+    end
+    object qVendasVE_TOTA: TFloatField
+      FieldName = 'VE_TOTA'
+      Origin = 'CAIXA.VENDAS.VE_TOTA'
+    end
+    object qVendasVE_QTDE: TFloatField
+      FieldName = 'VE_QTDE'
+      Origin = 'CAIXA.VENDAS.VE_QTDE'
+    end
+    object qVendasVE_STAT: TStringField
+      FieldName = 'VE_STAT'
+      Origin = 'CAIXA.VENDAS.VE_STAT'
+      Size = 1
+    end
+    object qVendasVE_TIPZ: TStringField
+      FieldName = 'VE_TIPZ'
+      Origin = 'CAIXA.VENDAS.VE_TIPZ'
+      Size = 1
+    end
+    object qVendascVE_TOTA: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVE_TOTA'
+      Calculated = True
+    end
+    object qVendasVE_DESC: TFloatField
+      FieldName = 'VE_DESC'
+      Origin = 'CAIXA.VENDAS.VE_DESC'
+    end
+    object qVendascVE_DESC: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVE_DESC'
+      Calculated = True
+    end
+    object qVendasVE_PDES: TFloatField
+      FieldName = 'VE_PDES'
+      Origin = 'CAIXA.VENDAS.VE_PDES'
+    end
+    object qVendascVE_PDES: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVE_PDES'
+      Calculated = True
+    end
+    object qVendasVE_VEND: TFloatField
+      FieldName = 'VE_VEND'
+      Origin = 'CAIXA.VENDAS.VE_VEND'
+    end
+    object qVendascVEND: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVEND'
+      Calculated = True
+    end
+    object qVendasVE_NOTA: TStringField
+      FieldName = 'VE_NOTA'
+      Origin = 'CAIXA.VENDAS.VE_NOTA'
+      Size = 10
+    end
+    object qVendasVE_QTD1: TFloatField
+      FieldName = 'VE_QTD1'
+      Origin = 'CAIXA.VENDAS.VE_QTD1'
+    end
+    object qVendasVE_QTD2: TFloatField
+      FieldName = 'VE_QTD2'
+      Origin = 'CAIXA.VENDAS.VE_QTD2'
+    end
+    object qVendasVE_ONLI: TStringField
+      FieldName = 'VE_ONLI'
+      Origin = 'ESTOQUE.VENDAS.VE_ONLI'
+      Size = 1
+    end
+    object qVendasVE_ENVI: TStringField
+      FieldName = 'VE_ENVI'
+      Origin = 'ESTOQUE.VENDAS.VE_ENVI'
+      Size = 1
+    end
+    object qVendascONLI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cONLI'
+      Calculated = True
+    end
+    object qVendascENVI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cENVI'
+      Calculated = True
+    end
+    object qVendasVE_CUPO: TFloatField
+      FieldName = 'VE_CUPO'
+      Origin = 'ESTOQUE.VENDAS.VE_CUPO'
+    end
+    object qVendasVE_ECF: TSmallintField
+      FieldName = 'VE_ECF'
+      Origin = 'ESTOQUE.VENDAS.VE_ECF'
+    end
+    object qVendascVE_ECF: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVE_ECF'
+      Calculated = True
+    end
+  end
+  object qFormas: TQuery
+    OnCalcFields = qFormasCalcFields
+    DatabaseName = 'ESTOQUE'
+    SQL.Strings = (
+      'SELECT *'
+      'FROM VENDAS_FORMA_PAGAMENTO')
+    Left = 136
+    Top = 32
+    object qFormascFORMA: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cFORMA'
+      Calculated = True
+    end
+    object qFormasVF_FPGT: TFloatField
+      FieldName = 'VF_FPGT'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_FPGT'
+    end
+    object qFormasVF_VALO: TFloatField
+      FieldName = 'VF_VALO'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_VALO'
+    end
+    object qFormasVF_ORDE: TSmallintField
+      FieldName = 'VF_ORDE'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_ORDE'
+    end
+    object qFormascVF_VALO: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cVF_VALO'
+      Calculated = True
+    end
+    object qFormasVF_CAIX: TFloatField
+      FieldName = 'VF_CAIX'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_CAIX'
+    end
+    object qFormasVF_LOJA: TFloatField
+      FieldName = 'VF_LOJA'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_LOJA'
+    end
+    object qFormasVF_VEND: TFloatField
+      FieldName = 'VF_VEND'
+      Origin = 'CAIXA.VENDAS_FORMA_PAGAMENTO.VF_VEND'
+    end
+  end
+  object qItensVenda: TQuery
+    OnCalcFields = qItensVendaCalcFields
+    DatabaseName = 'ESTOQUE'
+    SQL.Strings = (
+      'SELECT *'
+      'FROM ITENS_VENDAS')
+    Left = 232
+    Top = 32
+    object qItensVendaIV_LOJA: TFloatField
+      FieldName = 'IV_LOJA'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_LOJA'
+      DisplayFormat = '00'
+    end
+    object qItensVendaIV_CAIX: TFloatField
+      FieldName = 'IV_CAIX'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_CAIX'
+    end
+    object qItensVendaIV_VEND: TFloatField
+      FieldName = 'IV_VEND'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_VEND'
+    end
+    object qItensVendaIV_TIPZ: TStringField
+      FieldName = 'IV_TIPZ'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_TIPZ'
+      Size = 1
+    end
+    object qItensVendaIV_GRUP: TFloatField
+      FieldName = 'IV_GRUP'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_GRUP'
+      DisplayFormat = '00'
+    end
+    object qItensVendaIV_SUBG: TFloatField
+      FieldName = 'IV_SUBG'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_SUBG'
+      DisplayFormat = '00'
+    end
+    object qItensVendaIV_PROD: TFloatField
+      FieldName = 'IV_PROD'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_PROD'
+      DisplayFormat = '0000'
+    end
+    object qItensVendaIV_TAMA: TStringField
+      FieldName = 'IV_TAMA'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_TAMA'
+      Size = 5
+    end
+    object qItensVendaIV_CORE: TFloatField
+      FieldName = 'IV_CORE'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_CORE'
+    end
+    object qItensVendaIV_QTDE: TFloatField
+      FieldName = 'IV_QTDE'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_QTDE'
+    end
+    object qItensVendaIV_TOTA: TFloatField
+      FieldName = 'IV_TOTA'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_TOTA'
+    end
+    object qItensVendaIV_PVEN: TFloatField
+      FieldName = 'IV_PVEN'
+      Origin = 'CAIXA.ITENS_VENDAS.IV_PVEN'
+    end
+    object qItensVendacDESC: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cDESC'
+      Calculated = True
+    end
+    object qItensVendacIV_PVEN: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cIV_PVEN'
+      Calculated = True
+    end
+    object qItensVendacIV_TOTA: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cIV_TOTA'
+      Calculated = True
+    end
+    object qItensVendacIV_TAMA: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cIV_TAMA'
+      Calculated = True
+    end
+    object qItensVendacIV_CORE: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cIV_CORE'
+      Calculated = True
+    end
+    object qItensVendacREFF: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cREFF'
+      Calculated = True
+    end
+    object qItensVendacREFI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'cREFI'
+      Calculated = True
+    end
+  end
+end

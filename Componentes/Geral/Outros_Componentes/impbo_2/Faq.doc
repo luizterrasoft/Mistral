@@ -1,0 +1,466 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1046{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\fmodern\fcharset0 Courier New;}{\f2\froman\fcharset0 Times New Roman;}{\f3\fnil\fcharset2 Wingdings;}{\f4\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;\red0\green0\blue127;\red0\green0\blue0;}
+\viewkind4\uc1\pard\nowidctlpar\qc\cf1\b\f0\fs36 RDprint 2.x - FAQ\par
+\pard\nowidctlpar\cf0\b0\f1\fs20 ===============================================================================\par
+\pard\nowidctlpar\qc\b\f0\fs32 Perguntas e Respostas Frequentes\par
+\pard\keepn\nowidctlpar\qc D\'favidas, Problemas e Solu\'e7\'f5es\par
+\pard\nowidctlpar\b0\f1\fs20 ===============================================================================\par
+\cf2\b P) Como fa\'e7o para alternar entre 6 LPP e 8 LPP via codigo.\cf0\par
+\b0 R) RDprint.TamanhoQteLPP := Oito;  ou   rdprint.TamanhoQteLPP := Seis;\par
+\par
+Obs: Voc\'ea deve fazer esta mudan\'e7a antes de abrir a impressora\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Como fa\'e7o para mudar o tipo de impressora do RDprint via programa\'e7\'e3o.\cf0\par
+\b0 R)  rdprint1.Impressora := Epson;    // TModelo = (Epson,Rima,HP);\par
+\par
+Voc\'ea deve fazer esta mudan\'e7a antes de abrir a impressora, ou ent\'e3o chame a fun\'e7\'e3o SETUP\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Como devo fazer para conseguir imprimir condensado (17) e negrito que n\'e3o estou conseguindo, pois s\'f3 sai condensado.\par
+\cf0\b0 R) Com rela\'e7\'e3o \'e0 impress\'e3o em 17cpp e negrito basta enviar o comando:\par
+\par
+     impf (01,01,'Comprimido em 17cpp e negrito', [comp17,negrito]);\par
+\par
+Obs: para alguns comandos combinados \'e9 necess\'e1rio que a impressora aceite e em alguns casos que a fonte esteja em "DRAFT"\par
+\par
+     Nas impressoras EPSON este comando s\'f3 ir\'e1 funcionar na Linha LQ\par
+\par
+\cf3 Na vers\'e3o \b RDPRINT 2.0\b0  - voc\'ea pode enviar o mesmo comando 2 ou mais vezes for\'e7ando a impress\'e3o e causando o efeito de negrito.\par
+\par
+Ex: Rdprint1.impf(01,01,\rquote Comprimido em 17cpp e negrito\rquote , [comp17]);\par
+    Rdprint1.impf(01,01,\rquote Comprimido em 17cpp e negrito\rquote , [comp17]);\par
+    Rdprint1.impf(01,01,\rquote Comprimido em 17cpp e negrito\rquote , [comp17]);\par
+\par
+Neste caso n\'e3o \'e9 necess\'e1rio enviar o par\'e2metro negrito junto com o comp17.\par
+\cf0 -------------------------------------------------------------------------------\par
+\cf2\b P) Se eu uso fonte Comp20, n\'e3o consigo ver os dados no preview. S\'f3 consigo ver uma parte, a outra fica escondida \'e0 direita.\par
+\cf0\b0 R) Verifique o n\'famero de colunas na propriedade do Rdprint, ele refere-se ao total de colunas do seu relat\'f3rio, ent\'e3o se voc\'ea esta usando um formul\'e1rio de 80 colunas e esta comprimindo em 20 cpp, logo o n\'famero de colunas deve ser 160 (80 x 2), o mesmo crit\'e9rio deve ser utilizado para as outras compress\'f5es.\par
+\par
+Obs: Se numa mesma linha estiver usando compress\'f5es diferentes, o preview n\'e3o mostrar\'e1 corretamente. (Veja texto sobre "deslocamento indesej\'e1veis") \par
+\par
+\cf3 Na Vers\'e3o \b RDPRINT 2.0\b0  o preview \'e9 real, o que voc\'ea v\'ea \'e9 o que ser\'e1 impresso, mesmo usando tamanhos de fontes diferentes na mesma linha.\par
+\cf0 -------------------------------------------------------------------------------\par
+\cf2\b P) Quando cadastro um campo na tabela Paradox usando o alt+241 ("\'b1"). Na tela fica OK. Quando vou imprimir sai outro caractere e n\'e3o o acima descrito. na impressora j\'e1 tentei a tabela 850 e 437.\par
+\cf0\b0 R) O que acontece \'e9 que o windows troca o c\'f3digo dos caracteres fazendo com que a impress\'e3o saia com um caractere diferente, internamente no componente RDPRINT os caracteres acentuados s\'e3o tratados e reconvertidos para o valor original, por\'e9m outros caracteres n\'e3o s\'e3o suportados. \par
+N\'e3o existe uma tabela conhecida com esses c\'f3digos, o que dificulta o trabalho de convers\'e3o, os que s\'e3o tratados no RDPRINT foram descobertos por tentativa e erro.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Tenho uma aplica\'e7\'e3o desenvolvida anteriormente em delphi 3 onde fiz o relat\'f3rio em rdprint, mas n\'e3o consigo nem linkar, pois ele acusa que n\'e3o encontrou o rdprint.pas (n\'e3o tem os fontes mesmo).\par
+\cf0\b0 R) O Delphi s\'f3 pedir\'e1 os "PAS" se n\'e3o encontrar os "DCU", ent\'e3o voc\'ea deve verificar se a instala\'e7\'e3o do componente esta correta, verifique tamb\'e9m os diret\'f3rios de busca do delphi, voc\'ea deve estar com algum problema na instala\'e7\'e3o ou configura\'e7\'e3o.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Preciso fazer com que o conte\'fado que for para a impressora, seja igual na tela com formata\'e7\'e3o\par
+\cf0\b0 R) O m\'e9todo do preview \'e9 totalmente diferente no m\'e9todo de impress\'e3o, a id\'e9ia \'e9 mostrar como seria a impress\'e3o final o mais perfeito poss\'edvel (igual \'e9 imposs\'edvel, por diversos fatores), entretando o v\'eddeo \'e9 gen\'e9rico e o resultado impresso depender\'e1 do modelo da impressora e das fontes utilizadas.\par
+\par
+\cf3 Na vers\'e3o \b RDPRINT 2.0\b0  o preview \'e9 real e bem pr\'f3ximo do que ser\'e1 impresso, o m\'e9todo de preview e o de impress\'e3o foram otimizados.\par
+\cf0 -------------------------------------------------------------------------------\par
+\cf2\b P) Quero interromper a impress\'e3o e come\'e7ar de onde parou novamente.\par
+\cf0\b0 R) Infelizmente o componente RDPRINT n\'e3o possui um M\'c9TODO DE ABORTO, estamos pesquisando e devemos implantar esta fun\'e7\'e3o em breve. Com rela\'e7\'e3o a imprimir de um ponto que parou, voc\'ea tem a op\'e7\'e3o de informar o intervalo de p\'e1ginas que deseja imprimir.\par
+\par
+\cf3 Na vers\'e3o \b RDPRINT 2.0\b0  introduzimos uma barra de progresso onde al\'e9m de acompanhar o progresso da impress\'e3o o usu\'e1rio pode cancelar ou para a impress\'e3o, note que o envio acontece rapidamente e o que j\'e1 foi enviado ser\'e1 impresso porque esta no buffer da impressora.\par
+\par
+Introduzimos tamb\'e9m o uso do gerenciador de impress\'e3o do Windows, neste caso voc\'ea pode utilizar todos os recursos do gerenciador.\par
+Para que a impress\'e3o seja feita pelo gerenciador \'e9 necess\'e1rio configurar corretamente o componente:\par
+\par
+Propriedade TestarPorta        = False\par
+Propriedade UsaNovoMetodoPrint = True\par
+Propriedade UsaGerenciadorImp  = True;\par
+\cf0 -------------------------------------------------------------------------------\par
+\cf2\b P) Quando solicito o setup p/ configura\'e7\'e3o da impressora se escolher "Cancelar" ocorre erro na op\'e7\'e3o Fechar\cf0\par
+\b0\par
+O Setup retorna o valor TRUE, se o usu\'e1rio clicar no bot\'e3o \ldblquote OK\rdblquote  e FALSE se clicar no bot\'e3o \ldblquote Cancelar\rdblquote  \par
+\par
+O bot\'e3o cancelar do setup, encerra os procedimentos de abertura da impress\'e3o (rdprint.abrir) e ent\'e3o voc\'ea deve abortar a impress\'e3o e n\'e3o poder\'e1 enviar mais nenhum comando ao rdprint, inclusive o rdprint.fechar.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Estou imprimindo boletos em formul\'e1rios cont\'ednuos, ap\'f3s o comando RDPrint1.Novapagina a folha \'e9 impresso mas a impressora recebe um comando de EJECT, n\'e3o deixando o carro na posi\'e7\'e3o do segundo boleto. Se "abro" e "fecho" a cada boleto, a cada RDPrint1.Fechar, a impressora tamb\'e9m recebe o comando de EJECT. A impressora que estou usando no momento \'e9 a Epson Stylus Color. Ser\'e1 que este problema est\'e1 ocorrendo por conta de ser uma jato de tinta e que, portanto, desaparecer\'e1 quando for usada uma Epson LX 300, por exemplo?\par
+\cf0\b0 R) nas impressoras de folha solta (jato de tinta ou laser), o comando nova p\'e1gina, faz exatamente o que voc\'ea pediu, ou seja, coloca uma nova p\'e1gina (n\'e3o importa o tamanho dela). Nas impressoras matriciais de formul\'e1rio continuo a p\'e1gina ter\'e1 o tamanho informado e o salto sair\'e1 correto.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Como fazer para imprimir campos memos, delimitando um tamanho m\'e1ximo no sentido horizontal, for\'e7ando ele a dar uma quebra de linha?\par
+\cf0\b0 R) O componente n\'e3o possui recurso para tratar campo memo, voc\'ea deve enviar a string que deseja imprimir.\par
+\cf4\par
+\cf0 dica:\par
+a) Coloque um campo memo no form usando fonte "courier new" e dimencione de maneira que caiba o conteudo de 1 linha (tamanho que voce deseja imprimir).\par
+b) torne-o n\'e3o vis\'edvel,\par
+c) Mova o conte\'fado do dbmemo para o memo auxiliar,\par
+d) fa\'e7a um loop para imprimir as linhas do memo, use MEMO1.LINE[1] veja mais detalhes no help do delphi\par
+\par
+EXEMPLO:\par
+\par
+\cf1 procedure TForm1.Button4Click(Sender: TObject);\par
+var\par
+     linha : integer;\par
+begin\par
+     rdprint1.Preview         := checkbox1.Checked;\par
+     rdprint1.abrir;\par
+     for linha := 0 to memo1.Lines.Count - 1 do\par
+        begin\par
+        rdprint1.ImpF(linha + 1, 2, memo1.lines[linha], [normal]);\par
+        end;\par
+     rdprint1.fechar;\par
+end;\par
+\cf0\par
+\par
+--------------------------------------------------------------------------------\par
+\cf2\b P) O RDprint n\'e3o imprime nada, apesar do preview estar correto, o que pode estar errado ?\par
+\cf0\b0 R) COMPATIBILIDADE COM DOS: Se n\'e3o imprimir nada, voce deve chekar se esta impressora funciona no modo MS-DOS, se ela n\'e3o funcionar em DOS ou impress\'e3o direta pela porta LPT1, n\'e3o ser\'e1 poss\'edvel imprimir com o componente RDprint.\par
+\par
+\cf3 No RDPRINT 2.0 existe o modo gr\'e1fico compat\'edvel com o Windows, utilize quando ocorrer problemas de impress\'e3o com alguns modelos de impressoras. Este m\'e9todo utiliza o Printer.Canvas do Delphi e possui alguns ajustes para manter a compatibilidade com as fontes utilizadas.\par
+\cf0\par
+R) COMANDOS DE IMPRESS\'c3O: Se ela imprimir, por\'e9m os comandos negrito, it\'e1lico, comprimido etc, n\'e3o est\'e3o sendo reconhecidos, ent\'e3o ser\'e1 necess\'e1rio criar os comandos para ela, neste caso envie c\'f3pia do manual com os comandos para compress\'e3o, negrito, tamanho de p\'e1gina etc, mande para a Deltress Inform\'e1tica que acrescentaremos os recursos no componente e lhe enviaremos uma nova vers\'e3o sem nenhum custo.\par
+\par
+R) PROBLEMA COM A PORTA LPT1: Voc\'ea tem certeza que existe a porta informada?, o caminho da rede esta correto ?? Voc\'ea j\'e1 tentou imprimir nessa mesma impressora em outro micro ??? Se n\'e3o tentou, Tente !!!\par
+\par
+R) SETUP DO HARDWARE: Certifique-se de que a porta paralale no SETUP DA M\'c1QUINA esteja configurada diferente de "ECP" pois tem havido conflitos em algumas placas com esse modo de impress\'e3o.\par
+\par
+R) TESTE DE IMPRESS\'c3O MODO DIRETO: Coloque esta pequena rotina no click de um bot\'e3o para testar a impress\'e3o direta para LPT1 via Delphi: \par
+\par
+var\par
+    impr : textfile;\par
+begin\par
+    assignfile(impr, 'LPT1');\par
+    rewrite (impr);\par
+    writeln(impr, 'TESTE, imprimindo DIRETO em LPT1');\par
+    closefile(impr);\par
+end;\par
+--------------------------------------------------------------------------------\par
+\cf2\b P) Perda de Caracteres, O relat\'f3rio esta saindo com caracteres estranhos e em alguns casos esta ocorrendo perda de caracteres\par
+\cf0\b0 R) Certifique-se de que no setup da sua m\'e1quina a porta paralela esteja diferente de ECP, este modo pode causar problemas com impress\'e3o.\par
+\par
+R) Certifique-se de que n\'e3o esteja havendo sobreposi\'e7\'e3o de valores na impress\'e3o, se for o caso corrija o posicionamento da impress\'e3o, confira o tamanho designado a cada coluna do relat\'f3rio.\par
+\par
+Exemplo: sobreposi\'e7\'e3o de textos:\par
+    imp(01,01,table1razao.value);  // raz\'e3o tem 40 caracteres;\par
+    imp(01,30,table1cidade.value); // neste caso a cidade ir\'e1 sobrepor a razao social e pode causar erro...\par
+\par
+\cf3 No RDPRINT 2.0 quando houver sobreposi\'e7\'e3o de caracteres eles ser\'e3o impressos sobrepostos, na vers\'e3o anterior os caracteres sobrepostos eram cortados.\par
+\cf0\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) ERROS: "ACCESS...", "MEMORIA..." , I/O e outros erro estranhos...\cf0\par
+\b0 R) Certifique-se de que existe a impressora ou caminho informado na propriedade "PortaComunicacao" e se um valor \'e9 realmente v\'e1lido.\par
+\par
+R) Se for rede novell ou servidor de impress\'e3o pode haver problemas. Veja como imprimir em rede novell no item apropriado.\par
+\par
+R) No \b Windows NT\b0  a propriedade TestarPorta deve ser sempre FALSE\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Como eu fa\'e7o para configurar a EPSON LX-300 (ou qualquer outra) para imprimir acentos. OBS!! A impressora n\'e3o tem aquelas chave para configura\'e7\'e3o.\par
+\cf0\b0 R) Para que as impressoras da linha epson e compat\'edveis imprimam acentos \'e9 necess\'e1rio que elas estejam configuradas para c\'f3digo de p\'e1gina ou tabela de caracteres igual a "850 multilingual". A configura\'e7\'e3o \'e9 feita atrav\'e9s do painel de controle da impressora, consulte o manual para mais informa\'e7\'f5es de como entrar no modo de configura\'e7\'e3o.\par
+\par
+Obs: Existe uma maneira de enviar um seq\'fc\'eancia para configurar automaticamente o c\'f3digo de p\'e1gina, por\'e9m n\'e3o consegui fazer funcionar, solicitei suporte por 3 vezes a Epson do Brasil, mas at\'e9 agora n\'e3o obtive resposta. Se quiser tentar o comando \'e9 o "esc (T" (Veja manual) se conseguir me envie que eu incorporo no componente.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Na EPSON LX-300, eu s\'f3 consigo imprimir na fonte Comp20 se n\'e3o for em negrito. Se eu mandar fonte em negrito, imprime em um tamanho bem maior, n\'e3o cabendo 20 caracteres por polegada. J\'e1 na j\'e1 na Epson LQ-570 + ESCP2 imprimiu perfeitamente em negrito na fonte Comp20. Tamb\'e9m, s\'f3 consigo imprimir compactado se eu mandar compactar a fonte nos comandos da impressora. Acho que o componente deveria fazer isso, independentemente de a impressora estar ou n\'e3o configurada para imprimir compactado.\par
+\cf0\b0\par
+R) O componente faz isso automaticamente, independente da impressora estar compactada ou n\'e3o, o que voc\'ea deve verificar \'e9 o recurso aceito por cada modelo. Certifique-se de que a fonte selecionada seja "draft" \par
+\par
+Obs: Alguns modelos n\'e3o ir\'e3o aceitar comandos combinados\par
+     (ex: negrito + italico + comp20)\par
+-------------------------------------------------------------------------------\par
+\cf2\b\f0 P) Estou com problemas nas acentua\'e7\'f5es, tentei modificar as P\'e1ginas de C\'f3digo, mas n\'e3o adiantou. Tentei usar impressoras matriciais e Jato de tinta, tudo na mesma. No Preview a acentua\'e7\'e3o \'e9 perfeita, mas na impress\'e3o n\'e3o. Os sinais que s\'e3o impressos, identificam perfeitamente, o uso de outra p\'e1gina de c\'f3digo.\par
+\cf0\par
+\b0 R)\b  \b0 Fixado na vers\'e3o 1.2 - Agora o componente faz a convers\'e3o dos caracteres para o padr\'e3o PC 850 multilingual.\par
+\pard\nowidctlpar\fi-360\li360\tx360 a)\tab Certifique-se de que sua impressora aceite este conjunto de caracteres, no caso de matriciais epson e compat\'edveis elas devem estar previamente configuradas (veja o manual da impressora para maiores informa\'e7\'f5es).\par
+b)\tab Nos modelos HP 500/600/870 s\'e3o enviados os comandos para ajuste da impressora (autom\'e1tico)\par
+c)\tab RIMA E EMILIA  utilize a op\'e7\'e3o de impress\'e3o sem acentos, pois causam deslocamento na impress\'e3o\par
+\pard\nowidctlpar\par
+\f1 -------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : DESLOCAMENTO NA IMPRESS\'c3O: \par
+\b0 Quando mando impress\'e3o compactada e mais \'e0 frente uma impress\'e3o normal, a impress\'e3o sai errada, apesar do preview mostrar corretamente.\par
+\cf3\f2\fs24 Este problema foi solucionado no Rdprint 2.0\f0\fs20\par
+\cf2\par
+\cf0\b Resposta: \par
+\b0 Este problema ocorre porque a linha \'e9 compactada at\'e9 encontrar um outro comando que volte ao tamanho normal ou mude para outro tamanho. ou seja, quando voce enviou o 'comp17' no in\'edcio da linha o programa enviou para a impressora o comando de compress\'e3o, na posi\'e7\'e3o 58 (por exemplo) foi enviado o comando para voltar ao normal, porem at\'e9 a posi\'e7\'e3o 58 ficou tudo comprimido, causando o deslocamento na impressora (apesar do preview mostrar corretamente). \par
+Para corrigir este problema voce deve compensar este deslocamento jogando o valor para uma posi\'e7\'e3o mais a frente, veja o exemplo abaixo: \par
+\cf4\par
+\cf1\f1 rprint1.abrir;\par
+rprint1.imp(01,01,'         1         2         3         4         5         6 ');\par
+rprint1.imp(02,01,'1234567890123456789012345678901234567890123456789012345678901');\par
+rprint1.impF(03,01,'TEXTO COMPACTADO EM 17 CPP',[COMP17]);\par
+rprint1.imp(05,99,'1.258.321,00'); // vai imprimir na posi\'e7\'e3o 58 \par
+rprint1.fechar;\par
+\cf4\f0\par
+\b COMO CALCULAR A POSI\'c7\'c3O CORRETA:\cf0  \par
+\cf4\b0 ================================\cf0  \par
+\b USANDO COMPRESS\'c3O EM 17 CPP \par
+\cf4\b0\f1 (58 - 01) * 1.7 = 96,9 ==> AJUSTE PARA 97\cf0  \par
+\cf4   |   |      |\cf0  \par
+\cf4   |   |      \\---> Fator de compress\'e3o do COMP17\cf0  \par
+  |   \\--> Posi\'e7\'e3o onde se iniciou a compress\'e3o \par
+\cf4   \\----> Posi\'e7\'e3o onde ir\'e1 a pr\'f3xima impress\'e3o na mesma linha \cf0\par
+\b\f0\par
+E SE FOSSE USADO COMP12 (12CPP) \f3\'e8\f0   \b0 (58 -01) * 1.2 = 68,4 ==> AJUSTE PARA 69 \par
+\pard\nowidctlpar\qc\cf2\b Em geral recomendamos utilizar uma mesma compress\'e3o para linha total\par
+\par
+\pard\nowidctlpar\cf0\b0\f1 -------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : ALINHAMENTO DE VALORES A DIREITA: \par
+\b0\f2 tentei o exemplo abaixo mas tive problemas com o alinhamento: \cf1\par
+\par
+RDprint1.IMP(46,69-Length(FormatFloat(###,###,##0.00,VALOR)),FormatFloat(###,###,##0.00,VALOR));\par
+\cf0\par
+* n\'e3o funciona muito bem quando existe caracteres comprimidos a esquerda e o valor \'e9 impresso em outro tamanho de fonte.\f0  \par
+\b\par
+Resposta: \b0\f2 tente assim: \par
+\cf1\f1 ...\par
+var valortxt : string;\par
+           a : integer;\par
+begin\par
+   Valortxt := FormatFloat('###,###,##0.00',VALOR);\par
+   for a:=1 to 14 - length(valortxt) do\par
+       valortxt := ' ' + valortxt;\par
+   Rprint1.imp(46,99, valotxt);\par
+...\par
+\cf0\f2\par
+\f0 obs: 14 \'e9 o tamanho total da mascara (###,###,##0.00)\par
+\par
+\cf3 No RDPRINT 2.0, voc\'ea pode utilizar o comando IMPD, para imprimir valores e textos alinhados \'e0 direita, por\'e9m s\'f3 ir\'e1 funcionar corretamente se a fonte utilizada for a mesma Fonte Default. \par
+\cf0\par
+\f1 -------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : PREVIEW DIFERENTE DA IMPRESS\'c3O: \par
+\b0\f1 No exemplo abaixo quando envio um texto comprimido o preview aparece correto mas a impress\'e3o o texto sai deslocado:\par
+\cf0  \par
+\cf1 rdprint1.imp (01,01,'Empresa Fulano de Tal S/A);\par
+rdprint1.imp (01,70,'Pagina ' + formatfloat('000',pagina));\par
+rdprint1.impf(03,25,'ROLAT\'d3RIO DE RECEBIMENTOS',[expandido,NEGRITO]);\f2  \par
+\f1 // Assim o preview fica certo mas a impress\'e3o n\'e3o... \par
+rdprint1.impF(4,1,' ',[normal]);\par
+rdprint1.impF(4,22,'Periodo: ' + mskDataInicial.Text + ' a ' + \par
+              mskDataFinal.Text,[comp17]);\par
+rdprint1.ImpF(4,45,'Dt.Emissao: '+DateToStr(Date),[comp17]);\f2  \par
+\cf0\b\f0\par
+Resposta: \b0\f2 tente assim: \par
+\b\f0\par
+\cf1\b0\f1 rdprint1.imp (01,01,'Empresa Fulano de Tal S/A);\par
+rdprint1.imp (01,70,'Pagina ' + formatfloat('000',pagina));\par
+rdprint1.impf(03,25,'ROLAT\'d3RIO DE RECEBIMENTOS',[expandido,NEGRITO]);\f2  \par
+\f1 // Neste caso tente assim...\par
+rdprint1.impf(5,1,' ',[normal]);\par
+rdprint1.impF(5,22,'Periodo: ' + mskDataInicial.Text+' a '+mskDataFinal.Text + '\par
+              Dt.Emissao: ' + DateToStr(Date),[comp17]);\f2  \par
+\cf4\f0\par
+Obs: Note que no preview a posi\'e7\'e3o das duas op\'e7\'f5es est\'e3o identicas, porem na impress\'e3o na op\'e7\'e3o 1 ocorre um deslocamento n\'e3o esperado.\cf0\f2  \par
+\par
+\cf3 O m\'e9todo Preview e Print foram melhorados na vers\'e3o 2.0\par
+\cf0\f1 -------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : O PROGRAMA TRAVA SE N\'c3O EXISTE IMPRESSORA NO MICRO\par
+\cf0\par
+Resposta: \b0\f2 A principio \'e9 necess\'e1rio que uma impressora esteja conectada ao micro. Por\'e9m na vers\'e3o 1.3  foi criada uma nova fun\'e7\'e3o que verifica se existe uma impressora "PRONTA" nas portas LPT1, LPT2,  LPT3 e LPT4, para impress\'e3o em arquivo ou rede n\'e3o \'e9 feita a verifica\'e7\'e3o.\par
+\par
+Observa\'e7\'e3o: Esta fun\'e7\'e3o foi escrita em assembler e \b N\'c3O\b0  funciona no windows 98 primeira edi\'e7\'e3o e tamb\'e9m no Windows NT\par
+\par
+Veja o exemplo:\par
+\b\f0\par
+\cf1\b0\f1      if Rrdprint1.Online('LPT1') then\par
+        showmessage('Impressora ok') \par
+     else\par
+        showmessage('Impressora desligada');\par
+\par
+\pard{\pntext\f4\'B7\tab}{\*\pn\pnlvlblt\pnf4\pnindent360{\pntxtb\'B7}}\nowidctlpar\fi-360\li360\tx360 NO LUGAR DE LPT1 VOCE PODE USAR RDprint1.PortaComunicacao\par
+\pard\nowidctlpar\cf0\f2\par
+\par
+\f1 -------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : COMO IMPRIMIR NA REDE COM SISTEMA NOVEL ?\par
+\cf0\par
+Resposta: \b0\f2 para imprimir em uma impressora da rede NOVEL voc\'ea deve obrigatoriamente:\par
+\par
+1)  Capturar a impressora da rede  (use capture ou o programa gerenciador NWUSER)\par
+2)  na PROPRIEDADE "porta de comunica\'e7\'e3o" do RDPRINT informe sempre "LPT1" (LETRAS MAIUSCULAS) \par
+\par
+OBS: N\'c3O ADIANTA SELECIONAR A IMPRESSORA NO COMBO, N\'c3O IR\'c1 FUNCIONAR,\par
+          VOCE DEVE "SEMPRE" CAPTURAR A IMPRESSORA E IMPRIMIR NA LPT1 \par
+\par
+* \cf1\f1 Oriente seu operador / Cliente para esses procedimentos\cf0\f2\par
+\f1\par
+-------------------------------------------------------------------------------\par
+\cf2\b\f0 P) : PERDA DE CARACTERES DURANTE A IMPRESS\'c3O\par
+\cf0\b0\f2 AO IMPRIMIR OCORRE DESLOCAMENTO E PERDA DE CARACTERES E EM ALGUNS CASOS APARECEM CARACTERES ESTRANHOS OU H\'c1 PERDA DA FONTE SELECIONADA.\b\f0\par
+\par
+Resposta: \b0\f2 A perda de caracteres ou comandos durante a impress\'e3o ocorre em 2 situa\'e7\'f5es:\par
+ \par
+\pard\nowidctlpar\fi-360\li360\tx360 1)\tab SETUP DO HARDWARE DA M\'c1QUINA - PORTA PARALELA, verifique se a configura\'e7\'e3o esta em modo "ECP " , caso afirmativo mude para "NORMAL" ou "EPP", as op\'e7\'f5es podem variar de acordo com o modelo da BIOS de cada maquina, por\'e9m certifique-se de que esteja diferente de "ECP".\par
+\pard\nowidctlpar\par
+\pard\nowidctlpar\fi-360\li360\tx360 2)\tab SOBREPOSI\'c7\'c3O: Verifique se na elabora\'e7\'e3o do relat\'f3rio voce n\'e3o esta sobrepondo valores, por exemplo:\par
+\pard\nowidctlpar\cf1          imp (01, 01, table1razaosocial.value);   // Supondo que o campo razao seja do tamanho 40 caracteres\par
+         imp(01, 35, table1cidade.value);           // Neste caso a cidade ir\'e1 se sobrepor a razao social causando erro na impress\'e3o\cf0\par
+\cf1\f1\par
+\par
+\cf0 ===============================================================================\par
+\pard\nowidctlpar\qc\cf1\b\fs40 PERGUNTAS E RESPOSTAS:\b0\fs20\par
+\pard\nowidctlpar\cf0 ===============================================================================\par
+\cf2\b P) Gostaria de saber as diferen\'e7as entre o RDprint, e o PrintFast ?\par
+\cf0\b0 R) Os dois possuem a mesma finalidade, ou seja, imprimir de modo r\'e1pido em impressoras matriciais, como no DOS. O principio de funcionamento \'e9 id\'eantico por\'e9m o Rdprint oferece mais recursos. Entre outras vantagens do RDPRINT sobre os seus concorrentes, podemos destacar:\par
+- Acentua\'e7\'e3o (100% portugues)\par
+- Preview real com zoom\par
+- Mais op\'e7\'f5es de fonte e estilo\par
+- Sele\'e7\'e3o de p\'e1ginas e n\'famero de c\'f3pias para impress\'e3o\par
+- Montagem din\'e2mica de p\'e1gina\par
+- Setup para usu\'e1rio final\par
+- Barra de progresso com bot\'e3o cancelar\par
+- Impress\'e3o utilizando gerenciador de impress\'e3o\par
+- Recursos para montagem de formul\'e1rio\par
+- Simples de usar, pr\'e1tico e muito r\'e1pido\par
+\par
+De qualquer modo, sugiro que voc\'ea mesmo fa\'e7a os testes para saber qual lhe atender\'e1 melhor. \par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Com o RDprint na emiss\'e3o de notas fiscais, duplicatas, boletos, etc..,  \'e9 poss\'edvel configura-lo para que a impressora ap\'f3s a impress\'e3o de um documento, avance at\'e9 o picote, para que o usu\'e1rio destaque o documento e ao imprimir um novo documento, o papel volte para a posi\'e7\'e3o correta e imprima ?\b0\par
+\cf0 R) O componente possui apenas recurso para salto de p\'e1gina conforme o tamanho definido pelo usu\'e1rio, mas n\'e3o faz retorno do papel. Esta \'e9 uma fun\'e7\'e3o que deve ser configurada diretamente na impressora, consulte o manual da impressora para maiores informa\'e7\'f5es, veja "TEAR-OFF".\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Ao adquirir o RDprint, estarei adquirindo para o D3, D4 e D5?\par
+\cf0\b0 R) N\'e3o, Voc\'ea receber\'e1 o componente para a  vers\'e3o 3, 4 ou 5 do Delphi, voc\'ea pode obter a licen\'e7a de uso para as outras vers\'f5es que desejar pagando um valor reduzido (Consulte).\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Comprando o Rdprint receberei o fonte junto?\par
+\cf0\b0 R) N\'e3o, os fontes ainda n\'e3o est\'e3o dispon\'edveis para comercializa\'e7\'e3o.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Com Rela\'e7\'e3o ao Suporte T\'e9cnico e Atualiza\'e7\'f5es de Vers\'f5es, como \'e9 a pol\'edtica da Deltress Inform\'e1tica.\par
+\cf0\b0 R) O suporte quando ao uso do componente ser\'e1 fornecido via EMAIL e Quanto as atualiza\'e7\'f5es voc\'ea ter\'e1 direito a upgrade gratuido por 3 meses, ap\'f3s este prazo poder\'e1 fazer upgrades quando desejar pagando 40% do valor do componente.\par
+\par
+\cf3 Para Novas vers\'f5es do componente o pre\'e7o poder\'e1 variar de acordo com os recursos e altera\'e7\'f5es introduzidas.\par
+\cf0 -------------------------------------------------------------------------------\par
+\cf2\b P)  com que freq\'fc\'eancia voc\'eas est\'e3o lan\'e7ando upgrades do componente?\par
+\cf0\b0 R) Existem 2 tipos de upgrade: O primeiro \'e9 quando \'e9 encontrado alguma falha no componente e esta falha \'e9 corrigida, o que \'e9 mais dif\'edcil de ocorrer visto que o componente j\'e1 esta testado por centenas de usu\'e1rios. O Segundo \'e9 quando \'e9 inserido um novo recurso ou alguma altera\'e7\'e3o para melhorar o funcionamento do componente. De maneira geral n\'e3o tem "frenq\'fc\'eancia" padr\'e3o para lhe informar.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O RDprint Imprime em rede Windows 95/98?\par
+\cf0\b0 R) Sim, no setup voc\'ea pode escolher uma impressora da rede ou ent\'e3o informar o endere\'e7o da impressora diretamente na propriedade "PORTA DE COMUNICA\'c7\'c3O" como por exemplo: "\\\\servidor\\epson" , mas aten\'e7\'e3o, em rede Novell dever\'e1 ser feita a captura da porta LPT1. \par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Tendo uma impressora de rede instalada em um terminal onde a mesma esteja capturada na LPT3. A Verifica\'e7\'e3o de Status funciona?\b0\par
+P) O Componente verifica o Status de uma impressora de Rede?\par
+\cf0 R) N\'e3o,a rotina que verifica o status da impressora \'e9 em assembler e s\'f3 funciona para as portas locais LPT1 a LPT4, tamb\'e9m n\'e3o funciona no windows 98 primeira edi\'e7\'e3o e no Windons NT.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Com o RDPRINT \'e9 poderei imprimir um gr\'e1fico tipo TChart???\par
+P) \'c9 poss\'edvel impress\'e3o de c\'f3digo de barras ? \par
+\cf0\b0 R) N\'c3O, IMPRIME SOMENTE TEXTOS, A finalidade do componente \'e9 oferecer recursos para impress\'e3o r\'e1pida de relat\'f3rios diversos, principalmente formul\'e1rios pr\'e9-impressos de diversos tamanhos, em impressoras matriciais ou jato de tinta, usando os caracteres padr\'f5es dessas impressoras.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Gostaria de saber se o RDprint imprime formul\'e1rios pr\'e9-impressos do tipo meia-folha e se tamb\'e9m serve para impressoras jato de tinta e laserjet.\par
+\cf0\b0 R) Sim, sua configura\'e7\'e3o permite qualquer tamanho de papel, seja em impressoras 80 ou 132 colunas, basta configurar o tamanho em colunas e linhas.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Qual a fun\'e7\'e3o dos seguintes m\'e9todos e quando se deve usar ?\par
+    Imprimirpagina;\par
+    Preparaimpressora; \par
+    Liberarimpressora; \par
+\cf0\b0 R) Estes s\'e3o procedimentos de uso interno do componente, n\'e3o devem ser chamados diretamente, pois dependendo do monento poder\'e1 ocasionar erros. todos os procedimentos e m\'e9todos dispon\'edveis ao programador est\'e3o devidamente documentados no arquivo INFORMA.DOC e nos exemplos.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O N\'famero de Portas utilizadas poder\'e1 ser aumentado no futuro?\par
+\cf0\b0 R) voc\'ea pode informar a porta, portanto n\'e3o ha limites, voc\'ea pode informar por Exemplo "LPT10" se existir.\par
+\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Posso imprimir molduras al\'e9m de textos?\par
+\cf0\b0 R) N\'e3o, a n\'e3o ser que voc\'ea use "+", "-", "|" etc...\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O preview do componente pode ser customizado, como o preview do QuickReport.?\par
+\cf0\b0 R) N\'e3o.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O RDprint garante a impress\'e3o de relat\'f3rios em impressora matricial no Windows, com a mesma velocidade que imprime no ambiente DOS?\par
+\cf0\b0 R) Sim, a impress\'e3o no windows torna-se t\'e3o r\'e1pida quando no DOS.     \par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Qual a limita\'e7\'e3o da vers\'e3o demo ?\par
+\cf0\b0 R) Projetos com a vers\'e3o demo s\'f3 ir\'e3o funcionar se o delphi estiver rodando, n\'e3o existe vers\'e3o demo liberada para rodar sem que o delphi esteja "no ar", voc\'ea pode compilar seu projeto tornado-o um EXE e roda-lo, mas mesmo assim o delphi tem que estar rodando, mesmo que seja em outro projeto.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Tenho um relat\'f3rio feito quickreport, mas tem um porem, tenho que imprimi-lo numa impressora matricial. O Problema \'e9 a demora. Gostaria de saber se o Componente RDPRINT se encaixa no quickreport. \par
+\cf0\b0 R) O RDprint \'e9 um componente que trabalha sozinho, o relat\'f3rio deve ser escrito atrav\'e9s de programa\'e7\'e3o, para maiores detalhes baixe a vers\'e3o demo e de uma olhada nos doc's e exemplos que acompanham a vers\'e3o demo.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Tenho uma impressora Epson Stylus Color \'e9 poss\'edvel adicionar um novo modelo ?\par
+\cf0\b0 R) basta selecionar o modelo padrao EPSON, os comandos para impressoras matriciais e jato de tinta s\'e3o compat\'edveis e dever\'e1 funcionar normalmente, qualquer duvida entre em contato.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) H\'e1 possibilidades de criar, novas impressoras, e configurar suas propriedades com caracteres ASC de compacta\'e7\'e3o, negrito, it\'e1lico, etc)\par
+\cf0\b0\par
+R) A principio pensei em criar uma lista com todas as impressoras conhecidas no mercado, por exemplo, se voc\'ea pegar somente a linha HP teria:\par
+500, 500c, 520, 550, 600, 660, 680,\par
+690,692,693,672,710,800,820,850,870,890,895...etc...\par
+\par
+Ent\'e3o pensei em cadastrar as principais e deixar que o usu\'e1rio cria-se suas\par
+pr\'f3prias listas...\par
+\par
+Bem, aprofundando minha pesquisa notei que existem linguagens padr\'f5es de\par
+comunica\'e7\'e3o com impressoras, entre elas est\'e3o o padr\'e3o epson que \'e9 o ESC e\par
+ESC2 e na linha HP a PCL..\par
+\par
+Utilizando estes padr\'f5es \'e9 poss\'edvel configurar praticamente todas as\par
+impressoras do mercado... na verdade o componente ter\'e1 na sua vers\'e3o futura apenas o padr\'e3o da Impressora ou seja LINHA EPSON, LINHA HP, RIMA/EMILIA.\par
+\par
+Outras marcas de impressoras menos comercializadas normalmente utilizam o\par
+padr\'e3o EPSON, logo, n\'e3o \'e9 necess\'e1rio criar uma lista de comandos para ela,\par
+basta selecionar a op\'e7\'e3o Epson.\par
+\par
+Tenho colocado a disposi\'e7\'e3o de nossos clientes o seguinte: "...Se houver algum modelo, ou padr\'e3o de impressora que possua uma linguagem pr\'f3pria, diferente do padr\'e3o epson ou hp, estamos dispostos a acrescenta-la na lista, bastando enviar os comandos b\'e1sicos da mesma.. , nestes casos, voc\'ea ter\'e1 o upgrade gratuitamente..."\par
+\par
+Os modelos hp500 e hp600 enviam exatamente o mesmo conjunto de caracteres,\par
+foi mantido no componente por uma quest\'e3o de compatibilidade para usu\'e1rios\par
+mais antigos.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Quantas paginas de 132 colunas poderia imprimir com este componente ?\par
+\cf0\b0 R) Os limites para relat\'f3rios s\'e3o 9999 p\'e1ginas com 999 linhas por p\'e1gina e 999 colunas por linha, Praticamente seu relat\'f3rio ficar\'e1 restrito apenas pela \'e1rea livre de mem\'f3ria.\par
+\par
+LIMITES DO RDPRINT:\par
+-------------------\par
+Total de p\'e1ginas....:  9.999\par
+Linhas por p\'e1ginas..:    999\par
+Colunas por linha...:    999\par
+Mem\'f3ria.............: n\'e3o \'e9 poss\'edvel precisar pois depende do conte\'fado de cada comando IMP/IMPF\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) \'c9 poss\'edvel no RDPRINT selecionar impress\'f5es tanto na vertical como na horizontal?\par
+\cf0\b0 R) O RDprint \'e9 voltado para impress\'e3o r\'e1pida em Matriciais e Jato de Tinta, por\'e9m o recurso de impress\'e3o na Vertical/Horizontal n\'e3o esta dispon\'edvel.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O RDprint \'e9 capaz de trabalhar com microavan\'e7o ?\par
+\cf0\b0 R) O RDprint apenas imprime em sexto e oitavos, assim \'e9 poss\'edvel informa quantas linhas existem na p\'e1gina e ent\'e3o calcular o avan\'e7o necess\'e1rio para a pr\'f3xima p\'e1gina.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Existe alguma maneira de salvar o relat\'f3rio do RDprint em arquivo TXT ? \par
+\cf0\b0 R) Sim, Para salvar em arquivo basta informar o nome do arquivo na propriedade "PortaComunicacao", mas alem do texto a ser impresso ir\'e1 aparecer os caracteres de controle que ser\'e3o enviados para controle de impress\'e3o.\par
+\par
+Dica: Se voc\'ea necessitar criar arquivos txt, crie seu relat\'f3rio sempre no modo normal, assim ele s\'f3 enviar\'e1 os comandos no inicio e final de p\'e1gina. Para limpar os comandos voc\'ea pode criar uma rotina para ler e elimina-los. (\'e9 trabalhoso mas \'e9 uma alternativa para resolver seu problema).\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) \'c9 poss\'edvel alterar o titulo da janela do preview.\par
+\cf0\b0 R) Na vers\'e3o 2.0, al\'e9m do caption do form voc\'ea pode mudar a cor do form e da fonte\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) O RDPRINT substitui o componente QuikReport do Delphi 3.0 na Confec\'e7\'e3o de Relat\'f3rios ?\par
+\cf0\b0 R) O Rdprint \'e9 uma alternativa para impress\'e3o em modo r\'e1pido para impressoras matriciais e jato de tinta, ela n\'e3o substitui o QuickReport, mas com certeza lhe dar\'e1 grande ajuda quando necessitar imprimir em matricias, principalmente de for imprimir notas fiscais, duplicatas, boletos e outros formularios pr\'e9 impressos e com tamanhos variados.\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Atualmente, pelo que pude perceber, existem poucos tipos de impressoras. Epson, HP Deskjet, Rima. O que aconteceria se tiv\'e9ssemos que imprimir em uma laser ? \par
+\cf0\b0 R) As linguagens de impress\'e3o (PCL p/ hp e ESC/ESCp2 p/ epson) s\'e3o compativeis com todos os modelos da linha, ent\'e3o voc\'ea deve selecionar o modelo da impressora EPSON ou HP e n\'e3o especificamente a impressora, os modelos HP500 e HP600 foram mantidos por quest\'e3o de compatibilidade com usu\'e1rios mais antigos, por\'e9m enviam exatamente os mesmos c\'f3digos para a impressora.\par
+\par
+Outros Modelos de impressoras normalmente s\'e3o compat\'edveis com EPSON e usam a linguagem ESC ou ESCP, para imprimir nelas selecione sempre o padr\'e3o Epson.\par
+\par
+N\'e3o ha sentido em disponibilizar na lista TODOS OS MODELOS DE IMPRESSORAS EXISTENTE, o usu\'e1rio final ficaria perdido\par
+\par
+ainda assim, se voc\'ea tiver um modelo de impressora n\'e3o compat\'edvel, envie o tabela de comandos que acrescentaremos ao componente sem custo adicional. desde que ela seja compat\'edvel para impress\'e3o em ms-dos. \par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Existe alguma forma de enviar a impress\'e3o para uma impressora laser ou jato de tinta atrav\'e9s de seu componente ? Ocorre que \'e0s vezes temos a necessidade de enviar o mesmo relat\'f3rio para outras impressoras que est\'e3o na rede.\par
+\cf0\b0 R) Sim, \'e9 s\'f3 selecionar a impressora correta e o modelo HP ou EPSON e mandar imprimir, o \'fanico problema poder\'e1 ser quanto a n\'famero de linhas por p\'e1gina, que voc\'ea devera controlar pelo seu programa, pois na matricial o padr\'e3o \'e9 66 linhas mas, na hp por exemplo, nem sempre voc\'ea consegue imprimir + que 60 linhas (depende do modelo).\par
+-------------------------------------------------------------------------------\par
+\cf2\b P) Como fa\'e7o para imprimir em formulario continuo sem quebra de p\'e1ginas, quero que quando terminar a impress\'e3o n\'e3o ejete a p\'e1gina, na realidade preciso de imprimir cupons de venda onde uso pepel em bobina. Quando termina uma impress\'e3o quero que pule algumas linhas e logo a baixo um novo cupom.\par
+\cf0\b0 R) Para simular a emiss\'e3o de cupons, voce deve configurar o tamanho de pagina para 1, assim cada linha ser\'e1 como uma p\'e1gina, ao final do cupom envie o comando RDPRINT.NOVAPAGINA tantas vezes quanto forem as linhas que deseja saltar.\par
+\par
+Obs: O PREVIEW n\'e3o ira mostrar o cupom mas uma linha de cada vez, ent\'e3o \'e9\par
+melhor desativalo.. \par
+-------------------------------------------------------------------------------\par
+\cf2\b P) preciso saber se existe algum problema em usar com aquelas impressoras de 40 colunas (tipo Bematech). Com programas em Clipper nunca tive problemas, pois elas emulam a Epson. \par
+\cf0\b0 R) Se ela for paralela e emular o padr\'e3o epson voc\'ea n\'e3o ter\'e1 problemas, se for emitir cupom sem tamanho de p\'e1gina, informe 1 na quantidade de linhas e quando for encerrar a impress\'e3o avance quantas linhas quiser ou for necess\'e1rios para destacar o cupom.\par
+-------------------------------------------------------------------------------\par
+\pard\cf2\b\f0 PORTA INV\'c1LIDA:  \cf4\b0 No Windows NT o nome da impressora local (quando capturada pelo componente) n\'e3o mostra em qual porta ela esta conectada, dessa forma o componente ir\'e1 mostrar que a impressora n\'e3o foi localizada e que o relat\'f3rio ser\'e1 impresso em arquivo RDPRINT.TXT.\cf0\f2\fs24\par
+ \par
+\f0\fs20 Para que isso n\'e3o ocorra, informe no nome da impressora (Windows) a porta em que ela esta sendo utilizada.\f2\fs24\par
+ \par
+\f0\fs20 Exemplo:   no Painel de Controle / Printers :  \cf2 "LX300" \cf0 renomei para \cf2 "LX300 EM LPT1"\cf0\f2\fs24\par
+\f0\fs20                                                                   \cf2 "HP"     \cf0 renomei para \cf2 "HP 670 EM LPT2"\cf0\f2\fs24\par
+ \par
+\pard\nowidctlpar\f1\fs20\par
+     \par
+\cf1  \par
+\b\f0\fs28 DIFEREN\'c7A ENTRE AS VERS\'d5ES - O QUE H\'c1 DE NOVO ?\par
+\cf0\fs20\par
+\cf2\b0 Vers\'e3o Livbera\'e7\'e3o \tab Hist\'f3rico\cf0\par
+\f1\par
+1.0\tab 01/12/1998\tab Vers\'e3o inicial do componente\tab\par
+1.1\tab 25/01/1999\tab Inserida propriedade "REGISTRO"\tab\par
+1.2\tab 05/02/1999\tab Introduzida tabela de convers\'e3o para acentua\'e7\'e3o em portugues\par
+1.2a\up10\fs13\tab\up0\fs20 15/02/1999\tab Corre\'e7\'e3o: na tabela de acentua\'e7\'e3o (\'fa)\tab\par
+1.3\tab 20/02/1999\tab Nova Fun\'e7\'e3o 'ONLINE" verifica se existe impressora ligada\tab\par
+1.3a\up10\fs13    \up0\fs20 05/03/1999\tab Corre\'e7\'e3o: preview n\'e3o mostrava p\'e1gina com mais de 66 linhas\tab\par
+1.3b\tab 19/03/1999\tab Corre\'e7\'e3o: Chamada dos eventos NEWPAGE / BEFORENEWPAGE\tab\par
+1.3c\tab 27/07/1999\tab Propriedade REGISTRO desabilitada\par
+\tab\tab\tab Troca do caption do SETUP de "Ver Preview" para "Visualizar"\par
+\tab\tab\tab HP500 e HP600 agora em uma \'fanica op\'e7\'e3o "HP"\par
+1.3d\tab 13/12/1999\tab Nova propriedade "TestarPorta", \par
+\pard\nowidctlpar\fi720\li1440 deve estar desligada quando em uso com Windows NT\par
+\pard\nowidctlpar\par
+2.0\tab 18/04/2000\tab Muitos novos recursos (consulte o informa.doc)\par
+2.0a\tab 04/05/2000\tab Altera\'e7\'e3o na propriedade About \par
+2.1\tab 12/05/2000\tab Otimiza\'e7\'e3o do envio de comandos\par
+\pard\nowidctlpar\fi720\li1440 (causava \ldblquote soquinhos\rdblquote  na impress\'e3o em 17cpp e 20cpp)\par
+Ajuste na impress\'e3o do cabe\'e7alho (erro na fonte de impress\'e3o)\par
+\pard\nowidctlpar\f0\par
+}
+ 

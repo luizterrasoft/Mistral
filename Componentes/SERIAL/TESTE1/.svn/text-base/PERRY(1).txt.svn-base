@@ -1,0 +1,679 @@
+Article:  "TSerialPort:  Basic Serial Communications In Delphi"
+Date: 02/16/97
+Author:  Jason "Wedge" Perry
+Bio:  I am a full-time Delphi Client/Server developer at The Christian Broadcasting Network.  I consult on the weekends for both hardware and software solutions.  When not working I'm with my beautiful new wife, Susan.
+Contact Info:  	534 Denver Ave
+		Chesapeake, VA 23320
+		(757)579-3214 (w)
+		(757)579-6283 (f)
+		(757)436-4196(h)
+		jmperry@erols.com
+
+I remember the days in DOS XBase when I could just call 'OPENFILE', select the comm port, and start writing the data to the serial port.  Not any more.  Now we have this massive, confusing, bumbling giant called the Windows API to muddle through in order to send a single byte of information to the serial port.  What do we do, where do we start?  To begin with, it is important to understand the terminology that makes up serial communication without getting too 'technical'.
+
+A serial port only does two things: send and receive data.  What could be simpler?  Well, there is a lot that has to happen to send that data to the port.  First, serial ports are far slower that the computer.  So, when you send a file to a serial port, it is like strapping a rocket on a camel and trying to shove it through the eye of a needle.  What do you end up with?  A bunch of burned up camel pieces.  The same thing would happen to your data without some clever buffering and flow control.  
+
+The best way to describe flow control is to watch your toilet.  You push the handle, 'flush' the water which empties the tank, and then the tank fills back up again.  You can only send so much water through because you have to wait for the tank to fill up again.  If your toilet didn't have the fancy valve in the tank, what would happen?  You would end up with toilet water all over the floor.  It works the same way with your data.  There are two main ways of flow control:  RTS/CTS and XON/XOFF.  
+
+RTS (request to send) and CTS (clear to send) are built into the hardware of the serial port.  Your RTS line is connected to the remote devices CTS line, and vise versa.  Whenever the remote device is ready for data, it will activate its RTS line, thereby telling your CTS line, to start sending data.  When the remote device has received enough data, it drops the RTS line which tells you to stop sending data.  This cycle continues until all of the data has been sent.
+
+The software way of handling flow control is checking for XON/XOFF characters.  When you start to send data and the buffer gets full, the serial port will signal you with an XOFF character (ASCII 13h).  By receiving this character, the serial port knows to stop the flow of data.  When it can accept more data, it issues the XON character (ASCII 11h) to continue the flow.  RTS/CTS and XON/XOFF both accomplish the same tasks, and each has it qualities and problems.
+
+Once you get the data  flowing, it is important that it gets sent and received correctly.  There are numerous ways to check the data to confirm that it was correctly received.  The most primitive way is parity error checking.  There are two ways of parity checking, even and odd.  When using parity to evaluate the data that is sent, it adds an additional bit to the end of the data byte that reflects the correct number of bits that are set.  If using even parity, the bit is set if the total of the set bits is even, and if using odd parity, the bit is set if the total of the set bits if odd.  However, there is a serious flaw in the concept.  If you sent a 01110101 with an odd parity bit, and a 01110000 is received, the incorrect data will be accepted as correct.  There are two other types of parity, mark and space.  Mark parity adds the additional bit, however it is always set.  What good is that?  Space parity if the same, except that it is always un-set.  So, ultimately, these two type of parity are useless.  Due to the low capability of parity error checking, programmers have come up with sophisticated methods of error checking such as CRC (cyclic redundancy check) checking.  This checks the order and amount of data that is sent, and the checksum (the value of the byte) of the data that was sent.  It is efficient and works pretty well, but is out of the scope of this discussion.
+
+Now that we know how to control the flow of data, it won't do much good if the devices aren't listening to each other.  Just like flow control, there is a hardware approach and a software approach.  The hardware approach is to monitor the status of the DSR (data set ready) /DTR  (data terminal ready) lines.  When two modems connect, for instance, each one sets it DTR line to active (commonly 'hi', or 'hot').  The first modem's DTR line is connected to the second's DSR, and vise-versa.  When both modems get a response from the other, they have just performed hardware handshaking.  Although all serial ports have DSR/DTR lines in them, this method is primarily only found in older systems of communication.  Software handshaking is far more efficient.  Today, software handshaking completes many tasks for modems.  When you hear all of the noise during a connection, the modems are negotiating each other's presence, what features are turned on such as flow control, compression level, baud rate, and etc.  Software handshaking is not necessary for simple communications, but is an absolute must for complex tasks such as file transfers.  Like RTS/CTS or XON/XOFF, DSR/DTR can also be used for flow control, however it is an ancient method of doing so and isn't used much anymore.
+
+The Windows 95/NT API has a tremendous amount of features built into it for serial communications, however along with features comes confusion.  The serial component that I created is centered around only a few of the API calls that are necessary to perform the most basic of serial communications.  I will give you a brief introduction to the calls that I used and then will take you through the assemble of the component, step-by-step.
+
+CREATEFILE
+The first thing, and the most important, that has to be accomplished is to open the port.  This is accomplished by a call to CreateFile.
+
+function CreateFile(lpFileName: PChar; dwDesiredAccess, dwShareMode: Integer;
+lpSecurityAttributes: PSecurityAttributes; dwCreationDisposition,               dwFlagsAndAttributes: DWORD; hTemplateFile: THandle): THandle;
+
+Check out that parameter list!  Although this appears to be overwhelming, it is far easier to use than you think. If CreateFile is successful, it returns a handle to the serial port, which is used in every other API call we make to refer to the port.  Since we are concerned about a serial port, lpFileName is the logical name of the serial port, such as 'COM1' or 'COM2'.  The parameter dwDesiredAccess describes the way in which we will access the port.  Since we want to read and write to it, the parameter value is 'GENERIC_READ OR GENERIC_WRITE".  dwShareMode tells Windows if the file, or in our case the serial port, can be shared by other applications.  The answer here is no, so a zero has to be passed here so that our application will have exclusive access to the port. lpSecurityAttributes  points to a structure that specifies whether the handle is inheritable, and some other junk.  For convenience, this is nil. dwCreationDisposition tells Windows how to open or create the file.  Since the 'file' always exists, the parameter value is 'OPEN_EXISTING'.  This opens the existing file, or port. dwFlagsAndAttributes only applies to serial ports when set to FILE_FLAG_OVERLAPPED.  This allows the serial port to perform asynchronous communication.  In other words, the port can read and write at the same time.  To make writing the component easier. I chose to set this to zero, using the serial port in a synchronous manor.  We will talk about some possibilities in using this parameter later.  And finally, hTemplateFile is passed a zero because it has absolutely nothing to do with serial communications.  
+
+The DEVICE CONTROL BLOCK (DCB)
+The whole heart of establishing a handle to the serial port is the Device Control Block structure.  This structure describes all of the settings that you want to apply to the serial port and is declared in windows.pas.  Almost all of these settings represent properties in the TSerialPort component that I created.  As I develop the component, you will become very familiar with the DCB.
+
+*** Insert Listing 1 here. ***
+
+GETCOMMSTATE and SETCOMMSTATE
+GetCommState and SetCommState are the functions used to retrieve the current DCB parameters, and to modify them as well.  For each function, just pass in the handle to the port that was returned from CreateFile, and the address to the DCB.  GetCommState uses a variable parameter of type TDCB to return the current settings to you.  SetCommState accepts a parameter of type TDCB to modify the DCB for the port.  
+
+function GetCommState(hFile: THandle; var lpDCB: TDCB): BOOL; stdcall;
+function SetCommState(hFile: THandle; const lpDCB: TDCB): BOOL; stdcall;
+GETCOMMTIMEOUTS and SETCOMMTIMEOUTS
+Sometimes something happens to our data and it never reaches the us or the other device.  This is common when surfing the net in the middle of a raging thunder storm.  The serial port doesn't know that it will never be receiving more data or that the other device was just wiped out by a 10 megajoule bolt of energy.  So it will wait forever for the next byte of data.  GetCommTimeouts and SetCommTimeouts set the maximum amount of time that the ReadFile will wait on a piece of data.  When that time is surpassed, it terminates the read and sets a timeout status on the port.  Again, all you have to do is pass the function the handle to the port and fill the record lpCommTimeouts which is of type TComTimeouts.
+
+function GetCommTimeouts(hFile: THandle; var lpCommTimeouts: TCommTimeouts): BOOL; stdcall;
+function SetCommTimeouts(hFile: THandle; const lpCommTimeouts: TCommTimeouts): BOOL; stdcall;
+
+TCommTimeouts = record
+    ReadIntervalTimeout: DWORD;
+    ReadTotalTimeoutMultiplier: DWORD;
+    ReadTotalTimeoutConstant: DWORD;
+    WriteTotalTimeoutMultiplier: DWORD;
+    WriteTotalTimeoutConstant: DWORD;
+  end;
+
+I chose to use the defaults for the timeouts since I am sure that the people at Microsoft knew more about the optimum settings than I do.  However, in the source that is included with the subscription, you will notice that I put the code in the correct place and then commented it out in case you need to implement it.
+
+PURGECOMM
+PurgeComm is a life saver.  It will allow you to cancel and read or write operations, immediately.  It will also clear the input and output buffers if you tell it to.  It consists of a handle parameter (surprise), and a set of flags.  
+
+function PurgeComm(hFile: THandle; dwFlags: DWORD): BOOL; stdcall;
+
+The flags available are PURGE_TXABORT, PURGE_TXCLEAR, PURGE_RXABORT, and PURGE_RXCLEAR.  I think these are fairly self explanatory.  The 'abort' ones terminate all operation immediately.  The 'clear' ones tell it to clear the corresponding buffer.
+
+CLOSEHANDLE
+CloseHandle will close the open file handle to the port, and returns true if successful and false if not.  This is how we close the serial port.
+
+function CloseHandle(hFile: Thandle): BOOL; stdcall;
+
+CLEARCOMMERROR
+ClearCommError retrieves the current status of the specified device and reports on any errors in that device.  Also, when a communications error occurs, it gets called and it clears the devices error flag so that it can continue with read and write operations.  The lpStat parameter points to a TComStat structure that contains the fields that represent the errors that have occurred, and the current device status.  
+
+function ClearCommError(hFile: THandle; var lpErrors: DWORD; lpStat: PComStat): BOOL; stdcall;
+
+TComStat = record
+    Flags: TComStateFlags;
+    Reserved: array[0..2] of Byte;
+    cbInQue: DWORD;
+    cbOutQue: DWORD;
+  end;
+
+Although you can do some nice error reporting and handling with this function, I am only concerned with one of the com status parameters: cbInQue.  This field contains the number of bytes that are in the buffer that have not been read by the ReadFile method.  I describe how I used this function later in the article.
+
+WRITEFILE and READFILE
+The two most import functions are WriteFile and ReadFile.  These functions are used to send and receive data from the serial port.  Each one has the same number and type of parameters, with minor exceptions.
+
+function WriteFile(hFile: THandle; const Buffer; nNumberOfBytesToWrite: DWORD;
+  var lpNumberOfBytesWritten: DWORD; lpOverlapped: POverlapped): BOOL; stdcall;
+function ReadFile(hFile: THandle; var Buffer; nNumberOfBytesToRead: DWORD;
+  var lpNumberOfBytesRead: DWORD; lpOverlapped: POverlapped): BOOL; stdcall;
+
+For WriteFile, hFile is the handle to the port (aren't you glad we created that handle with CreateFile?).  Buffer is a pointer to the data that you want to send.  nNumberOfBytesToWrite is the number of characters that we are going to send to the port.  lpNumberOfBytesWritten is the number of bytes that were actually send to the port after the function is complete.  And finally, lpOverLapped is a pointer to a TOverLapped structure that when defined allows the asynchronous use of the serial port.  In lay terms, the port can read and write at the same time.  I chose not to use the overlapped structure, mostly because it requires significant more work and I have so limited time.  I will comment in it in the conclusion, however.
+
+The differences in ReadFile are minimal.  Buffer is a pointer to a memory block that holds the result.  nNumberOfBytesToRead is the number of bytes that you want to read.  lpNumberOfBytesRead reflects the number of bytes that were read on return from the function.
+
+Now don't let all this 'byte' stuff and 'pointer' stuff worry you.  It is actually far easier than you think.  When you declare a variable named MyString, of type string, it is actually a pointer to a block of memory that contains the value that you assign it.  And the byte stuff, a single character is a single byte.  So all you have to do is use the SizeOf() function or even the Length() function to count the total number of characters.  One last comment on nNumberOfBytesToWrite/ToRead and lpNumberOfBytesWritten/Read.  It would be a good idea to check that these values each match on return from the function.  It is a simple check, and it will let you know that the correct number of characters were written and read each time (be the characters correct or not).
+
+TSerialPort = class(TComponent);
+Now that you understand the basic terminology of the functions that make up the TSerialPort component, I can get down to business on how to assemble it.
+
+First, I made a list of all of properties that I thought the component would need and the range of values for those properties.  I got all of them from the DCB structure since it contains many of the serial port features in it.
+* Comm Port (COM1 - COM8)
+* Baud Rate (110 - 256,000)
+* Parity Checking Type (None, Even, Odd, Mark, Space)
+* Stop Bits (1, 1.5, 2)
+* Data Bits (4, 5, 6, 7, 8)
+* XON Character (Usually $11)
+* XOFF Character (Usually $13)
+* XON Limit (1024k)
+* XOFF Limit (2048k)
+* Error Character (0)
+* Flow Control Type (RTS/CTS, XON/XOFF, DSR/DTR)
+Since of these properties affect the DCB directly, each must have a corresponding 'Set' method declared in the 'write' section of the property declaration.  I also assigned a default constant to each one in order to establish some basic setup defaults.
+*** Insert Listing 2 here. ***
+
+Next, for each property, I defined a new type that contains sets of possible values for each property that has specific values that it could be.  For instance, I defined a TCommPort type that contains the set of possible comports that are available (Listing 2).  In turn, I also defined a constant for each property, with the prefix 'dflt_', as a simple matter of convenience while programming the component.  Each of these properties and the corresponding field look almost identical.  The 'set' methods are basically the same as well.  Each 'set' method is implemented the exact same way:
+
+procedure TSerialPort.Set<MyMethodHere>(value : TDefinedType);
+begin
+  if value <> f<MyMethodField> then begin
+    f<MyMethodField> := value;
+    Initialize_DCB;
+  end;
+end;
+
+For the next hour you can declare all of the fields, properties, types, and set methods with little or no understanding of how a serial port works.  When you compile it up, you get a component with cool property drop downs that don't do anything yet. 
+
+Now what about a Receive and Transmit event.  In my book, if a custom component doesn't have any custom events, it is a pretty whimpy component -- probably of type TWhimpy.  So I declared 4 events: OnReceive, OnTransmit, AfterReceive and AfterTransmit.  This required two new 'TNotify' events named TNotifyTXEvent and TNotifyRXEvent (Listing 2).  Each is defined as a procedure with the parameters sender and data.  So when the event is called, it passes the sender, and the data that was used, to the custom event in your application.
+
+That was the easy part of the setup.  Next I made a list of the private and public methods that I would need to make the TSerialPort component work.  To start with, every component has a create and destroy that needs to be defined.  
+
+*** Insert Listing 4 here. ***
+
+You will notice that the create is straight forward.  I just called the 'inherited Create()' and then set all of the property defaults.  At the top of the method, I initialized the hCommPort (comm port handle, remember?) to INVALID_HANDLE_VALUE.  This lets me test for a comport that is not successfully opened, and also prevent some operations from performing on and unopened port.  In addition, I created a public 'PortIsOpen' method to check for that value.  If it is not equal to INVALID_HANDLE_VALUE, the port must be open!
+
+Two important methods that I created next were the OpenPort and Close Port methods.  The OpenPort method is the one that makes the call to CreateFile in order to get a handle to the port.  First, I made sure the port was closed.  Closing the port is real easy.  You will notice in the ClosePort function that I called CloseHandle.  This call deallocates the handle to the port.  If it is successful, it returns true.  Just before closing the handle, I made a call to FlushTX and FlushRX to purge the receive and transmit buffers of any remaining bytes.  Each procedure calls PurgeComm with the handle of the comm port, and with parameters that describe the task to perform.  Also notice that I reinitialized the hCommPort handle back to INVALID_HANDLE_VALUE for future use.
+
+*** Insert Listing 5 here. ***
+
+Back in the OpenPort method again.  After making sure that the port was close, I made the call to CreateFile.  I set the parameters exactly as discussed in the introduction.  If OpenPort is successful, it creates a handle to the port, and returns true.  Lastly, OpenPort calls Initialize_DCB to set up the DCB features of the port.
+
+ Every time a property is changed, it needs to update the DCB (you will notice that all the 'set' methods call Initialize_DCB).  The Initialize_DCB method is fairly trivial.  All I did was check the value of the components type in a 'case' statement and then set the correct field in the DCB.  I want to mention a couple points, however.  You will notice at the top of the procedure that I made a call to GETCOMMSTATE.
+
+*** Insert Listing 3 here. ***
+
+This function has a variable parameter that will return the DCB record filled with the current settings for the port.  Then the changes are made to the temporary variable that stores the copy of the DCB.  Finally, a call is made to SETCOMMSTATE to save the changes.  You may be a little confused by the 'flags' field in the DCB.  It is a 'bit flag' field.  It has many possible flags, most of which deal with flow control and parity checking.  I don't know why they chose to represent the flags in hex, but here is a listing of the values for your future use:
+* fBinary = $0001;      // Not valid in Win32.
+* fParity = $0002;      // When set, parity checking is enabled.
+* fOutxCtsFlow = $0004; // No data sent unless CTS is high.
+* fOutxDsrFlow = $0008; // No data sent unless DSR is high.
+* fDtrControl = $0010;  // DTR_CONTROL_ENABLE, DTR_CONTROL_DISABLE, DTR_CONTROL_HANDSHAKE
+* fDsrSensitivity = $0012; // Unless DSR is high, all bytes ignored.
+* fTxContinueOnXOff = $0014; // Can continue sending data, even when waiting on an XON character to be set.  If not set, cannot send data until XONLim is reached.
+* fOutX = $0018; // XON/XOFF flow control enabled for sending.
+* fInX = $0020;  // XON/XOFF flow control enabled for receiving.
+* fErrorChar = $0021;  // If a parity error is detected, the error will be replaced with this character.
+* fNull = $0022; // Strip off the null characters.
+* fRtsControl = $0024;
+* fAbortOnError = $0030;
+All I did was set the 'flags' field equal to the equivalent value, and voila - you now have flow control, parity checking, and null stripping capability.
+
+Lastly, the two most important public methods, SendData and GetData.  SendData  was much easier than Getdata.  First, I called the OnTransmit event with self and data.  This passes the sender and the data to the OnTransmit event that I declared.  By making the call at the top, I signal the event just before sending the data to the port.  I do the same thing at the bottom of the procedure with the AfterTransmit event,  in order to call the event after the data has been sent.  The best use I have found for these is filling up a memo with the sent data and controlling some fancy LEDs to make your GUI have sufficient 'whiz-bang' appeal.  The WriteFile function was easy to set up.  I just passed in the handle to the port, a pointer to the data the I wanted to send, and the size of the data to send.  The size the data is just the number of characters it has.  The NumBytesWritten variable that I declared will be filled with the total number of bytes that the function passed when it is done.  The last parameter is just 'nil'.  For simplicity's sake, I chose not to make use of the 'overlapped' I/O capability of the port.  This just means that the port can read and write at the same time.  In order to do this, you have to do some fancy buffer handling, size reallocation, and etc.  The ultimate serial communications component would be multi-threaded so that you could send data while you were reading it.  If any of you enhance this one to do it, I would love a copy!
+
+*** Insert Listing 6 here. ***
+
+The GetData function took more work to get behaving correctly.  Just like SendData, I called the corresponding event procedures at the top and bottom.  That was the easy part.  Initially, I just made a call to ReadFile, similar to the call to WriteFile, and expected the data to come back.  Not a chance.  I may have gotten some characters and garbage, but nothing that I expected.  What had to be done was to determine the number of bytes that were waiting in the receive buffer, and then to read them.  I did this with a call to ClearCommError.  In order to make it work correctly, I had to declare a variable of type TComStat.  TComStat is a record that contains information about errors and, you got it, buffer contents.  So all that had to be done was to allocate the readbuffer to the same number of bytes in the receive buffer, plus one additional byte.  I then called ReadFile and filled the readbuffer with the contents of the buffer.  Lastly, I set the length of the readbuffer to the exact length of itself.  This made a nice and tidy string for me to pass into the AfterReceive event. 
+
+I am not a serial communications expert,  and I certainly didn't hit on every function and procedure in the API for handling comports.  There is a lot more that can be done, such as CRC checking, asynchronous communications, multi-threaded reads and writes, etc.  If any of you make any cool enhancements, send me a copy, I would love to see what you did.  I threw together a small terminal application to demonstrate some of the function for you.  Just run the setup and point the comport to your modem.  A really good example is to enter 'ATI4' to return your modem's current NVRAM settings.  Another cool one is 'ATDT and you own number'.  This will return a 'BUSY' message to you.  When it does it, you know for sure that you are communicating with the port.  You might also check out the setup screen's code closely.  I save off all of the settings into the system Registry (wooa, bad word).  I just pass the Comm1 component into the setup form, manipulate it, and send it back with the new settings.  Pretty cool stuff.  I hope you enjoy the component!
+
+Jason 'Wedge' Perry.
+
+*** Insert Figure 1 here:  PERRY1.BMP ***
+*** Insert Figure 2 here:  PERRY2.BMP ***
+
+Listing 1.  TDCB - The Device Control Block
+type TDCB = record
+       DCBLength:DWord; // SizeOf(DCB)
+       Baudrate:DWord;  // Baud rate
+       Flags:LongInt;   // Several Bit Flags
+       wReserved:Word;  // Reserved use
+       XONLim:Word;     // XON Switch byte limit
+       XOFFLim:Word;    // XOFF Switch byte limit
+       ByteSize:Byte;   // Num of bits in a byte
+       Parity:Byte;     // Parity Type
+       StopBits:Byte;   // Stop bits
+       XONChar:Char;    // XON Character
+       XOFFChar:Char;   // XOFF Character
+       ErrorChar:Char;  // Parity error substitute
+       EOFChar:Char;    // EOF Character
+       EvtChar:Char;    // Event Character
+       wReserved1:Word; // Reserved use.
+end;
+End Listing 1.
+
+Listing 2.  Property and Type Declarations.
+unit Serial;
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes,
+  Graphics, Controls, Forms, Dialogs;
+
+type
+  // You can't do anything without a comm port.
+  TCommPort = (cpCOM1, cpCOM2, cpCOM3, cpCOM4,
+               cpCOM5, cpCOM6, cpCOM7, cpCOM8);
+
+  // All of the baud rates that the DCB supports.
+  TBaudRate = (br110, br300, br600, br1200,
+               br2400, br4800, br9600, br14400,
+               br19200, br38400, br56000,
+               br128000, br256000);
+
+  // Parity types for parity error checking
+  TParityType = (pcNone, pcEven, pcOdd,
+                 pcMark, pcSpace);
+
+  TStopBits = (sbOne, sbOnePtFive, sbTwo);
+
+  TDataBits = (db4, db5, db6, db7, db8);
+
+  TFlowControl = (fcNone, fcXON_XOFF,
+                  fcRTS_CTS, fsDSR_DTR);
+
+  // Two new notify events.
+  TNotifyTXEvent = procedure(Sender : TObject;
+                   data : string) of object;
+  TNotifyRXEvent = procedure(Sender : TObject; 
+                   data : string) of object;
+
+  // Set some constant defaults.
+// These are the qquivalent of
+// COM2:9600,N,8,1;
+const
+  dflt_CommPort = cpCOM2;
+  dflt_BaudRate = br9600;
+  dflt_ParityType = pcNone;
+  dflt_ParityErrorChecking = False;
+  dflt_ParityErrorChar = 0;
+  dflt_ParityErrorReplacement = False;
+  dflt_StopBits = sbOne;
+  dflt_DataBits = db8;
+  dflt_XONChar = $11;  {ASCII 11h}
+  dflt_XOFFChar = $13; {ASCII 13h}
+  dflt_XONLim = 1024;
+  dflt_XOFFLim = 2048;
+  dflt_ErrorChar = 0; // For parity checking.
+  dflt_FlowControl = fcNone;
+  dflt_StripNullChars = False;
+  dflt_EOFChar = 0;
+
+type
+  TSerialPort = class(TComponent)
+  private
+    hCommPort : THandle; // Handle to the port.
+    fCommPort : TCommPort;
+    fBaudRate : TBaudRate;
+    fParityType : TParityType;
+    fParityErrorChecking : Boolean;
+    fParityErrorChar : Byte;
+    fParityErrorReplacement : Boolean;
+    fStopBits : TStopBits;
+    fDataBits : TDataBits;
+    fXONChar : byte;  {0..255}
+    fXOFFChar : byte; {0..255}
+    fXONLim : word;  {0..65535}
+    fXOFFLim : word; {0..65535}
+    fErrorChar : byte;
+    fFlowControl : TFlowControl;
+    fStripNullChars : Boolean;  // Strip null chars?
+    fEOFChar : Byte;
+    fOnTransmit : TNotifyTXEvent;
+    fOnReceive : TNotifyRXEvent;
+    fAfterTransmit : TNotifyTXEvent;
+    fAfterReceive : TNotifyRXEvent;
+    fRXBytes : DWord;
+    fTXBytes : DWord;
+    ReadBuffer : String;
+    procedure SetCommPort(value : TCommPort);
+    procedure SetBaudRate(value : TBaudRate);
+    procedure SetParityType(value : TParityType);
+    procedure SetParityErrorChecking(value : Boolean);
+    procedure SetParityErrorChar(value : Byte);
+    procedure SetParityErrorReplacement(value : Boolean);
+    procedure SetStopBits(value : TStopBits);
+    procedure SetDataBits(value : TDataBits);
+    procedure SetXONChar(value : byte);
+    procedure SetXOFFChar(value : byte);
+    procedure SetXONLim(value : word);
+    procedure SetXOFFLim(value : word);
+    procedure SetErrorChar(value : byte);
+    procedure SetFlowControl(value : TFlowControl);
+    procedure SetStripNullChars(value : Boolean);
+    procedure SetEOFChar(value : Byte);
+    procedure Initialize_DCB;
+  protected
+  public
+    constructor Create(AOwner : TComponent); override;
+    destructor Destroy; override;
+    function OpenPort(MyCommPort : TCommPort) : Boolean;
+    function ClosePort : boolean;
+    procedure SendData(data : PChar; size : DWord);
+    function GetData : String;
+    function PortIsOpen : boolean;
+    procedure FlushTX;
+    procedure FlushRX;
+  published
+    property CommPort : 
+             TCommport read fCommPort
+                       write SetCommPort
+                       default dflt_CommPort;
+    property BaudRate : 
+             TBaudRate read fBaudRate
+                       write SetBaudRate
+                       default dflt_BaudRate;
+    property ParityType : 
+             TParityType read fParityType
+                         write SetParityType
+                         default dflt_ParityType;
+    property ParityErrorChecking : 
+             Boolean read fParityErrorChecking
+                     write SetParityErrorChecking
+                     default dflt_ParityErrorChecking;
+    property ParityErrorChar : 
+             Byte read fParityErrorChar
+             write SetParityErrorChar
+             default dflt_ParityErrorChar;
+    property ParityErrorReplacement : 
+             Boolean read fParityErrorReplacement
+                     write SetParityErrorReplacement
+                     default dflt_ParityErrorReplacement;
+    property StopBits : 
+             TStopBits read fStopBits
+                       write SetStopBits
+                       default dflt_StopBits;
+    property DataBits : 
+             TDataBits read fDataBits
+                       write SetDataBits
+                       default dflt_DataBits;
+    property XONChar : 
+             byte read fXONChar
+                  write SetXONChar
+                  default dflt_XONChar;
+    property XOFFChar : 
+             byte read fXOFFChar
+                  write SetXOFFChar
+                  default dflt_XOFFChar;
+    property XONLim : 
+             word read fXONLim
+                  write SetXONLim
+                  default dflt_XONLim;
+    property XOFFLim : 
+             word read fXOFFLim
+                  write SetXOFFLim
+                  default dflt_XOFFLim;
+    property ErrorChar : 
+             byte read fErrorChar
+                  write SetErrorChar
+                  default dflt_ErrorChar;
+    property FlowControl : 
+             TFlowControl read fFlowControl
+                                        write SetFlowControl
+                                        default dflt_FlowControl;
+    property StripNullChars : Boolean read fStripNullChars
+                                      write SetStripNullChars
+                                      default dflt_StripNullChars;
+    property EOFChar : byte read fEOFChar
+                            write SetEOFChar
+                            default dflt_EOFChar;
+    property OnTransmit : TNotifyTXEvent read fOnTransmit
+                                         write fOnTransmit;
+    property OnReceive : TNotifyRXEvent read fOnReceive
+                                        write fOnReceive;
+    property AfterTransmit : TNotifyTXEvent read fAfterTransmit
+                                            write fAfterTransmit;
+    property AfterReceive : TNotifyRXEvent read fAfterReceive
+                                            write fAfterReceive;
+  end;
+
+procedure Register;
+
+implementation
+End Listing 2.
+
+Listing 3.  Initialize_DCB.
+// Initialize the device control block.
+procedure TSerialPort.Initialize_DCB;
+var
+  MyDCB : TDCB;
+  //MyCommTimeouts : TCommTimeouts;
+begin
+
+  // Only want to perform the setup
+  // if the port has been opened and
+  // the handle assigned.
+  if hCommPort = INVALID_HANDLE_VALUE then exit;
+
+  // The GetCommState function fills in a
+  // device-control block (a DCB structure)
+  // with the current control settings for
+  // a specified communications device.
+  // (Win32 Developers Reference)
+  // Get a default fill of the DCB.
+  GetCommState(hCommPort, MyDCB);
+
+  case fBaudRate of
+    br110 : MyDCB.BaudRate := 110;
+    br300 : MyDCB.BaudRate := 300;
+    br600 : MyDCB.BaudRate := 600;
+    br1200 : MyDCB.BaudRate := 1200;
+    br2400 : MyDCB.BaudRate := 2400;
+    br4800 : MyDCB.BaudRate := 4800;
+    br9600 : MyDCB.BaudRate := 9600;
+    br14400 : MyDCB.BaudRate := 14400;
+    br19200 : MyDCB.BaudRate := 19200;
+    br38400 : MyDCB.BaudRate := 38400;
+    br56000 : MyDCB.BaudRate := 56000;
+    br128000 : MyDCB.BaudRate := 128000;
+    br256000 : MyDCB.BaudRate := 256000;
+  end;
+
+  // Parity error checking parameters.
+  case fParityType of
+    pcNone : MyDCB.Parity := NOPARITY;
+    pcEven : MyDCB.Parity := EVENPARITY;
+    pcOdd : MyDCB.Parity := ODDPARITY;
+    pcMark : MyDCB.Parity := MARKPARITY;
+    pcSpace : MyDCB.Parity := SPACEPARITY;
+  end;
+  if fParityErrorChecking then 
+       inc(MyDCB.Flags, $0002);
+  if fParityErrorReplacement then 
+       inc(MyDCB.Flags, $0021);
+  MyDCB.ErrorChar := char(fErrorChar);
+
+  case fStopBits of
+    sbOne : MyDCB.StopBits := ONESTOPBIT;
+    sbOnePtFive : MyDCB.StopBits := ONE5STOPBITS;
+    sbTwo : MyDCB.StopBits := TWOSTOPBITS;
+  end;
+
+  case fDataBits of
+    db4 : MyDCB.ByteSize := 4;
+    db5 : MyDCB.ByteSize := 5;
+    db6 : MyDCB.ByteSize := 6;
+    db7 : MyDCB.ByteSize := 7;
+    db8 : MyDCB.ByteSize := 8;
+  end;
+
+  // The 'flags' are bit flags,
+  // which means that the flags
+  // either turn on or off the
+  // desired flow control type.
+  case fFlowControl of
+    fcXON_XOFF : MyDCB.Flags := 
+        MyDCB.Flags or $0020 or $0018;
+    fcRTS_CTS : MyDCB.Flags := 
+        MyDCB.Flags or $0004 or 
+        $0024*RTS_CONTROL_HANDSHAKE;
+    fsDSR_DTR : MyDCB.Flags := 
+        MyDCB.Flags or $0008 or 
+        $0010*DTR_CONTROL_HANDSHAKE;
+  end;
+
+  if fStripNullChars then inc(MyDCB.Flags,$0022);
+
+  MyDCB.XONChar := Char(fXONChar);
+  MyDCB.XOFFChar := Char(fXONChar);
+
+  // The XON Limit is the number of
+  // bytes that the data in the
+  // receive buffer must fall below
+  // before sending the XON character,
+  // there for resuming the flow
+  // of data.
+  MyDCB.XONLim := fXONLim;
+  // The XOFF limit is the max number
+  // of bytes that the receive buffer
+  // can contain before sending the
+  // XOFF character, therefore
+  // stopping the flow of data.
+  MyDCB.XOFFLim := fXOFFLim;
+
+  // Character that signals the end of file.
+  if fEOFChar <> 0 then MyDCB.EOFChar := char(EOFChar);
+
+  // The SetCommTimeouts function sets
+  // the time-out parameters for all
+  // read and write operations on a
+  // specified communications device.
+  // (Win32 Developers Reference)
+  // The GetCommTimeouts function retrieves
+  // the time-out parameters for all read
+  // and write operations on a specified
+  // communications device.
+  // GetCommTimeouts(hCommPort, MyCommTimeouts);
+  // MyCommTimeouts.ReadIntervalTimeout := ...
+  // MyCommTimeouts.ReadTotalTimeoutMultiplier := ...
+  // MyCommTimeouts.etc...................
+  // SetCommTimeouts(hCommPort, MyCommTimeouts);
+
+  SetCommState(hCommPort, MyDCB);
+end;
+End Listing 3.
+
+Listing 4.  The CREATE and DESTROY methods.
+// Create method.
+constructor TSerialPort.Create(AOwner : TComponent);
+begin
+  inherited Create(AOwner);
+  // Initalize the handle to the port as
+  // an invalid handle value.  We do this
+  // because the port hasn't been opened
+  // yet, and it allows us to test for
+  // this condition in some functions,
+  // thereby controlling the behavior
+  // of the function.
+
+  hCommPort := INVALID_HANDLE_VALUE;
+
+  // Set initial settings.  Even though
+  // the default parameter was specified
+  // in the property, if you were to
+  // create a component at runtime, the
+  // defaults would not get set.  So it
+  // is important to call them again in
+  // the create of the component.
+  fCommPort := dflt_CommPort;
+  fBaudRate := dflt_BaudRate;
+  fParityCheck := dflt_ParityCheck;
+  fStopBits := dflt_StopBits;
+  fDataBits := dflt_DataBits;
+  fXONChar := dflt_XONChar;
+  fXOFFChar := dflt_XOFFChar;
+  fXONLim := dflt_XONLim;
+  fXOFFLim := dflt_XOFFLim;
+  fErrorChar := dflt_ErrorChar;
+  fFlowControl := dflt_FlowControl;
+  fOnTransmit := nil;
+  fOnReceive := nil;
+end;
+
+// Destroy method.
+destructor TSerialPort.Destroy;
+begin
+  // Close the port first;
+  ClosePort;
+  inherited Destroy;
+end;
+
+// Public function to check if the port is open.
+function TSerialPort.PortIsOpen : boolean;
+begin
+  Result := hCommPort <> INVALID_HANDLE_VALUE;
+end;
+
+End Listing 4.
+
+Listing 5.  OPENPORT and CLOSEPORT
+// Public method to open the port and
+// assign the handle to it.
+function TSerialPort.OpenPort(MyCommPort : 
+              TCommPort) : Boolean;
+var
+  MyPort : PChar;
+begin
+  // Make sure that the port is Closed first.
+  ClosePort;
+
+  MyPort := PChar('COM' + 
+            IntToStr(ord(fCommPort)+1));
+  hCommPort := CreateFile(MyPort,
+            GENERIC_READ OR GENERIC_WRITE,
+            0,
+            nil,
+            OPEN_EXISTING,
+            0,0);
+  // Initialize the port.
+  Initialize_DCB;
+  // Was successful if not and invalid handle.
+  result := hCommPort <> INVALID_HANDLE_VALUE;
+end;
+
+// Public method to Close the port.
+function TSerialPort.ClosePort : boolean;
+begin
+  FlushTX;
+  FlushRX;
+  // Close the handle to the port.
+  result := CloseHandle(hCommPort);
+  hCommPort := INVALID_HANDLE_VALUE;
+end;
+
+// Public method to cancel and 
+// flush the receive buffer.
+procedure TSerialPort.FlushRx;
+begin
+  if hCommPort = INVALID_HANDLE_VALUE then exit;
+  PurgeComm(hCommPort, 
+         PURGE_RXABORT or PURGE_RXCLEAR);
+  ReadBuffer := '';
+end;
+
+// Public method to cancel and flush the transmit buffer.
+procedure TSerialPort.FlushTx;
+begin
+  if hCommPort = INVALID_HANDLE_VALUE then exit;
+  PurgeComm(hCommPort, 
+       PURGE_TXABORT or PURGE_TXCLEAR);
+end;
+End Listing 5.
+
+Listing 6.  GETDATA and SENDDATA.
+// Public Send data method.
+procedure TSerialPort.SendData(data : PChar;
+           size : DWord);
+var
+  NumBytesWritten : DWord;
+begin
+  if hCommPort = INVALID_HANDLE_VALUE then exit;
+
+  if assigned(fOnTransmit) then 
+        fONTransmit(self, Data);
+
+  WriteFile(hCommPort,
+            Data^,
+            Size,
+            NumBytesWritten,
+            nil);
+
+  // Fire the transmit event.
+  if assigned(fAfterTransmit) then 
+        fAfterTransmit(self, Data);
+end;
+
+// Public Get data method.
+function TSerialPort.GetData : String;
+var
+  NumBytesRead : DWord;
+  // <<cbInQue>> Specifies the number
+  // of bytes received by the serial
+  // provider but not yet read by a
+  // ReadFile operation.
+  // Number of bytes in the input buffer
+  BytesInQueue : LongInt;  
+  // Variable for the ComStat structure.
+  oStatus: TComStat; 
+  // Variable to put the error codes in.
+  dwErrorCode: DWord;      
+begin
+  if hCommPort = INVALID_HANDLE_VALUE then exit;
+
+  if assigned(fOnReceive) then 
+         fONReceive(self, ReadBuffer);
+  // Get the total number of bytes that
+  // are waiting to be read from the
+  // input buffer.
+  ClearCommError(hCommPort, dwErrorCode, @oStatus);
+	BytesInQueue := oStatus.cbInQue;
+
+	if BytesInQueue > 0 then begin
+	SetLength(ReadBuffer, BytesInQueue + 1);
+	ReadFile(hCommPort,
+             PChar(ReadBuffer)^,
+             BytesInQueue,
+             NumBytesRead,
+             nil);
+SetLength(ReadBuffer, StrLen(PChar(ReadBuffer)));
+	end;
+
+  if assigned(fAfterReceive) then 
+         fAfterReceive(self, ReadBuffer);
+  result := ReadBuffer;
+end;
+End Listing 6.

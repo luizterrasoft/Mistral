@@ -1,0 +1,48 @@
+
+1-Gostaría de saber com quais modelos de impressoras fiscais o componente
+é compatível.
+
+Compatível com Bematech MP 20 FI, MP 20 FI II, Zanthus IZ 10, Zanthus IZ 20, Zanthus IZ 11, 
+Zanthus IZ 21, IZ 41, Zanthus QZ 1000, Yanco 8000, Sweda, Schalter, Elgin 500 1E, Corisco V3. 
+
+2-Como eu seleciono a impressora a utilizar, possui uma propriedade para isto,
+ou o código a escrever varia de impressora para impressora ???
+
+O componente possui uma propriedade para a escolha da impressora em uso, após feita a 
+escolha todo o código escrito não muda de impressora para impressora.
+
+3-Acompanha um manual detalhado das propriedades, métodos e eventos ???
+
+Sim, acompanha um manual com todas as explicações necessárias a sua utilização.
+E ainda acompanha um aplicação de exemplo em Delphi, para um melhor entendimento das 
+operações envolvidas na criação de uma AFC( Aplicação Frente de Caixa ).
+
+4-Quais os requisitos a minha máquina deve possuir para utilizar o componente?
+
+A configuração minima seria um Pentium 166, 16 MB RAM, 10 MB de espaço livre no HD. 
+
+5-Com qual versão do Delphi o componente é compativel?
+
+Compatível com o Delphi 4.xx, e Delphi 5.xx.
+
+6-Se eu adquirir o componente terei direito a futuras atualizações?
+
+Sim, desde que as atualizações não ultrapassem de versão, ou seja;
+
+Suponhamos que você adquiriu o componente na versão 1.21, você terá direito as 
+atualizações para a versão 1.22, 1.23...1.45, até a 1.99, a partir da 2.00 se você 
+desejar receber novas atualizações você irá pagar uma taxa de renovação com o valor
+nunca superior a 45% do total que foi pago na aquisição. 
+
+7-Eu gostaria que fosse incluso o código para uma outra impressora, como faço?
+
+Você pode solicitar a Ramos da Informática que inclua o código para uma impressora de 
+sua preferência, desde que sejam observados os seguintes pontos;
+ A)-Você deverá enviar todo o material necessário p/ a inclusão da impressora, tais como, 
+   manuais, DLL's, drivers, executáveis, exemplos, ou seja, toda a documentação necessária.
+ B)-Os pedidos serão processados por ordem de chegada.
+ C)-A Ramos da Informática se reserva no direito de recusar qualquer pedido.
+
+
+
+Ramos da Informática.

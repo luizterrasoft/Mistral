@@ -1,0 +1,7 @@
+object DMEstoque: TDMEstoque
+  OldCreateOrder = False
+  Left = 17
+  Top = 107
+  Height = 421
+  Width = 656
+end

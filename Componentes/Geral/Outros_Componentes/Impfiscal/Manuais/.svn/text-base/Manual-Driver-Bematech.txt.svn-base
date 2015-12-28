@@ -1,0 +1,1970 @@
+
+Manual de Utilizacao do Driver da Impressora MP20-FISCAL.
+=========================================================
+
+Para auxiliar o programador a desenvolver um aplicativo utilizando a 
+impressora fiscal MP20-FI da BEMATECH de maneira simplificada, foi desenvolvido um
+driver residente para ser utilizado em ambiente DOS, que realiza a filtragem
+dos comandos fiscais bem como a formatacao adequada para o padrao da impres -
+sora fiscal.
+
+Ser·† fornecida explicacao detalhada  sobre cada um dos  comandos fiscais, bem
+como o retorno que a impressora fornece para cada situacao e alguns trechos de
+programas exemplo em  linguagem de programacao "C" , "Clipper", "FOXPRO" e, em
+alguns casos "Assembler".
+
+Adiante ser·  fornecida  uma tabela de comandos e  parametros onde cada um dos 
+parametros ser† separado pelo caracter "|" (pipe ou 0x7C ou 07CH ou 124 em de-
+cimal).
+
+Em conjunto com esta lista de comandos, estamos  fornecendo alguns  programas
+exemplos, com o objetivo de auxiliar na utilizacao dos comandos da impressora
+fiscal.
+
+O driver MP20DRV da impressora MP20-FI:
+---------------------------------------
+
+O MP20DRV Ç um programa residente com o objetivo principal de interceptar
+qualquer chamada realizada para a porta serial configurada, de acordo com o va
+lor fornecido pelo arquivo de configuracao do driver (mp20fi.ini), realizando
+a formatacao dos comandos, com o objetivo de facilitar o desenvolvimento dos
+aplicativos para a impressora fiscal sem que o programador necessite conhecer
+de maneira detalhada o funcionamento da mesma. 
+
+È necessario que seja feita a configuracao da porta de comunicacao serial onde
+a impressora est† conectada, atraves da alteracao do arquivo ".INI" na secao
+e label  correspondentes. 
+ 
+Observe sempre o numero de parametros que devem ser enviados para cada coman -
+do, conforme a explicacao da tabela de comandos, para evitar poss°veis perdas
+de dados ou truncamento de mensagens.
+
+Instalacao do driver MP20DRV:
+----------------------------
+
+
+Para a utilizacao do driver para impressora fiscal MP20FI, ÈÇ necess·rio um mi-
+crocomputador 386 ou superior com pelo menos 4MB de mem¢ria e uma impressora
+fiscal conectada a uma das portas seriais.
+
+Selecione a interface de comunicacao no arquivo "MP20FI.INI".
+
+O arquivo "MP20FI.INI"
+----------------------
+
+
+O arquivo MP20FI.INI, localizado no diret¢rio corrente da instalacao do dri -
+ver, contÇm todas as informaá‰es sobre a porta de comunicacao a qual a impres-
+sora estar† conectada. Para acessar o arquivo MP20FI.INI, utilize um editor de
+textos, como por exemplo o "EDIT" dos DOS ou o "Norton Editor" (NE).
+
+No arquivo "MP20FI.INI" vocà poder† observar as palavras Config e Porta cujos
+significados sao respectivamente a secao [Config] e o label Porta. Informe pa
+ra o label "NumPorta=" qual a interface de comunicacao serial a impressora est†
+conectada (informe 0 para COM1, 1 para COM2 e assim por diante).
+
+                  [Config]
+                  NumPorta=0
+			Path=DEFUALT
+
+
+Comandos para utilizar a impressora fiscal MP20-FI
+--------------------------------------------------
+
+
+Todos os comandos da impressora fiscal MP20-FI devem comeáar com a seqÅància
+"ESC 0xFB" (onde o caracter Escape corresponde na tabela ASCII a 027 decimal
+ou 0x1BH em hexadecimal e o caracter 0xFB corresponde na tabela ASCII a 251
+decimal) e devem finalizar com outro caracter "ESC". O caracter separador de
+comandos Ç  o s°mbolo pipe (o s°mbolo " | " correspondente na tabela ASCII a
+124 decimal).  A seguir existem exemplos de trechos de programas que irao au-
+xiliar o seu desenvolvimento.
+
+Veja os exemplos de utilizacao no m¢dulo exemplo "cmd.c" fornecidos juntamente
+com o disco de instalacao do driver.
+
+Nao pode haver espaáo entre cada item do "comando a ser enviado", excecao fei-
+ta para o relat¢rio nao fiscal que pode conter espaáos na mensagem a ser envia
+da p/ a impressora.
+
+A seguir temos um exemplo simples para iniciar uma vari†vel "buffer" com um
+comando que ser† posteriormente enviado a impressora, em linguagem de programa
+cao "C", "Assembler" e "Clipper". O comando se refere a leitura de al°quotas:
+
+ sprintf (buffer ,"\x1b\xfb%s|\x1b","26");// em formato hexadecimal para aces-
+                                          // so a leitura de al°quotas.
+
+ou em Clipper:
+
+       buffer = Chr(27)+Chr(251)+"26|"+Chr(27)
+
+Configuracao da Porta Serial:
+-----------------------------
+
+
+AtravÇs de configuracao da porta serial no arquivo "MP20FI.INI", o driver se-
+r† automaticamente instalado na porta correspondente a configuracao.  Vocà po-
+de observar o formato do arquivo, conforme descrito a seguir:
+
+[Config]   // Secao para configuracao da MP20FI.
+
+NumPorta   //  Informe para "Porta" a porta serial a qual a impressora est†
+           //  conectada.
+
+   Porta        0 para COM1
+   Porta        1 para COM2
+
+Comandos da Impressora Fiscal MP20-FI:
+--------------------------------------
+
+* Acesso a linha de comunicacao serial pela linguagem de programacao "C":
+  -----------------------------------------------------------------------
+
+
+   char buffer[512];          // Buffer auxiliar p/ armazenamento de comandos
+   FILE * fp;                 // Ponteiro para arquivo de abertura da comunica
+                              // cao serial.
+   FILE * fg;                 // Ponteiro para arquivo de leitura da comunica
+                              // cao serial.
+   fp = fopen("COM2","wb");   // Abre arquivo p/ escrita na porta de comunica-
+                              // cao serial COM2.
+   fg = fopen ("COM2", "rb"); // Abre arquivo p/ leitura a porta de comunica -
+                              // cao serial COM2.
+   fprintf(fp, buffer);       // Escreve o conteudo da vari†vel buffer na por-
+   fflush(fp);                // ta de comunicacao.
+   fclose (fp);               // Fecha o arquivo de comunicacao serial.
+
+* Acesso a linha de comunicacao serial pela linguagem de programacao "C"utili
+-----------------------------------------------------------------------------
+zando "Assembler":
+------------------
+
+// Enviando
+	for (i=0; i < strlen(comando); i++)
+	{
+	  aux = comando[i];
+	  asm {
+        mov dx, 1 // Acessa a porta de comunicacao COM2 para enviar dados.
+        mov ah, 1 // Seta para transmissao de dados.
+		  mov al, aux
+        int 0x14  // Acessa a interrupcao do DOS para envio de dados.
+	  }
+	}
+
+// Recebendo
+	for (i=0; i < Tam; i++)
+	{
+		asm {
+         mov dx, 1   // Acessa a porta de comunicacao COM2 para enviar dados.
+         mov ah, 2   // Seta para recepcao dos dados
+         int 0x14    // Acessa a interrupcao do DOS para enviar dados
+			mov aux, al	// Recebe os dados enviados pela impressora na porta espe
+                     // cificada.
+		}
+		buffer[j++] = aux;
+	}
+
+Acesso a linha de comunicacao serial pela linguagem de programacao "Clipper":
+----------------------------------------------------------------------------
+
+
+fd  = fopen ("COM2", 2)
+fwrite (fd, @BUFFER, len(BUFFER))
+fclose (fd)
+
+Acesso a linha de comunicacao serial pela linguagem de programacao "FOXPRO":
+----------------------------------------------------------------------------
+
+
+FP = FOPEN("COM2", 11)
+FWRITE(FP, BUFFER, LEN(BUFFER))
+FCLOSE(FP)
+
+#  Hor†rio de Verao:
+--------------------
+
+
+Esta opcao permite que seja atrasado ou adiantado em uma hora o rel¢gio inter-
+no da impressora fiscal MP20-FI, deixando-o de acordo com as alteraá‰es do ho-
+r†rio de verao adotada em determinados estados.
+
+Ao enviar este comando para a impressora fiscal MP20-FI, ser† feita uma veri -
+ficacao interna analisando se a impressora estava ou nao em hor†rio de verao,
+caso nao estivesse, ir†  entrar no hor†rio de verao  e, caso ela j† estivesse
+ir† voltar ao hor†rio normal ap¢s o envio do comando.
+
+Os dados desta alteracao de hor†rio (entrada e sa°da do hor†rio de verao) se -
+rao registrados em eprom fiscal (interna ao equipamento).
+
+- Exemplo de comando a ser enviado:
+
+      ESC 0xFBH 18 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","18");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"18|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "ENTRANDO ou SAINDO de hor†rio de verao".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+#  S°mbolo da Moeda Corrente:
+-----------------------------
+
+Esta opcao possibilita que seja alterado o s°mbolo da moeda corrente utilizada
+no pa°s.
+
+A impressora fiscal MP20-FI imprime a mensagem "ALTERAÄ«O DA MOEDA" juntamente
+com a data, a hora da alteracao e o novo s°mbolo monet†rio programado.
+
+- Exemplo de comando a ser enviado para programar o s°mbolo monet†rio "XY":
+
+      ESC 0xFBH 01 | XY | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","01|XY");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize a
+seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"01|XY|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "ALTERAÄ«O DA MOEDA".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+
+
+#  PROGRAMA ARREDONDAMENTO E TRUNCAMENTO
+-----------------------------------------------------
+COMANDO 39
+PARAMETRO 1 OU 0  SE FOR 1 ARREDONDA SE FOR 0 TRUNCA
+
+ESTE COMANDO SO SERA EXECUTADO CASO NAO TENHA MOVIMENTO NO DIA.
+
+O FUNCIONAMENTO DESTE COMANDO … IGUAL AOS OUTROS COMANDOS
+CHR(27)+CHR(251)+"39|1|"+CHR(27)  ---->PROGRAMA PARA ARREDONDAR VALORES
+
+OBS:  ESTE COMANDO SOMENTE TERA EFEITO SE OS PRODUTOS TRABALHADOS
+POSSUIREM 3 CASAS DECIMAIS DEPOIS DA VIRGULA
+
+
+#  PROGRAMA ESPA«O ENTRE LINHAS	
+-----------------------------------------------------
+OBSERVACAO: ESTE COMANDO ESTA IMPLEMENTADO EM TODAS AS VERSOES DE MP40, NA MP20
+NAO EXISTE ESTE COMANDO
+
+COMANDO 60
+NUMERO DE ESPACOS ENTRE LINHAS ,EM DOTS, COM O TAMANHO DE 1 BYTE
+
+CHR(27)+CHR(251)+"60|11|"+CHR(27)  ---->PROGRAMA PARA 11 DOTS
+
+
+#  PROGRAMA«AO DE LINHAS ENTRE CUPONS
+-----------------------------------------------------
+OBSERVA«AO: ESTE COMANDO ESTA IMPLEMENTADO EM TODAS AS VERSOES DE MP40, NA MP20
+ESTA IMPLEMENTADO SOMENTE NA VERSAO 3.0
+
+COMANDO 61
+NUMERO DE LINHAS COM O TAMANHO DE 1 BYTE
+
+CHR(27)+CHR(251)+"61|11|"+CHR(27)  ---->PROGRAMA PARA 11 LINHAS
+
+O OBJETIVO DESTE COMANDO E INDICAR QUANTAS LINHAS VOCE DESEJA QUE A 
+IMPRESSORA AVAN«E APOS A IMPRESSAO DE UM RELATORIO OU CUPOM FISCAL
+
+
+#  Nomeia Totalizadores Parciais nao sujeitos ao ICMS
+-----------------------------------------------------
+OBSERVACAO: COM A NOVA IMPRESSORA FISCAL II E VERSAO DE FIRMWARE 3.0
+E POSSIVEL CADASTRA MAIS DE 09 TOTALIZADORES PARCIAIS, ANTES ERA POSSIVEL
+APENAS NOVE, COM O PARAMETRO #1 AT… #9, COM A NOVA VERSAO DE FIRMWARE 
+E POSSIVEL PASSAR O TOTALIZADOR DA SEGUINTE MANEIRA 01 OU 02 OU ... 11 ..50.
+
+FICANDO A SEGUINTE ESTRUTURA
+COMANDO 40
+PARAMETRO OBRIGATORIO # +  O NUMERO DO TOTALIZADOR  ( #1 OU 01 COM A VERSAO 3.0 DE FIRMWARE )
+PARAMETRO OBRIGATORIO DESCRI«AO DO TOTALIZADOR NO FORMATO ASCII 
+	
+
+ESTE COMANDO SO SERA EXECUTADO CASO NAO TENHA MOVIMENTO NO DIA.
+OS TOTALIZADORES DE 01 AT… 09 JA ESTAO CADASTRADOS  DE FABRICA QUANDO A IMPRESSORA
+ESTA EM MODO TREINAMENTO.
+ESTES TOTALIZADORES SO PODEM SER RETIRADOS MEDIANTE INTERVENCAO TECNICA
+
+
+CHR(27)+CHR(251)+"40|01|CONTA DE AGUA    |"+CHR(27)  ---->PROGRAMA TOTALIZADOR 01 PARA CONTA
+DE AGUA.
+
+
+#  NOMEIA DEPARTAMENTO
+-----------------------------------------
+OBSERVACAO:  ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO DE FIRMWARE 3.0
+
+COMANDO 65
+PARAMETRO OBRIGATORIO INDICE DO TOTALIZADOR A SER NOMEADO 01 ATE 20
+PARAMETRO OBRIGATORIO DESCRI«AO COM 10 BYTES
+
+CHR(27)+CHR(251)+"65|01|LACTEOS   |"+CHR(27)
+
+ESTE COMANDO FUNCIONA SOMENTE SE NAO HOUVER MOVIMENTO NO DIA 
+
+#  RESET EM CASO DE ERRO
+-----------------------------------------
+OBSERVA«AO: ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO DE FIRMWARE 3.0
+
+ESTE COMANDO FUNCIONA SOMENTE SE A IMPRESSORA ESTIVER COM O LED DE ERRO 
+PISCANDO, CASO ESTEJA TUDO ok E SEJA ENVIADO ESTE COMANDO A IMPRESSORA
+IRA RETORNAR COMANDO NAO EXECUTADO.
+
+COMANDO 70
+
+CHR(27)+CHR(251)+"70|"+CHR(27)
+
+
+#  Cadastramento de Al°quotas Tribut†rias:
+-----------------------------------------
+OBSERVA«√O: NA IMPRESSORA FISCAL II COM VERSAO DE FIRMAWARE 3.0 ESTE COMANDO RECEBE
+UM PARAMETRO A MAIS QUE E OPCIONAL
+ESTE COMANDO FICA ENTAO COM A SEGUINTE ESTRUTURA:
+COMANDO 07
+PARAMETRO OBRIGATORIO XXXX QUE … A ALIQUOTA QUE DESEJA CADASTRAR
+PARAMETRO OPCIONL     X    BYTE INDICATIVO SE A ALIQUOTA SERA UTILIZADA
+				   PARA ICMS OU ISS ( 0 - ICMS, 1 - ISS )
+
+Esta opcao possibilita que sejam cadastradas as al°quotas tribut†rias a serem
+utilizadas na impressora fiscal.  As al°quotas sao programadas sequencialmen -
+te. Isso quer dizer que a primeira aliquota cadastrada sera a numero um, a
+segunda aliquota cadastrada sera a numero dois, e assim por diante.
+
+A impressora fiscal MP20-FI imprime a mensagem "PROGRAMAÄ«O - AL÷QUOTA" junta-
+mente com a data, a hora da alteracao e a nova al°quota programada.
+
+- Exemplo de comando a ser enviado para programar a al°quota "12,25%":
+
+      ESC 0xFBH 07 | 1225 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","07|1225");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize a
+seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"07|1225|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "PROGRAMAÄ«O - Al°quota".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+#  Consulta de Al°quotas Tribut†rias:
+------------------------------------ 
+
+Esta opcao possibilita que sejam consultadas as al°quotas tribut†rias j† pro -
+gramadas na impressora fiscal.  A impressora retorna ACK (06H) seguido de 33
+bytes cujo conteudo Ç o numero de al°quotas efetivamente programadas seguido
+do valor das al°quotas. Para as al°quotas que nao estiverem programadas, ser†
+enviado o valor 0 no lugar, preenchendo todas as posiá‰es.
+
+- Exemplo de comando a ser enviado para consulta de al°quotas tribut†rias:
+
+      ESC 0xFBH 26 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf  (buffer ,"\x1b\xfb%s|\x1b","26");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"26|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H), seguido do numero de al°quotas efetivamente programadas na impressora
+fiscal (2 caracteres) e o valor das 16 al°quotas (4 caracteres cada uma) sen-
+do as primeiras posiá‰es  as al°quotas  programadas na ordem da programacao e
+caso existam al°quotas nao programadas, ser† enviado o valor zerado.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+#  Consulta de Totalizadores Parciais:
+--------------------------------------
+
+Esta opcao possibilita que sejam consultados os totalizadores parciais existen
+tes na impressora fiscal.  A impressora  retorna ACK (06H) seguido de 16x7 by-
+tes com os totalizadores parciais  tributados, mais 7 bytes de isencao, 7 by -
+tes de nao incidencia, 7 bytes de substituicao, 7 bytes de sangria, 7 bytes de
+suprimento  e  9  bytes do Grande Total. Caso algum dos itens nao possua valor
+registrado, ser† enviado o valor zero ("0") como seu valor.  
+
+- Exemplo de comando a ser enviado para consulta de totalizadores parciais:
+
+      ESC 0xFBH 27 |ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf  (buffer ,"\x1b\xfb%s|\x1b","27");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"27|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) seguido de 16x7 bytes com os totalizadores parciais tributados, mais 7
+bytes de isencao, 7 bytes de nao incidencia, 7 bytes de isencao, 7 bytes de
+sangria, 7 bytes de suprimento e 9 bytes do Grande Total.  
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+#  Leitura da Mem¢ria Fiscal:
+----------------------------
+OBSERVACAO: QUANTO A LEITURA DA MEMORIA FISCAL, A LEGISLACAO EXIGE QUE SEJA COLOCADO
+JUNTO AO CLIENTE O SOFTWARE LEITURA.EXE, ESTE SOFTWARE EFETUA A LEITURA DA MEMORIA FISCAL
+PARA ARQUIVO OU PARA IMPRESSORA DE MANEIRA QUE SE DESEJA EFETUAR UMA LEITURA COMPLETA
+DA MEMORIA FISCAL PARA DISQUETE UTILIZE ESTE SOFTWARE.
+	O DIRVER DOS, POSSIBILITA A LEITURA DA MEMORIA FISCAL CASO ESTA NAO UTRAPASSE
+2500 BYTES, POIS A VARIAVEL INTERNA DE RECEPCAO UTILIZADA PELO DRIVER TEM ESTE 
+TAMANHO, IMPOSSIBILITANDO O RECEBIMENTO DE MAIS BYTES, DE MANEIRA QUE A LEITURA VIA
+DRIVER FICA LIMITADA OBRIGANDO O USUARIO A CUMPRIR A LEGISLACAO NO QUE DIZ RESPEITO 
+AO USO DO SOFTWARE LEITURA.EXE PARA LEITURA DA MEMORIA FISCAL PRA ARQUIVO
+	ESTE SOFTWARE COMPANHA O DISQUETE DE INSTALACAO.
+
+
+- Exemplo de comando a ser enviado para leitura da mem¢ria fiscal:
+
+1.   ESC 0xFBH 08 | 010196 | 290596 | I | ESC  
+
+   Para leitura da mem¢ria fiscal por datas, sendo a data inicial 01/01/96 e
+a data final 29/05/96 e para impressao do resultado na impressora fiscal
+MP20-FI.
+
+2. ESC 0xFBH 08 | 010196 | 290596 | R | ESC
+
+   Para leitura da mem¢ria fiscal por datas, sendo a data inicial 01/01/96 e a
+data final 29/05/96 e para recebimento do resultado via interface serial p/
+que o programa chamador (aplicativo) grave este resultado em arquivo.
+
+3. ESC 0xFBH 08 | 00 | 0000 | 00 | 1111 | I | ESC 
+
+   Para leitura da mem¢ria fiscal por intervalo de reduá‰es, sendo a reducao
+inicial 0000 e a reducao final 1111 e para a impressao do resultado na impres-
+sora fiscal MP20-FI.
+
+4. ESC 0xFBH 08 | 00 | 0000 | 00 | 1111 | R | ESC
+
+   Para leitura da mem¢ria fiscal por intervalo de reduá‰es, sendo a reducao
+inicial 0000 e a reducao final 1111 e para recebimento do resultado  via inter
+face serial p/ que o programa chamador (aplicativo) grave este resultado em ar
+quivo.
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf  (buffer ,"\x1b\xfb%s|\x1b","08|010196|290596|I");
+
+             // Por datas e para impressao.
+ou
+      sprintf  (buffer ,"\x1b\xfb%s|\x1b","08|010196|290596|R");
+
+            // Por datas para recebimento via interface serial.
+ou
+
+      sprintf  (buffer ,"\x1b\xfb%s%c%c%s%c%c%s|\x1b","08|",'\x30', '\x30',
+               "|0000|",'\x30','\x30',"|1111|I");
+
+            // Por intervalo de reduá‰es e para impressao.
+ou
+
+      sprintf(buffer ,"\x1b\xfb%s%c%c%s%c%c%s|\x1b","08|",'\x30', '\x30',
+             "|0000|",'\x30','\x30',"|1111|R");
+
+            // Por intervalo de reduá‰es e para recebimento via interface
+            // serial.
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+         BUFFER = CHR(27)+CHR(251)+"08|010196|290596|I|"+CHR(27)
+
+             // Por datas e para impressao.
+ou
+
+         BUFFER = CHR(27)+CHR(251)+"08|010196|290596|R|"+CHR(27)
+
+           // Por datas para recebimento via  interface serial
+
+ou
+
+         BUFFER = CHR(27)+CHR(251)+"08|"+CHR(30)+CHR(30)+"|0000|"+CRH(30)+
+                  CHR(30)+"|1111|I|"+ CHR(27)
+
+         // Por intervalo de reduá‰es e para impressao.
+
+ou
+
+      BUFFER = CHR(27)+CHR(251)+"08|"+CHR(30)+CHR(30)+"|0000|"+CRH(30)+
+               CHR(30)+"|1111|R|"+ CHR(27)
+
+      // Por intervalo de reduá‰es e para recebimento via interface serial.
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e 2 bytes de STATUS (ST1 e ST2), e imprimir† a leitura da mem¢ria fis-
+cal caso a opcao de sa°da tenha sido impressora, ou enviara pela interface se-
+rial o resultado, caso a opcao tenha sido recebimento via interface serial.
+
+Ao final do relat¢rio, ser† enviado o caracter de controle ETX que vale 03H
+ou (CHR(3)) sinalizando final de envio de texto (dados).
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+#  Reducao "Z":
+--------------
+
+Esta opcao possibilita que seja emitido um relat¢rio de Reducao "Z". Deve-se
+lembrar que ap¢s a emissao deste relat¢rio, nenhuma outra opcao poder† ser
+executada na impressora fiscal MP20-FI  no dia da emissao  e que esta opera -
+cao Ç executada automaticamente no primeiro per°odo do dia seguinte.
+
+- Exemplo de comando a ser enviado para requisitar uma Reducao "Z":
+
+      ESC 0xFBH 05 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","05");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"05|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime o relat¢rio de "Reducao Z".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Leitura "X":
+---------------
+
+Esta opcao possibilita que seja emitida uma Leitura "X".
+
+- Exemplo de comando a ser enviado para requisitar uma Leitura"X":
+
+      ESC 0xFBH 06 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","06");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"06|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime o relat¢rio de "Leitura X".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Leitura do Estado Atual da Impressora:
+----------------------------------------
+
+Esta opcao possibilita que seja realizada uma leitura do estado atual da im -
+pressora.
+
+- Exemplo de comando a ser enviado para requisitar uma leitura do estado atual
+da impressora:
+
+         ESC 0xFBH 19 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+         sprintf (buffer ,"\x1b\xfb%s|\x1b","19");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+         BUFFER = CHR(27)+CHR(251)+"19|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente a impressora responde ACK
+(06H).
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Relat¢rio Nao Fiscal OU Relatorio Gerencial- In°cio:
+----------------------------------------------
+
+OBSERVACAO: NA VERSAO 3.0 DE IMPRESSORA FISCAL II  ESTE COMANDO ESTA SEGUIDO
+DE UMA LEITURA X, ISTO E UMA EXIGENCIA DO FISCO.
+
+UM COMANDO ALTERNATIVO E O COMANDO 66 QUE ABRE UM CUPOM NAO FISCAL VINCULADO
+AO CUPOM FISCAL ANTERIOR COM A CONDICAO DE FECHAMENTO DE CUPOM DIFERENTE DE
+DINHEIRO, APENAS SE FOR UMA FORMA DE PAGAMENTO.
+
+Esta opcao possibilita que seja sinalizado o in°cio de um relat¢rio nao fis -
+cal. A partir deste momento, todo o texto recebido pela impressora fiscal se-
+r† impresso como texto nao fiscal e a cada 10 (dez) linhas ser† impressa a men
+sagem "N«O SUJEITO A ICMS". A impressora s¢ sair† deste modo quando receber o
+primeiro comando fiscal ou quando receber o comando de tÇrmino de relat¢rio
+nao fiscal (descrito adiante).
+
+- Exemplo de comando a ser enviado para sinalizar o in°cio de um relat¢rio nao
+fiscal:
+
+         ESC 0xFBH 20 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+         sprintf (buffer ,"\x1b\xfb%s|\x1b","20|TESTANDO\n");
+
+         EnviarParaPortaSerial (buffer)
+
+         sprintf(buffer,"%s","TESTANDO\n");
+            //Mensagem que deve ser impressa na MP20-FI
+
+         EnviarParaPortaSerial (buffer)
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+         BUFFER = CHR(27)+CHR(251)+"20|TESTANDO"+CHR(13)+"|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime todo o texto que for enviado para a impressora ap¢s o comando
+de inicio de relat¢rio nao fiscal, finalizando apenas quando receber o coman-
+do de termino de relat¢rio nao fiscal (descrito a seguir) ou o primeiro coman-
+do fiscal.
+
+Ser† impressa a mensagem "Nao sujeito a ICMS" a cada 10 linhas de texto.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+
+#  ABRE COMPROVANTE NAO FISCAL VICULADO
+----------------------------------------
+OBSERVA«AO: SOMENTE PARA VERSAO DE FIRMWARE 3.0 MP20FI II
+
+COMANDO 66
+PARAMTRO DESCRI«AO DA FORMA DE PAGAMENTO COM O TAMANHO DE 16 BYTES
+
+A FORMA DE PAGAMENTO ENVIADA NO SEGUNDO PARAMETRO DEVERA SER A MESMA
+FORMA DE PAGAMENTO UTILIZADA NO CUPOM FISCAL ANTERIOR E ESTE COMANDO
+FUNCIONA SOMENTE APENAS A EMISSAO DE UM CUPOM FISCAL OU UM RECEBIMENTO
+NAO FISCAL.
+
+SE A FORMA DE PAGAMETO FOR DIFERENTE DE DINHEIRO ESTE COMANDO NAO
+IRA FUNCIONAR, POIS ESTA OP«AO E APENAS PARA CUPOM FISCAL FECHADO COM
+FORMAS DE PAGAMENTO DIFERENTE DE DINHEIRO
+
+CHR(27)+CHR(251)+"66|CHEQUE PRE   |"+CHR(27)
+
+APOS O ENVIO DESTE COMANDO FICARA ABERTO A 2 MINUTOS DE IMPRESSAO
+E OS DADOS DEVEM SER ENVIADOS COM O COMANDO 67
+
+
+#  USA COMPROVANTE NAO FISCAL VINCULADO
+----------------------------------------
+OBSERVA«AO: SOMENTE PARA VERSAO DE FIRMWARE 3.0 MP20FI II
+
+COMANDO 67
+PARAMETRO TEXTO QUE DESEJA QUE SEJA IMPRESSO
+
+LIMITADO A 2 MINUTOS DE IMPRESSAO
+
+CHR(27)+CHR(251)+"67|DECRICAO DO CUPOM FISCAL ANTERIOS...FDFSF DSAS|"+CHR(27)
+
+O FECHAMENTO DESTE RELATORIO PODE SER ANTECIPADO COM O COMANDO 21 POIS CASO
+PASSE 2 MINUTOS E NAO SEJA ENVIADO ESTE COMANDO A IMPRESSORA FECHA ESTE RELATORIO
+AUTOMATICAMENTE
+
+
+#  Relatorio Nao Fiscal - Termino:
+---------------------------------
+
+OBSERVACAO: NA VERSAO 3.0 DE FIRMWARE DE IMPRESSORA FISCAL ESTE COMANDO PODE
+SER UTILIZADO PARA O FECHAMENTO DO CUPOM NAO FISCAL VINCULADO, EMBORA O CUPOM
+NAO FISCAL VINCULADO TEM UM FECHAMENTO AUTOMATICO PASSADO OS DOIS MINUTOS DE
+SUA ABERTURA.
+
+Esta opcao possibilita que seja sinaliznado o final de um relat¢rio nao fiscal.
+
+- Exemplo de comando a ser enviado para sinalizar o tÇrmino de um relat¢rio
+nao fiscal:
+
+         ESC 0xFBH 21 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+         sprintf (buffer ,"\x1b\xfb%s|\x1b","21");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+         BUFFER = CHR(27)+CHR(251)+"21|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "Nao sujeito a ICMS" sinalizando o tÇrmino de rela-
+torio nao fiscal.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a tabe
+la de erros da impressora.
+
+#  Abertura de Cupom Fiscal:
+---------------------------
+
+OBSERVACAO: NA VERSAO 3.0 DE FIRMWARE DE IMPRESSORA FISCAL II ESTE COMANDO PODE
+SER SEGUIDO DO CPF OU DO CGC DO CLIENTE, MAS ESTE PARAMETRO E OPCIONAL, DE MANEIRA
+QUE SUA ESTRUTURA FICA ASSIM:
+
+COMANDO 00
+PARAMETRO OPCIONAL    29 CARACTERES ASCII QUE … O CPF OU CGC DO CLIENTE
+
+
+Esta opcao possibilita que seja realizada a abertura de um cupom fiscal.
+
+- Exemplo de comando a ser enviado para realizar a abertura de um cupom fiscal:
+
+         ESC 0xFBH 0 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+         sprintf (buffer ,"\x1b\xfb%s|\x1b","00");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+         BUFFER = CHR(27)+CHR(251)+"00|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime o cabecalho do cupom fiscal, ficando aguardando a venda de
+itens.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+#  Venda de Item:
+-----------------
+
+Esta opcao possibilita que seja realizada a venda de produtos, desde que o cu-
+pom fiscal j† esteja aberto.
+
+- Exemplo de comando a ser enviado para realizar a venda de itens em um cupom
+fiscal:
+
+   Para o exemplo abaixo considere:
+
+         C¢digo
+               0000000000001
+               13 caracteres
+
+         Descricao
+               12345678901234567890123456789
+               29 caracteres
+
+         Al°quota
+               01
+               2 caracteres
+
+         Quantidade
+               0001500
+               7 caracteres  PARA QUANTIDADE FRACIONARIA
+
+		   0001 
+	         4 caracteres  PARA QUANTIDADE INTEIRA
+ 
+         Valor Unitario
+               00010000
+               8 caracteres
+
+         Desconto Percentual
+               1000 
+               4 caracteres POR PERCENTUAL
+		   8 CARACTERES SE FOR POR VALOR
+		   	
+
+Informe sempre pelo valor m†ximo de caracteres, preenchendo com zeros (0)
+ou espaáos ( ) Ö esquerda dos itens do comando.  A v°rgula nao deve ser infor-
+mada, pois est† impl°cita, logo se for informada a quantidade 0001500 entende-
+se 00015,00; o desconto percentual deve ser informado em porcentagem, sendo
+v†lido por item apenas, logo onde informou-se 1000 entende-se como 10,00%
+
+      ESC 0xFBH 09 | 0000000000001 | 12345678901234567890123456789 | 01 |
+          0001500 | 00010000 | 1000 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer,"\x1b\xfb%s|\x1b","09|0000000000001|
+              12345678901234567890123456789|01|0001500|00010000|1000");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize a
+seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"09|0000000000001|
+               12345678901234567890123456789|01|0001500|00010000|1000|"+
+               CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime o item vendido com todas as informaá‰es necessarias de acordo
+com o texto fornecido.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Cancelamento do Item anterior:
+--------------------------------
+
+Esta opcao possibilita que seja realizado cancelamento do item anteriormente
+vendido.
+
+- Exemplo de comando a ser enviado para realizar o cancelamento do item ante -
+rior:
+
+      ESC 0xFBH 13 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","13");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"13|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "Cancelado Item no. XXXX", onde XXXX e o numero do
+item.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Cancelamento de Item generico:
+----------------------------------
+
+Esta opcao possibilita que seja realizado cancelamento (um a um) de um dos cem
+ultimos itens anteriormente vendidos.
+
+- Exemplo de comando a ser enviado para realizar o cancelamento do item aleat¢
+rio:
+
+      ESC 0xFBH 31 | NNNN | ESC
+
+            // Onde NNNN Ç o numero do item que se deseja cancelar. No exem-
+            // plo a seguir ser† cancelado o item numero 1 (0001).
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","31|0001");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"31|0001|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem "Cancelado Item no. XXXX", onde XXXX e o numero do
+item.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Fechamento do Cupom Fiscal:
+-----------------------------
+OBSERVACAO: ESTE COMANDO NA VERSAO 3.0 DE FIRMWARE FOI ELIMINADO PELA LEGISLACAO
+DE MANERIA QUE SE DESEJA CONTINUAR UTILIZANDO ESTE COMANDO DEVE SUBSTITUIR O
+DRIVER PELO DRIVER DE VERSAO 6.0 OU SUPERIOR QUE EFETUA A COMPATIBILIZACAO DESTE
+COMANDO.
+	SE DESEJAR UTILIZAR OS COMANDOS NOVOS DA VERSAO 3.0 DO FIRMWARE UTILIZE OS
+COMANDOS DE FECHAMENTO COM FORMA DE PAGAMENTO QUE SAO OS COMANDO 32, 72 E 34
+
+Esta opcao possibilita que seja realizado o fechamento do cupom fiscal, indi -
+cando que todas as vendas j† foram executadas.
+
+- Exemplo de comando a ser enviado para realizar o fechamento de cupom fiscal:
+
+a) Com desconto por percentagem
+
+                ESC 0xFBH 10 | 1000 | 00000000100000 | D | Obrigado Volte Sempre
+                          | ESC
+
+Os seguintes itens devem ser informados:
+
+		1) AcrÇscimo/Desconto em Percentual             [4 caracteres]
+		1000
+
+		2) Valor Pago                                   [14 caracteres]
+		00000000100000
+
+		3) A/D (p/ indicar AcrÇscimo ou desconto)       [1 caracter]
+		A/D - enviado caracter maiusculo, o desconto
+		e feito por percentagem
+		D
+
+		4) Mensagem Promocional                         [ ate 496 caracteres]
+		Obrigado Volte Sempre
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","10|1000|00000000100000|D|
+                                        Obrigado Volte Sempre\r\nn|");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+		BUFFER = CHR(27)+CHR(251)+"10|1000|00000000100000|D|Obrigado Volte
+                                        Sempre"+CHR(13)+CHR(10)+"|"+CHR(27)
+
+b) Com desconto por valor
+		ESC 0xFBH 10 | XXXX | 00000000100000 | a | 00000000001000 |
+                                         Obrigado Volte Sempre | ESC
+
+Os seguintes itens devem ser informados:
+
+		1) Quatro bytes quaisquer                       [4 caracteres]
+		Como o desconto sera realizado por valor
+		(indicado pelo flag de Acrescimo/Desconto)
+		esses bytes DEVEM ser enviados, mas pode-se
+		usar quaisquer caracteres, com excecao de '|'
+		XXXX
+
+		2) Valor Pago                                   [14 caracteres]
+		00000000100000
+
+		3) a/d (p/ indicar AcrÇscimo ou desconto)       [1 caracter]
+		a/d - enviado caracter minusculo, o desconto
+		e feito por valor
+		a
+
+		4) Valor a ser acrescido/descontado             [14 caracteres]
+		 00000000001000
+
+		5) Mensagem Promocional                         [ ate 496 caracteres]
+		Obrigado Volte Sempre
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","10|1000|00000000100000|a|
+                                        00000000001000|Obrigado Volte Sempre\n|");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+		BUFFER = CHR(27)+CHR(251)+"10|1000|00000000100000|a|00000000001000|
+                                        Obrigado Volte Sempre"+CHR(13)+CHR(10)+"|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime o fechamento do cupom fiscal.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Cancelamento de Cupom Fiscal:
+----------------------------------
+Esta opcao possibilita que seja realizado o cancelamento do ultimo cupom fis -
+cal emitido.
+
+- Exemplo de comando a ser enviado para realizar o cancelamento de cupom fis -
+cal:
+
+      ESC 0xFBH 14 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","14");
+
+_ Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"14"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem de cancelamento do cupom fiscal.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+#  Consulta de Sub-Total:
+
+Esta opcao possibilita que seja realizada consulta de sub-total em qualquer
+est†gio de venda de itens.
+
+- Exemplo de comando a ser enviado para realizar a consulta de sub-total de
+cupom fiscal:
+
+      ESC 0xFBH 29 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","29");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"29"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) mais 7 bytes com o valor do sub-total mais dois bytes de status.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+#  Autenticacao de Documentos 
+--------------------------------
+
+OBSERVACAO: ESTA OPCAO PODERA SER UTILIZADA APENAS APOS A EMISSAO
+DE UM CUPOM FISCAL OU APOS A EMISSAO DE UM RECEBIMENTO NAO SUJEITO
+AO ICMS
+
+Esta opcao possibilita que seja realizada a autenticacao de documentos.  A im-
+pressora ir† aguardar atÇ cinco (5) segundos para que seja inserido o documen-
+to e quando isto ocorrer, autenticar† data, hora, numero da loja, numero do
+caixa e o numero sequencial do ultimo cupom fiscal no documento.
+
+- Exemplo de comando a ser enviado para realizar a autenticacao de documentos
+no modo 1:
+
+		ESC 0xFBH 16 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+	  sprintf (buffer ,"\x1b\xfb%s|\x1b","16");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+	 BUFFER = CHR(27)+CHR(251)+"16"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e imprime a mensagem no documento.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta-
+bela de erros da impressora.
+
+
+
+#  Acionamento da Gaveta de Dinheiro:
+------------------------------------
+
+Esta opcao possibilita que seja realizado o acionamento da gaveta de dinheiro
+em um tempo prÇ-estabelecido e informado como parametro.
+
+- Exemplo de comando a ser enviado para realizar o acionamento da gaveta de
+dinheiro:
+
+      ESC 0xFBH 22 | T | ESC
+
+O caracter "T" indica o tempo (valor hexadecimal) para o acionamento do sole -
+n¢ide da gaveta de dinheiro.
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","22|1");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"22|1|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e aciona o solen¢ide da gaveta de dinheiro.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+
+
+#  ACRESCIMO FINANCEIRO
+-----------------------
+ESTE COMANDO PERMITE O ENVIO DE UM ACRESCIMO NO CUPOM MAS NAO SERA IMPRESSO
+IMEDIATAMENTE AO ENVIO DO COMANDO, A DIFERENCA SERA IMPRESSA SOMENTE
+NO FECHAMENTO DO CUPOM FISCAL
+
+ESTE COMANDO SOMENTE PODE SER ENVIADO COM O CUPOM FISCAL ABERTO EXCETO DURANTE
+A EXECU«AO DAS FORMAS DE PAGAMENTO
+
+COMANDO 62|50
+PARAMETRO OBRIGATORIO XXXXXXXX,XX  VALOR DO ACRESCIMO COM 10 BYTES
+
+CHR(27)+CHR(251)+"62|50|0000000010"+CHR(27)
+
+
+#  VENDA DE ITEM COM 3 CASAS NO VALOR UNITARIO
+----------------------------------------------
+ESTE COMANDO PERMITE O ENVIO DE ITENS COM 3 CASAS DECIMAIS QUE E
+GERALMENTE UTILIZADO EM POSTOS DE GASOLINA.
+COMANDO 56
+PARAMETROS:
+	CODIGO COM 13 CASAS DECIMAIS
+	DESCRI«AO COM 29 CASAS DECIMAIS
+	ALIQUOTA COM 2 CASAS DECIMAIS (NAO … A ALIQUOTA EM SI 1800 E SIM O SEU INDICE 01 )
+	QUANTIDADE COM 4 XXXX CASAS PARA INTEIRA OU 7 XXXX,XXX CASAS PARA FRACIONARIA
+	VALOR UNITARIO COM 8 CASAS XXXXX,XXX
+	DESCONTO POR PERCENTUAL COM 4 CASAS XXXX OU POR VALOR COM 8 CASAS XXXXXX,XX
+
+CHR(27)+CHR(251)+"56|0000000000001|GASOLINA ADITIVADA      |01|0001|00000987|0000|"+CHR(27)
+
+
+#  VENDA DE ITEM POR DEPARTAMENTO COM 200 CARACTERES NA DESCRICAO
+-----------------------------------------------------------------
+OBSERVACAO: ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO 3.0 DO FIRMWARE
+
+COMANDO 63
+PARAMETROS:
+	ALIQUOTA COM 2 BYTES ( NAO … A ALIQUOTA EM SI 1800 MAS SIM O SEU INDICE 01 )
+	VALOR UNITARIO COM 9 CASAS INCLUINDO 3 DECIMAIS XXXXXX,XXX
+	QUANTIDADE 7 BYTES COM 3 CASAS DECIMAIS NO VALOR XXXX,XXX
+	DESCONTO 10 BYTES COM DUAS CASAS DECIMAIS XXXXXXXX,XX
+	ACESCIMO POR VALOR 10 CASAS COM DUAS DECIMAIS XXXXXXXX,XX
+	DEPARTAMENTO COM O TAMANHO DE 2 BYTES ( O INDICE DO DEPARTAMENTO PREVIAMENTE CADASTRADO )
+	PARAMETRO NAO USADO MAIS OBRIGATORIO XXXXXXXXXXXXXXXXXXXX ( 20 BYTES )
+	UNIDADE DE MEDIDA COM 2 BYTES ( kg OU lt...)
+	CODIGO DO PRODUTO COM AT… 49 BYTES 
+	DESCRICAO DO PRODUTO COM AT… 200 CARACTERES
+
+CHR(27)+CHR(251)+"63|01|000000123|0001000|0000000000|0000000010|02|00000000000000000000|
+Kg|000000000000124585245|LIVRO TECNICO DO RESOURCE KIT W98 COM PREPARACAO PARA O MCP
+ACOMPANHA CDROM IDSBN 0124251251KTG|"+CHR(27)	
+	
+	
+#  PROGRAMA E VERIFICA AS FORMAS DE PAGAMETNO
+-----------------------------------------------------------------  	
+OBSERVA«AO: ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO 3.0 DO FIRMWARE
+		O TOTALIZADOR 01 QUE … DINHEIRO J¡ ESTA CADASTRADO DE FABRICA
+		AS FORMAS DE PAGAMENTO SAO ELIMINADAS A CADA REDU«√O Z
+
+ESTE COMANDO POSSIBILITA PROGRAMAR E VERIFICAR A FORMA DE PAGAMENTO
+O RETORNO DESTE COMANDO … ACK ST1 ST2 3031 - DEVOLVE 5 BYTES
+
+OS DOIS ULTIMOS BYTES … O INDICE EM QUE A FORMA DE PAGAMENTO EST¡ CADASTRADA
+OU QUE QUE FOI CADASTRADA AO ENVIAR ESTE COMANDO.
+
+NO EXEMPLO ACIMA VOI RETORNADO PELA IMPRESSORA QUE A FORMA DE PAGAMENTO
+ESTA CADASTRADA NO INDICE 01
+
+ESTE COMANDO SOMENTE … ACEITO APOS O ENVIO DO COMANDO 32 QUE ABRE 
+A FORMA DE PAGAMENTO.
+
+COMANDO 71
+PARAMETROS DESCRI«AO DA FORMA DE PAGAMENTO 16 BYTES 
+
+CHR(27)+CHR(251)+"71|CHEQUE PRE      |"+CHR(27)
+
+
+
+#  EFETUA FORMA DE PAGAMENTO
+-----------------------------------------------------------------  	
+OBSERVA«AO: ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO 3.0 DO FIRMWARE
+
+ESTE COMANDO SUBSTITUI O COMANDO 33 DA MP20 FI  V.2.13 MAS CASO DESEJE
+CONTINUAR UTILIZANDO O COMANDO 33, ATUALIZE A DLL PARA VERSAO 6.0 OU SUP.
+QUE TERA TOTAL COMPATIBILIDADE DESTE COMANDO 33 COM A IMPRESSORA NOVA.
+
+COMANDO 72
+PARAMETRO OBRIGATORIO  INDICE DA FORMA DE PAGAMENTO COM 2 BYTES ( EX. 01 )
+( este indice pode ser obtido com o comando 71 )
+
+PARAMETRO OBRIGATORIO VALOR DA FORMA DE PAGAMENTO COM 14 BYTES COM DUAS CASAS DECIMAIS 
+XXXXXXXXXXXX,XX
+
+PARAMETRO OPCIONAL DESCRI«¿O PARA A FORMA DE PAGAMENTO AT… 80 CARACTERES
+
+CHR(27)+CHR(251)+"72|01|00000000100000|'+CHR(27)
+OU
+CHR(27)+CHR(251)+"33|DINHEIRO      |00000000100000|'+CHR(27)
+
+IMPORTANTE : NA VERSAO II DE IMPRESSORA FISCAL MP20FI II COM VERSAO DE FIRMWARE 3.0
+EXISTE UM CONTROLE DAS FORMAS DE PAGAMENTO, DE MANEIRA QUE AS VENDAS A VISTA
+NAO DEVEM SER ENVIADAS COM "A VISTA" E SIM COMO "DINHEIRO" POIS A IMPRESSORA
+CREDITA OS VALORES VENDIDOS NESTE TOTALIZADOR E CASO EXISTA UMA FORMA DE PAGAMENTO
+( COMO CHEQUE POR EXEMPLO )  QUE SEJA NECESS¡RIO DAR TROCO, A IMPRESSORA IRA VERIFICAR
+SE EXISTE QUANTIA SUFICIENTE NO TOTALIZADOR DINHEIRO PARA EFETUAR O TROCO.
+POR ISSO A NECESSIDADE DE TODO DIA, AO ABRIR O CAIXA, EFETUAR O SUPRIMENTO DE 
+CAIXA.
+ 
+
+#  PROGRAMA DESCRI«AO DA FORMA DE PAGAMENTO
+-----------------------------------------------------------------  	
+OBSERVA«AO: ESTE COMANDO ESTA IMPLEMENTADO SOMENTE NA VERSAO 3.0 DO FIRMWARE
+            ESTE COMANDO SO PODE SER ENVIADO CASO NAO TENHA MOVIMENTO NO DIA
+		O TOTALIZADOR 01 QUE … DINHEIRO J¡ ESTA CADASTRADO DE FABRICA
+		AS FORMAS DE PAGAMENTO SAO ELIMINADAS A CADA REDU«√O Z
+
+COMANDO 73
+PARAMETRO OBRIGATORIO DESCRI«¿O DA FORMA DE PAGAMENTO COM 16 CARACTERES
+PARAMETRO OPCIONAL    DESCRI«¿O DA FORMA DE PAGAMENTO COM 16 CARACTERES
+	......
+PARAMETRO OPCIONAL    DESCRI«¿O DA FORMA DE PAGAMENTO COM 16 CARACTERES
+
+VOCE PODER¡ CADASTRAR AT… 50 FORMAS DE PAGAMENTOS AO MESMO TEMPO
+
+
+
+CHR(27)+CHR(251)+"73|CHEQUE PRE    |REDE SHOP    |VALE      |"+CHR(27)
+
+
+#  PROGRAMA«AO DA UNIDADE DE MEDIDA
+------------------------------------
+
+COMANDO 62 51
+PARAMETRO OBRIGATORIO DESCRICAO DA UNIDADE DE MEDIDA COM 2 BYTES
+
+ESTE COMANDO AO SER ENVIADO PARA A IMPRESSORA NADA SERA IMPRESSO, SOMENTE TERA
+EFEITO CASO SEJE ENVIADO LOGO APOS ESTE COMANDO O COMANDO DE VENDA DE ITEM
+
+#  AUMENTANDO A DESCRI«AO DO ITEM
+-----------------------------------
+
+COMANDO 62 52
+PARAMETRO OBRIGATORIO DESCRICAO DO ITEM COM ATE 200 CARACTERES
+
+ESTE COMANDO AO SER ENVIADO PARA A IMPRESSORA NADA SERA IMPRESSO, SOMENTE TERA
+EFEITO CASO SEJE ENVIADO LOGO APOS ESTE COMANDO O COMANDO DE VENDA DE ITEM
+
+#  PROGRAMA CARACTER GRAFICO PARA AUTENTICA«AO
+----------------------------------------------
+
+COMANDO 64
+PARAMETRO OBRIGATORIO 18 BYTES COM A POSI«√O DE CADA AGULHA NA MATRIZ ABAIXO
+
+   |1  |  2|  3|  4|  5|  6|  7|  8|  9| 10| 11| 12| 13| 14| 15| 16| 17| 18|
+1  | * |   |   |   |   |   |   |   |   |   |   |   |   |   | * | * | * | * |
+2  |   | * |   |   |   |   |   |   |   |   |   |   |   | * |   |   |   |   |
+4  |   |   | * |   |   |   |   |   |   |   |   |   | * |   |   |   |   |   |
+8  |   |   |   | * |   |   |   |   |   |   |   | * |   |   |   |   |   |   |
+16 |   |   |   |   | * |   |   |   |   |   | * |   |   |   |   |   |   |   |
+32 |   |   |   |   |   | * |   |   |   | * |   |   |   |   |   |   |   |   |
+64 |   |   |   |   |   |   | * |   | * |   |   |   |   |   |   |   |   |   |
+128|   |   |   |   |   |   |   | * |   |   |   |   |   |   |   | * | * | * |
+----------------------------------------------------------------------------  
+O VALOR DOS PARAMETROS DEVEM SER PASSADOS PARA O DRIVER COM 3 POSI«’ES
+
+EXEMPLO:
+
+CHR(27)+CHR(251)+"001|002|004|008|016|032|064|128|064|032|016|008|004|002|001|129
+|129|129|"+CHR(27)
+
+
+#  MONITORAMENTO DO ESTADO DO PAPEL
+-----------------------------------
+
+COMANDO 62|64
+
+O VALOR RETORNADO … O NUMERO DE LINHAS QUE FOI IMPRESSO APOS A IMPRESSORA ACUSAR
+O POUCO PAPEL.
+
+SERAO DEVOLVIDO 5 BYTES  3 DE STATUS E 2 COM O NUMERO DE LINHAS
+
+PARA ENCONTRAR O NUMERO DE LINHAS DEVE-SE APLICAR A SEGUINTE FORMULA
+
+EX: FOI ENVIADO O COMANDO CHR(27)+CHR(251)+"62|54|"+CHR(27)
+    FOI DEVOLVIDO 6 64 0 255 00
+	A FORMULA A SER APLICADA … N1+(N2*256)
+	APLICANDO A FORMULA FORAM IMPRESSO 255 LINHAS APOS O AVISO DE POUCO PAPEL
+	
+EX: EX: FOI ENVIADO O COMANDO CHR(27)+CHR(251)+"62|54|"+CHR(27)
+    FOI DEVOLVIDO 6 64 0 01 01
+	A FORMULA A SER APLICADA … N1+(N2*256)
+	APLICANDO A FORMULA FORAM IMPRESSO 257 LINHAS APOS O AVISO DE POUCO PAPEL
+
+SUGEST√O: ESTE COMANDO POSSIBILITA QUE MESMO A IMPRESSORA INDICANDO POUCO PAPEL, 
+SEJA AINDA UTILIZADO PARTE DA BOBINA (COM O SOFTWARE CONTROLANDO O NUMERO DE LINHAS ) 
+PARA IMPRIMIR 3 OU 4 CUPONS FISCAIS.
+	
+
+
+
+
+
+#  Sangria e Suprimento:
+-----------------------
+OBSERVACAO: NA VERSAO 3.0 DE IMPRESSORA FISCAL ESTE COMANDO RECEBE UM NOVO 
+PARAMETRO DE COMANDO QUE … A FORMA DE PAGAMENTO QUE SERA COLOCADA O SUPRIMENTO
+OU QUE SERA RETIRADA A SANGRIA
+FICANDO COM A SEGUNTE ESTRUTURA:
+
+COMANDO 25
+PARAMETRO OBRIGATORIO SA OU SU
+PARAMETRO OPCIONAL    DESCRICAO DA FORMA DE PAGAMENTO COM 16 BYTES
+
+
+Esta opcao possibilita que seja registrado caso tenha sido realizada sangria
+ou suprimento.
+
+- Exemplo de comando a ser enviado para realizar sangria ou suprimento:
+
+		ESC 0xFBH 25 | SA | <valor> | ESC   // Para operacao de sangria;
+
+      ESC 0xFBH 25 | SU | <valor> | ESC   // Para operacao de suprimento;
+
+O valor deve ser informado e possui no m†ximo 14 bytes, podendo ser formatado
+para este tamanho com zeros a esquerda.
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+      sprintf (buffer ,"\x1b\xfb%s|\x1b","25|SA|00000000001000");
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","25|SU|00000000001000");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+      BUFFER = CHR(27)+CHR(251)+"25|SA|00000000001000|"+CHR(27)
+
+      BUFFER = CHR(27)+CHR(251)+"25|SU|00000000001000|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) e Ç impresso o valor do Totalizador de Sangria/Suprimento, juntamente
+com a impressao da mensagem "Nao sujeito a ICMS".
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+
+
+#  comandos para impresssao de cheque somente MP40
+#  IMPRESSAO DE CHEQUE
+--------------------------------------------------
+OBSERVA«AO: PARA QUE ESTE COMANDO FUNCIONE, JUNTO DO 
+DIRETORIO AONDE SE ENCONTRA O DRIVER MP20DRV.EXE DEVE ESTAR
+O ARQUIVO BANCOS.TXT
+
+COMANDO 57
+PARAMETROS:
+	NUMERO DO BANCO COM 3 POSI«“ES
+	VALOR DO CHEQUE COM 14 POSI«“ES
+	FAVORECIDO COM 45 POSI«OES
+	LOCALIDADE COM 27 POSI«OES
+	DIA COM 2 POSICOES
+	MES COM 10 POSI«OES
+	ANO COM 4 POSIC”ES
+	COMENTARIO
+
+
+CHR(27)+CHR(251)+"57|001|00000000500000| BEMATECH COM. IND EQUIP ELE    |         CURITIBA|
+02|  FEVEREIRO|  99| COMANTARIO|"+CHR(27)
+
+
+#  comandos para impresssao de cheque somente MP40
+#  CANCELAMENTO DO CHEQUE
+--------------------------------------------------
+COMANDO 62|49
+
+ESTE COMANDO CANCELA A IMPRESSAO QUE FOI ENVIADA PARA IMPRESSORA.
+CHR(27)+CHR(251)+"62|49|"+CHR(27)
+
+
+#  comandos para impresssao de cheque somente MP40
+#  STATUS DO CHEQUE
+--------------------------------------------------
+
+COMANDO 62|48
+
+Bit - VR	STATUS				0 ( Desligado )	1 ( Ligado )
+0 ( 1) 	N„o usado				Fixo em 0		***********
+1 ( 2 )	N„o usado				***************************	Fixo em 1
+2 ( 4 )	Cheque em impress„o		Em impress„o ou aguardando inserÁ„o	N„o imprimindo
+3 ( 8 ) 	Aguardando inserÁ„o do cheque	N„o aguardando	Aguardando
+4 ( 16 ) 	N„o usado				****************************	Fixo em 1
+5 ( 32 ) 	Estado do sensor de cheque	Com papel	Sem papel
+6 ( 64 ) 	Estado do sensor de cheque	Com papel	Sem papel
+7 ( 128 )	N„o usado				Fixo em 0	***********
+
+CHR(27)+CHR(251)+"62|48|"+CHR(27)
+
+
+
+#  Estado da Gaveta de Dinheiro:
+-------------------------------
+
+Esta opcao possibilita que seja lido o estado da gaveta de dinheiro.
+
+- Exemplo de comando a ser enviado para realizar a leitura do estado da gaveta
+de dinheiro:
+
+      ESC 0xFBH 23 | ESC   // Para operacao de sangria;
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","23");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+	  BUFFER = CHR(27)+CHR(251)+"23"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H).
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Retorno do numero sequencial do Cupom Fiscal:
+-----------------------------------------------
+
+Esta opcao possibilita que seja lido o numero seqÅàncial do ultimo cupom fis -
+cal emitido ou em emissao.
+
+- Exemplo de comando a ser enviado para realizar a leitura do estado da gaveta
+de dinheiro:
+
+		ESC 0xFBH 30 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","30");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+		BUFFER = CHR(27)+CHR(251)+"30|"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) juntamente com 3 bytes indicando o numero sequencial do cupom fiscal.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Inicia Fechamento de cumpom
+
+Essa opcao, em conjunto com os comandos 33 e 34, realizam o fechamento do
+cupom fiscal. Como parametro, e passado o flag indicador de acrescimo/desconto,
+e a percentagem/valor a ser acrescido/descontado.
+
+- Comando a ser enviado:
+
+		ESC 0xFBH 32 | <Flag de acrescimo/desconto> | <percentual> | ESC
+
+- Exemplo de comando a ser enviado, para um desconto de 15,00 %:
+
+		ESC 0xFBH 32 | D | 1500 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+		sprintf (buffer ,"\x1b\xfb%s|\x1b","32|1500");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+		BUFFER = CHR(27)+CHR(251)+"32|1500"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) ST1 ST2.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Efetua Forma de pagamento
+OBSERVA«√O: ESTE COMANDO DE EFETUAR A FORMA DE PAGAMENTO FOI ELIMINADO NA VERSO
+3.0 DE FIRMWARE DA FISCAL  II , DE MANEIRA QUE SE DESEJAR UTILIZAR ESTE COMANDO
+DEVERA SUBSTITUIR O DRIVER PELO DRIVER DE VERSAO 6.0 OU SUPERIOR POIS ESTE DRIVER
+REALIZA A COMPATIBILIZACAO DESTE COMANDO.
+	SE DESEJAR UTILIZAR O NOVO COMANDO DE FORMA DE PAGAMENTO DA VERSAO 3.0 DE FIRMWARE
+O COMANDO E O 72, MAS A FORMA DE PAGAMENTO DEVE ESTAR CADASTRADA PREVIAMENTE ANTES DE
+QUALQUER MOVIMENTO NO DIA
+
+IMPORTANTE : NA VERSAO II DE IMPRESSORA FISCAL MP20FI II COM VERSAO DE FIRMWARE 3.0
+EXISTE UM CONTROLE DAS FORMAS DE PAGAMENTO, DE MANEIRA QUE AS VENDAS A VISTA
+NAO DEVEM SER ENVIADAS COM "A VISTA" E SIM COMO "DINHEIRO" POIS A IMPRESSORA
+CREDITA OS VALORES VENDIDOS NESTE TOTALIZADOR E CASO EXISTA UMA FORMA DE PAGAMENTO
+( COMO CHEQUE POR EXEMPLO )  QUE SEJA NECESS¡RIO DAR TROCO, A IMPRESSORA IRA VERIFICAR
+SE EXISTE QUANTIA SUFICIENTE NO TOTALIZADOR DINHEIRO PARA EFETUAR O TROCO.
+POR ISSO A NECESSIDADE DE TODO DIA, AO ABRIR O CAIXA, EFETUAR O SUPRIMENTO DE 
+CAIXA.
+
+Essa opcao, em conjunto com os comandos 32 e 34, realizam o fechamento do
+cupom fiscal. Como parametro, e passado o uma descricao da forma de pagamento,
+e o valor pago.
+
+- Comando a ser enviado:
+
+		ESC 0xFBH 33 | <Descricao da forma de pagamento> | <valor pago> | ESC
+
+- Exemplo de comando a ser enviado, para um pagamento de $ 100,00 com cheque:
+
+		ESC 0xFBH 33 | Cheque do Estado          | 00000000010000 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+sprintf (buffer ,"\x1b\xfb%s|\x1b","33| Cheque do Estado      |00000000010000");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+	BUFFER = CHR(27)+CHR(251)+"33|Cheque do Estado       |00000000010000"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) ST1 ST2.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+
+#  Finaliza o Fechamento de cumpom
+
+Essa opcao, em conjunto com os comandos 32 e 33, realizam o fechamento do
+cupom fiscal. Como parametro, e passado o uma mensagem promocional que pode ter
+ate 492 caracteres de tamanho.
+
+- Comando a ser enviado:
+
+		ESC 0xFBH 34 | <Mensagem promocional> | ESC
+
+- Exemplo de comando a ser enviado, com uma mensagem promocional qualquer:
+
+		ESC 0xFBH 34 | Lojas X: Sempre as melhores ofertas. | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+sprintf (buffer ,"\x1b\xfb%s|\x1b","34|Lojas X: Sempre as melhores ofertas.");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+BUFFER = CHR(27)+CHR(251)+"34|Lojas X: Sempre as melhores ofertas."+ CHR(13) +
+CHR(10) + CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) ST1 ST2.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+#  Retorno de variaveis da impressora
+
+Essa opcao, retorna variaveis que contem informacoes gerais sobre a impressora
+como, o Numero de Serie, a Versao do firmaware, e outras informacoes cadas-
+tradas na impressora, como o numero do C.G.C. e do I.E. e o cliche do pro-
+prietario. Como parametro, e passado dois bytes correspondentes ao numero da
+variavel a ser retornada.
+
+- Comando a ser enviado:
+
+		ESC 0xFBH 35 | <Numero da variavel> | ESC
+
+- Exemplo de comando a ser enviado, para retorno do Numero de Serie:
+
+		ESC 0xFBH 35 | 00 | ESC
+
+- Em linguagem de programacao "C" envie a seguinte seqÅància:
+
+sprintf (buffer ,"\x1b\xfb%s|\x1b","35|00");
+
+- Em linguagens que utilizem a formatacao conforme descrito a seguir, utilize
+a seguinte seqÅància:
+
+BUFFER = CHR(27)+CHR(251)+"35|00"+CHR(27)
+
+- Resposta da impressora:
+
+Caso o comando tenha sido executado corretamente, a impressora responde ACK
+(06H) ST1 ST2, e um numero de bytes de retorno correspondente a variavel
+solicitada. Verifique a tabela de Variaveis.
+
+Em caso de erro, a resposta da impressora ser† ACK ST1 ST2. Verifique a ta -
+bela de erros da impressora.
+
+
+Tabela de Variaveis:
+
++-----------+---------------+---------------------------------------+
+|           |               |                                       |
+| Numero da | Num. de bytes | Tipo da Variavel                      |
+| Variavel  | de retorno    |                                       |
+|           |               |                                       |
+|-----------+---------------+---------------------------------------|
+|    00     |      15       | Numero de Serie                       |
+|-----------+---------------+---------------------------------------|
+|    01     |       4       | Versao do Firmaware                   |
+|-----------+---------------+---------------------------------------|
+|    02     |      33       | C.G.C./I.E.                           |
+|-----------+---------------+---------------------------------------|
+|    03     |      18       | Grande Total                          |
+|-----------+---------------+---------------------------------------|
+|    04     |      14       | Cancelamentos                         |
+|-----------+---------------+---------------------------------------|
+|    05     |      14       | Descontos                             |
+|-----------+---------------+---------------------------------------|
+|    06     |       6       | Contador Sequencial                   |
+|-----------+---------------+---------------------------------------|
+|    07     |       6       | Num. de operacoes nao fiscais         |
+|-----------+---------------+---------------------------------------|
+|    08     |       4       | Num. de Cupons cancelados             |
+|-----------+---------------+---------------------------------------|
+|    09     |       4       | Num. de Reducoes                      |
+|-----------+---------------+---------------------------------------|
+|    10     |       4       | Num. de intervencoes tecnicas         |
+|-----------+---------------+---------------------------------------|
+|    11     |       4       | Num. de substituicoes de proprietario |
+|-----------+---------------+---------------------------------------|
+|    12     |       4       | Numero do Item                        |
+|-----------+---------------+---------------------------------------|
+|    13     |     186       | Cliche do proprietario                |
+|-----------+---------------+---------------------------------------|
+|    14     |       4       | Numero do caixa                       |
+|-----------+---------------+---------------------------------------|
+|    15     |       4       | Numero da loja                        |
+|-----------+---------------+---------------------------------------|
+|    16     |       2       | Moeda                                 |
+|-----------+---------------+---------------------------------------|
+|    17     |      1        | Flags Fiscais                         |
++-----------+---------------+---------------------------------------+
+|    18     |       4       | Minutos ligada                        |
+|-----------+---------------+---------------------------------------|
+|    19     |       4       | Minutos imprimindo                    |
+|-----------+---------------+---------------------------------------|
+|    20     |      1        | Flag de Intervencao tecnica           |
++-----------+---------------+---------------------------------------+
+|    21     |      1        | Flag de eprom conectada               |
++-----------+---------------+---------------------------------------+
+|    22     |      14       | Valor pago no Ultimo Cupom            |
++-----------+---------------+---------------------------------------+
+|    23     |      12       | Data e Hora Atual                     |
++-----------+---------------+---------------------------------------+
+|    24     |      36       | contadores  nao suj. ao icms          |
++-----------+---------------+---------------------------------------+
+|    25     |      171      | Totalizadores nao suj. ao icms        |
++-----------+---------------+---------------------------------------+
+|    26     |      06       | Data da Ultima Reducao                |
++-----------+---------------+---------------------------------------+
+|    27     |      03       | Data do Movimento                     |
++-----------+---------------+---------------------------------------+
+|    28     |      01       | Flag de Truncamento                   |
++-----------+---------------+---------------------------------------+
+|    29     |      02       | Flag de Vinculacao ao iss             |
++-----------+---------------+---------------------------------------+
+|    30     |      07       | Totaliador de Acrescimo               |
++-----------+---------------+---------------------------------------+
+|    31     |      03       | Contador de bilhetes de passagem      |
++-----------+---------------+---------------------------------------+
+|    32     |      1925     | Formas de Pagamento                   |
++-----------+---------------+---------------------------------------+
+|    33     |      1550     | Recebimentos Nao Vinculados           |
++-----------+---------------+---------------------------------------+
+|    34     |      600      | Departamentos                         |
++-----------+---------------+---------------------------------------+
+|    253    |      1        | Tipo da Impressora                    |
++-----------+---------------+---------------------------------------+
+
+
+# LEITURA DOS DADOS DA ULTIMA REDU«√O Z
+---------------------------------------
+COMANDO  62|55
+
+NUMERO DE BYTES RETORNADO 616 BYTES BCD  COM A SEGUINTE ESTRUTURA
+
+rzaut		se 00 a red. foi por comando se nao auto 		2
+gtda		gt no momento da reducao				18	
+cancel	cancelamento						14
+descon	descontos							14
+tr		tributos							64
+tp		totalizadores parciais trib				266
+sangria	sangria							14
+suprim	suprimentos							14
+nsi		totali. nao suj ao icms					126
+cnsi		cont tp's nao suj ao icms				36
+coo		contador ordem operac.					6
+cns		cont opera nao suj ao icms				6
+al		num. aliquotas cadastradas				2
+datapc	data movimento						6
+acresc	acrescimo							14
+acrfin	acrescimo financ.						14
+
+	
+
+
+O Tratamento de erros.
+----------------------
+
+O tratamento de erros da impressora e retornado pela interface serial, caben-
+do ao aplicativo interpret†-los.  Todos os erros registrados durante a impres
+sao serao retornados pelo driver bastando para o aplicativo recebà-los e ana-
+lis†-los.
+
+Verifique os c¢digos de erro conforme a tabela do manual da impressora fiscal
+MP20-FI.
+
+A seguir temos a explicacao dos erros da impressora fiscal e a providància que
+deve ser adotada em cada caso:
+
++--------------------+------------------------------------------------------+
+|                    |                                                      |
+|        ERRO        |           AÄ«O A SER ADOTADA                         |
+|                    |                                                      |
++--------------------+------------------------------------------------------+
+| Fim de Papel       | Acabou o papel da impressora fiscal, logo a bobina de|
+|                    |ve ser substituida.                                   |
++--------------------+------------------------------------------------------+
+| Pouco Papel        | A impressora est† sinalizando que a bobina de papel  |
+|                    |est† acabando.                                        |
++--------------------+------------------------------------------------------+
+| Erro no rel¢gio    | Erro no rel¢gio interno da impressora. H† necessidade|
+|                    |de intervencao tÇcnica.                               |
++--------------------+------------------------------------------------------+
+| Impressora em erro | Existe erro nao especificado na impressora. Verifique|
+|                    |papel preso, desligue e ligue a impressora. Se o pro -|
+|                    |blema persistir, contate revenda autorizada.          |
++--------------------+------------------------------------------------------+
+| Primeiro dado do   | A impressora nao entendeu como o primeiro dado do co-|
+|comando nao foi ESC |mando sendo um ESCAPE, tente enviar novamente o coman-|
+|                    |do.                                                   |
++--------------------+------------------------------------------------------+
+| Comando Inexistente| O comando enviado nao pertence Ö impressora fiscal.  |
++--------------------+------------------------------------------------------+
+| Cupom Aberto       | Existe um cupom fiscal aberto, feche-o e execute o co|
+|                    |mando novamente, pois este comando nao pode ser execu-|
+|                    |tado com um cupom fiscal aberto.                      |
++--------------------+------------------------------------------------------+
+| Numero de Parame - | O numero de parametros enviado est† incorreto, veri -|
+|tros do comando in -|fique e envie o comando novamente.                    |
+|v†lido.             |                                                      |
++--------------------+------------------------------------------------------+
+| Tipo de parametro  | Algum parametro do comando est† incorreto. Verifique |
+|do comando inv†lido |e envie o comando novamente.                          |
++--------------------+------------------------------------------------------+
+| Mem¢ria Fiscal Lota| Incapacidade da impressora continuar operacao. Soli -|
+|da                  |cite intervencao tÇcnica da rede autorizada.          |
++--------------------+------------------------------------------------------+
+| Erro na mem¢ria RAM| Erro interno da impressora. Solicite intervencao     |
+|CMOS nao vol†til.   |tÇcnica da rede autorizada.                           |
++--------------------+------------------------------------------------------+
+| Al°quota nao progra| A al°quota que est† sendo enviada nao est† programada|
+|mada.               |Consulte quais as al°quotas cadastradas, ou cadastre  |
+|                    |nova al°quota e repita o comando.                     |
++--------------------+------------------------------------------------------+
+| Capacidade de al° -| Erro em capacidade de al°quotas programadas. Necessi-|
+|quotas program†veis |ta de intervencao tÇcnica, solicite-a em revenda auto-|
+|lotada.             |rizada.                                               |
++--------------------+------------------------------------------------------+
+| Cancelamento nao   | O cancelamento requisitado nao pode ser executado.   |
+|permitido.          |                                                      |
++--------------------+------------------------------------------------------+
+| CGC/IE do proprieta| Dados do propriet†rio nao estao cadastrados. Solicite|
+|rio nao programados.|intervencao tÇcnica da rede autorizada.               |
++--------------------+------------------------------------------------------+
+| Comando nao executa| O comando requisitado nao foi executado. Verifique e |
+|do.                 |envie novamente.                                      |
++--------------------+------------------------------------------------------+
+| Erro de comunicacao| Erro na comunicacao com a impressora. Verifique se es|
+|                    |ta corretamente conectada.                            |
++--------------------+------------------------------------------------------+
+| Erro de RTC        | Erro na gravacao de parametros internos da impressora|
+|                    |Caso o problema persista, solicite intervencao tÇcni -|
+|                    |ca da rede autorizada.                                |
++--------------------+------------------------------------------------------+
+| Tempo de espera es-| A impressora nao est† respondendo ao comando enviado.|
+|gotado. Timeout     |Desligue e ligue novamente e repita o comando.        |
++--------------------+------------------------------------------------------+
+
+
+* Os c¢digos dos erros sao os seguintes:
+----------------------------------------
+
+Se a seqÅància enviada estiver correta, a impressora fiscal MP20-FI responde
+da seguinte forma:
+
+ACK ST1 ST2, onde ACK=06H e ST1 e ST2 est„o descritos a seguir:
+
+ST1
+
+   +------+------+------+------+------+------+------+------+
+   |  7   |   6  |   5  |  4   |  3   |   2  |   1  |   0  | 
+   +------+------+------+------+------+------+------+------+
+      |       |      |     |      |       |      |      |
+      |       |      |     |      |       |      |      |___ Numero de Parametros
+      |       |      |     |      |       |      |           do Comando Inv†lido
+      |       |      |     |      |       |      |                         
+      |       |      |     |      |       |      |__________ Cupom Aberto
+      |       |      |     |      |       |
+      |       |      |     |      |       |_________________ Comando Inexistente
+      |       |      |     |      |
+	|       |      |     |      |_________________________ Primeiro dado do
+	|       |      |     |                                 comando nao foi ESC
+	|       |      |     |                                  (1BH)
+	|       |      |     |________________________________ Impressora em Erro
+	|       |      |
+	|       |      |______________________________________ Erro no Rel¢gio
+	|       |
+	|       |_____________________________________________ Pouco Papel
+	|
+	|_____________________________________________________ Fim de Papel
+
+
+
+ST2
+
+ +------+------+------+------+------+------+------+------+
+ |  7   |   6  |   5  |  4   |  3   |   2  |   1  |   0  |
+ +------+------+------+------+------+------+------+------+
+	|       |      |     |      |       |      |      |
+	|       |      |     |      |       |      |      |___ Comando nao executa-
+	|       |      |     |      |       |      |           do
+	|       |      |     |      |       |      |
+	|       |      |     |      |       |      |__________ CGC/IE do propriet†-
+	|       |      |     |      |       |                  rio nao programados
+	|       |      |     |      |       |
+	|       |      |     |      |       |_________________ Cancelamento nao
+	|       |      |     |      |                          permitido.
+	|       |      |     |      |
+	|       |      |     |      |_________________________ Capacidade de al°-
+	|       |      |     |                                 quotas program†veis
+	|       |      |     |                                 lotada.
+	|       |      |     |
+	|       |      |     |________________________________ Al°quota nao progra-
+	|       |      |                                       mada.
+	|       |      |
+	|       |      |______________________________________ Erro na RAM/CMOS nao
+	|       |                                              vol†til.
+	|       |
+	|       |_____________________________________________ Mem¢ria Fiscal Lota-
+	|                                                      da.
+	|
+	|_____________________________________________________ Tipo de parametros
+																			 do comando inv†lido.
+
+
+Se a seqÅància enviada estiver incorreta, a impressora fiscal MP20-FI responde
+da seguinte forma:
+
+NAK (015H).
+
+
+* Gloss†rio de parametros a serem utilizados nos comandos fiscais:
+------------------------------------------------------------------
+
+A/d     -   Flag de acrescimo desconto. A forma como esta escrito indica
+				como a impressora ira interpretar o proximo parametro: Maiusculas
+				para acrescimo/desconto por percentagem e minuscula para
+				acrescimo/desconto por valor. 'A' e acrescimo e 'D' e desconto.
+
+P/V     -   Percentual (quatro caracteres) ou Valor (quatorze caracteres).
+
+ddi     -   Dia inicial para a execucao do comando - 2 caracteres.
+
+mmi     -   Màs inicial para a execucao do comando - 2 caracteres
+
+aai     -   Ano inicial para a execucao do comando - 2 caracteres
+
+ddf     -   Dia final para a execucao do comando - 2 caracteres
+
+mmf     -   Màs final para a execucao do comando - 2 caracteres
+
+aaf     -   Ano final para a execucao do comando - 2 caracteres
+
+nni     -   Envie inicialmente 30H 30H e a seguir o numero inicial para a exe-
+			  cucao do comando - 4 caracteres
+
+mmf     -   Envie inicialmente 30H 30H e a seguir o numero final para a execu-
+			  cao do comando - 4 caracteres
+
+cd      -   C¢digo do produto a ser vendido. - 13 caracteres.
+
+dsc     -   Descricao do produto vendido. - 29 caracteres.
+
+ali     -   Numero da al°quota que incide sobre o produto, ou totalizadores 
+           parciais respectivos ou totalizadores parciais de isencao - 2 ca -
+           racteres
+
+qt      -   A quantidade de °tens vendidos - 4 caracteres
+
+vu      -   O valor unit†rio do produto vendido - 8 caracteres.
+
+dp      -   O desconto percentual a ser aplicado no produto, com 4 posiá‰es.
+           Caso este nao possua desconto, informe zero ("0") - 4 caracteres.
+
+dp1     -   O valor do acrÇscimo ou desconto percentual que ser† aplicado ao
+           produto - 4 caracteres.
+
+vp      -   O valor pago pela compra total - 14 caracteres.
+
+ad      -   Se Ç p/ realizar acrÇscimo ou desconto na venda - 1 caracter (A/D).
+
+msg     -   Mensagem promocional para tÇrmino da venda - 496 caracteres no m†-
+           ximo
+
+texto   -   Mensagem para ser impressa no relat¢rio nao fiscal.
+
+tmp     -   Tempo em hexadecimal  p/ acionar a gaveta de dinheiro - 1 caracter
+
+autent2 -   Autenticacao no modo condensado => C + string de 50 caracteres
+            Autenticacao no modo normal => N + string de 48 caracteres
+            Autenticacao no modo elite => E + string de 32 caracteres
+
+            Caso o texto nao chegue ao limite m†ximo, preencher a string com
+            espaáos, pois o tamanho m†ximo deve ser enviado.
+
+tipo    -   Informar que Ç operacao de sangria (informe SA) - 1 caracter
+
+valor   -   Valor da sangria ou suprimento executado - 14 caracteres.
+
+tipo2   -   Informar que Ç operacao de suprimento (informe SU). - 1 caracter
+
+percent -   Valor em percentagem da al°quota que deve ser registrada na impres
+			  sora fiscal - 4 caracteres.

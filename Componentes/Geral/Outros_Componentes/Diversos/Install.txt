@@ -1,0 +1,13 @@
+Para instalar as Units traduzidas, basta Executar os seguintes passos:
+
+1) Feche o Delphi
+
+2) Copie todas estas units para o diretorio LIB do Delphi 5.
+  
+   Se voce usou o diretorio padrao para instalacao, o diretorio é : c:\delphi5\lib
+
+3) Ative o Delphi
+
+4) BUILD ALL em todos os seus projetos.
+
+abraços

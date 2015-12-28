@@ -1,0 +1,23 @@
+unit DM30;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  TDMNFE = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMNFE: TDMNFE;
+
+implementation
+
+{$R *.dfm}
+
+end.

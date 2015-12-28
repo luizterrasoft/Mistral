@@ -1,0 +1,64 @@
+package dclusr;
+
+{$R *.res}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\BotaoSair.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\CheckBoxOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\ColorPanelOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\ComboBoxOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\DbGridOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\GaugeOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\LabelOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\MaskEditOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\PanelOO.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\Arquivos1\Componentes\SERIAL\TESTE1\Serial.dcr'}
+{$R '\\Nativa_desenv\FNtvDesenv\arquivos1\componentes\codigo4\Barcode.dcr'}
+{$ALIGN 8}
+{ ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{ DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{ LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{ STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $51000000}
+{$DESCRIPTION 'Borland User Components'}
+{$LIBSUFFIX '60'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  dbrtl,
+  vcldb,
+  bdertl,
+  VclSmp;
+
+contains
+  BotaoSair in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\BotaoSair.pas',
+  CheckBoxOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\CheckBoxOO.pas',
+  ColorPanelOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\ColorPanelOO.pas',
+  ComboBoxOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\ComboBoxOO.pas',
+  componentesOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\componentesOO.pas',
+  DbGridOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\DbGridOO.pas',
+  GaugeOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\GaugeOO.pas',
+  LabelOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\LabelOO.pas',
+  MaskEditOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\MaskEditOO.pas',
+  PanelOO in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Biblioteca_OO\Componentes_OO\PanelOO.pas',
+  Serial in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Componentes\SERIAL\TESTE1\Serial.pas',
+  Barcode in '\\Nativa_desenv\FNtvDesenv\Arquivos1\Componentes\CODIGO4\Barcode.pas';
+
+end.

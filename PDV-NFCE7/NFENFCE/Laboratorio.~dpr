@@ -1,0 +1,15 @@
+program Laboratorio;
+
+uses
+  Forms,
+  TesteF8 in 'TesteF8.pas' {Form1},
+  DM8 in '..\Datamodules\DM8.pas' {DMEstoque: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDMEstoque, DMEstoque);
+  Application.Run;
+end.

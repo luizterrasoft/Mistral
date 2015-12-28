@@ -1,0 +1,205 @@
+unit UVendaNfe_Registro21;
+
+interface
+
+uses SysUtils, StrUtils, funcoes2, UVendaNfe;
+
+type
+  TVendaNfe_Registro21 = class(TVendaNfe)
+  protected
+    _tipo          : String;
+    _venda         : Real;
+    _item          : Integer;
+    _codigoProduto : String;
+    _precoVendido  : Real;
+    _quantidade    : Real;
+    _desconto      : Real;
+    _valorDesconto : Real;
+    _valorAcrescimo: Real;
+    _refInterna    : String;
+    _codBarras     : String;
+    _csosn         : String;
+  private
+    function getCodigoProduto: String;
+    function getDesconto: Real;
+    function getvalorDesconto: Real;
+    function getvalorAcrescimo: Real;
+    function getItem: Integer;
+    function getPrecoVendido: Real;
+    function getQuantidade: Real;
+    function getTipo: String;
+    function getVenda: Real;
+    function getRefInterna:String;
+    function getCodBarras:String;
+    procedure setCodigoProduto(const Value: String);
+    procedure setDesconto(const Value: Real);
+    procedure setvalorDesconto(const Value: Real);
+    procedure setvalorAcrescimo(const Value: Real);
+    procedure setItem(const Value: Integer);
+    procedure setPrecoVendido(const Value: Real);
+    procedure setQuantidade(const Value: Real);
+    procedure setTipo(const Value: String);
+    procedure setVenda(const Value: Real);
+    procedure setRefInterna(const Value: String);
+    procedure setCodBarras(const Value: String);
+    function getCsosn: String;
+    procedure setCsosn(const Value: String);
+  public
+    constructor Create;
+    procedure EscreveRegistro(nomeArquivo: String); override;
+
+    property Tipo: String             read getTipo            write setTipo;
+    property Venda: Real              read getVenda           write setVenda;
+    property Item: Integer            read getItem            write setItem;
+    property CodigoProduto: String    read getCodigoProduto   write setCodigoProduto;
+    property PrecoVendido: Real       read getPrecoVendido    write setPrecoVendido;
+    property Quantidade: Real         read getQuantidade      write setQuantidade;
+    property Desconto: Real           read getDesconto        write setDesconto;
+    property valorDesconto: Real      read getvalorDesconto   write setvalorDesconto;
+    property valorAcrescimo: Real     read getvalorAcrescimo  write setvalorAcrescimo;
+    property refInterna:String        read getRefInterna      write setrefInterna;
+    property codBarras:String         read getCodBarras       write setCodBarras;
+    property csosn:String             READ getCsosn           write setCsosn;
+  end;
+
+implementation
+
+{ TVendaNfe_Registro21 }
+
+constructor TVendaNfe_Registro21.Create;
+begin
+  inherited;
+  _tipo := '21';
+end;
+
+procedure TVendaNfe_Registro21.EscreveRegistro(nomeArquivo: String);
+begin
+  AssignFile(arq,Caminho+nomeArquivo);
+  Append(arq);
+  Writeln(arq,Tipo                                                    +Separador+
+              FloatToStr(Venda)                                       +Separador+
+              IntToStr(Item)                                          +Separador+
+              CodigoProduto                                           +Separador+
+              Trim(AnsiReplaceStr(form_nc(PrecoVendido,15),'.',''))   +Separador+
+              Trim(AnsiReplaceStr(form_nc2(Quantidade,15,3),'.',''))  +Separador+
+              Trim(AnsiReplaceStr(form_nc(Desconto,9),'.',''))        +Separador+
+              Trim(AnsiReplaceStr(form_nc(valorDesconto,9),'.',''))   +Separador+
+              Trim(refInterna)+Separador+
+              Trim(codBarras)+Separador );
+  CloseFile(arq);
+end;
+
+function TVendaNfe_Registro21.getCodBarras: String;
+begin
+  Result := _codBarras;
+end;
+
+function TVendaNfe_Registro21.getCodigoProduto: String;
+begin
+  Result := _codigoProduto;
+end;
+
+function TVendaNfe_Registro21.getCsosn: String;
+begin
+  Result := _csosn;
+end;
+
+function TVendaNfe_Registro21.getDesconto: Real;
+begin
+  Result := _desconto;
+end;
+
+function TVendaNfe_Registro21.getvalorDesconto: Real;
+begin
+  Result := _valordesconto;
+end;
+
+
+function TVendaNfe_Registro21.getItem: Integer;
+begin
+  Result := _item;
+end;
+
+function TVendaNfe_Registro21.getPrecoVendido: Real;
+begin
+  Result := _precoVendido;
+end;
+
+function TVendaNfe_Registro21.getQuantidade: Real;
+begin
+  Result := _quantidade;
+end;
+
+function TVendaNfe_Registro21.getRefInterna: String;
+begin
+  Result := _refInterna;
+end;
+
+function TVendaNfe_Registro21.getTipo: String;
+begin
+  Result := _tipo;
+end;
+
+function TVendaNfe_Registro21.getVenda: Real;
+begin
+  Result := _venda;
+end;
+
+procedure TVendaNfe_Registro21.setCodBarras(const Value: String);
+begin
+  _codBarras := Value;
+end;
+
+procedure TVendaNfe_Registro21.setCodigoProduto(const Value: String);
+begin
+  _codigoProduto := Trim(Value);
+end;
+
+procedure TVendaNfe_Registro21.setCsosn(const Value: String);
+begin
+  _csosn := Trim(Value);
+end;
+
+procedure TVendaNfe_Registro21.setDesconto(const Value: Real);
+begin
+  _desconto := Value;
+end;
+
+procedure TVendaNfe_Registro21.setvalorDesconto(const Value: Real);
+begin
+  _valordesconto := Value;
+end;
+
+
+
+procedure TVendaNfe_Registro21.setItem(const Value: Integer);
+begin
+  _item := Value;
+end;
+
+procedure TVendaNfe_Registro21.setPrecoVendido(const Value: Real);
+begin
+  _precoVendido := Value;
+end;
+
+procedure TVendaNfe_Registro21.setQuantidade(const Value: Real);
+begin
+  _quantidade := Value;
+end;
+
+procedure TVendaNfe_Registro21.setRefInterna(const Value: String);
+begin
+  _refInterna := Value;
+end;
+
+procedure TVendaNfe_Registro21.setTipo(const Value: String);
+begin
+  _tipo := Value;
+end;
+
+procedure TVendaNfe_Registro21.setVenda(const Value: Real);
+begin
+  _venda := Value;
+end;
+
+end.

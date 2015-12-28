@@ -1,0 +1,39 @@
+-$A+
+-$B-
+-$C+
+-$D+
+-$E-
+-$F-
+-$G+
+-$H+
+-$I+
+-$J+
+-$K-
+-$L+
+-$M-
+-$N+
+-$O+
+-$P+
+-$Q-
+-$R-
+-$S-
+-$T-
+-$U-
+-$V+
+-$W-
+-$X+
+-$YD
+-$Z1
+-cg
+-AWinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+-H+
+-W+
+-M
+-$M16384,1048576
+-K$00400000
+-LE"c:\arquivos de programas\borland\delphi5\Projects\Bpl"
+-LN"c:\arquivos de programas\borland\delphi5\Projects\Bpl"
+-U"K:\componentes;K:\componentes delphi\impbo;f:\Safi_Desenvolvimento\Apoio;K:\ComponentTef;F:\testecnab;F:\Safi_Desenvolvimento\dcu;K:\Componentes"
+-O"K:\componentes;K:\componentes delphi\impbo;f:\Safi_Desenvolvimento\Apoio;K:\ComponentTef;F:\testecnab;F:\Safi_Desenvolvimento\dcu;K:\Componentes"
+-I"K:\componentes;K:\componentes delphi\impbo;f:\Safi_Desenvolvimento\Apoio;K:\ComponentTef;F:\testecnab;F:\Safi_Desenvolvimento\dcu;K:\Componentes"
+-R"K:\componentes;K:\componentes delphi\impbo;f:\Safi_Desenvolvimento\Apoio;K:\ComponentTef;F:\testecnab;F:\Safi_Desenvolvimento\dcu;K:\Componentes"

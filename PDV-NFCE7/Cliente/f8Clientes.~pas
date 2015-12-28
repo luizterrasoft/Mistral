@@ -1,0 +1,260 @@
+unit f8Clientes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Buttons, Mask, ExtCtrls, Grids, DBGrids, DB, principal, DbTables,
+  DBCtrls;
+
+type
+  Tfrm_f8Clientes = class(TForm)
+    grade1: TDBGrid;
+    pn_procurar: TPanel;
+    Label1: TLabel;
+    edt_nome: TMaskEdit;
+    ds: TDataSource;
+    Panel3: TPanel;
+    botao_sair: TPanel;
+    btnCadastro: TBitBtn;
+    btn_procurar: TBitBtn;
+    painel1: TPanel;
+    Label2: TLabel;
+    Panel5: TPanel;
+    DBText1: TDBText;
+    DBText2: TDBText;
+    Panel6: TPanel;
+    DBText3: TDBText;
+    Label3: TLabel;
+    painel2: TPanel;
+    Label4: TLabel;
+    DBText4: TDBText;
+    Label5: TLabel;
+    Panel7: TPanel;
+    DBText5: TDBText;
+    Panel8: TPanel;
+    DBText6: TDBText;
+    grade2: TDBGrid;
+    Label6: TLabel;
+    Label7: TLabel;
+    chcontem: TCheckBox;
+    procedure grade1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edt_nomeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormActivate(Sender: TObject);
+    procedure btn_procurarClick(Sender: TObject);
+    procedure botao_sairClick(Sender: TObject);
+    procedure grade1DblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure grade2DblClick(Sender: TObject);
+    procedure grade2KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edt_nomeChange(Sender: TObject);
+    procedure chcontemClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    edit: TObject;
+  end;
+
+var
+  frm_f8Clientes: Tfrm_f8Clientes;
+
+implementation
+
+uses funcoes1, funcoes2;
+
+{$R *.DFM}
+
+procedure Tfrm_f8Clientes.grade1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+     {teclando enter, seleciona}
+  if (key=K_ENTER) then
+  begin
+    if (edit is Tedit) then
+      TEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+    if (edit is TMaskedit) then
+      TMaskEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+    frm_F8Clientes.close;
+  end;
+  if (key=K_ESC) then
+  begin
+    TQuery(ds.dataset).close;
+    edt_nome.setfocus;
+  end;
+  if (key=K_F2) then
+    edt_nome.setfocus;
+end;
+
+procedure Tfrm_f8Clientes.edt_nomeKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+     {teclando ENTER}
+  if (key=K_ENTER) then
+  begin
+    btn_procurar.click;
+    if (frm_principal.x_F8_cliente=0) then
+      grade1.setfocus
+    else
+      grade2.setfocus;
+  end;
+  if (key=K_ESC) then
+    if (Trim(edt_nome.text)='') then
+      frm_F8Clientes.Close
+    else
+      edt_nome.text:='';
+  if (key=K_F2) then
+    if (frm_principal.x_F8_cliente=0) then
+      grade1.setfocus
+    else
+      grade2.setfocus;
+end;
+
+procedure Tfrm_f8Clientes.FormActivate(Sender: TObject);
+begin
+  TQuery(ds.dataset).close;
+  edt_nome.text:='';
+  chcontem.Checked:=  frm_principal.x_buscaaltomatica_cliente;
+  edt_nome.setfocus;
+end;
+
+procedure Tfrm_f8Clientes.btn_procurarClick(Sender: TObject);
+var
+  nome: String;
+begin
+  nome:=Trim(edt_nome.text);
+  {LOGICA ANTIGA
+  if (nome<>'') then
+  begin
+    TQuery(ds.dataset).close;
+    TQuery(ds.dataset).sql.clear;
+    TQuery(ds.dataset).sql.Add ('Select  CL_CODI,CL_NOME,CL_ENDE,CL_BAIR,CL_CPF,CL_IDEN,CL_DTNA ');
+    TQuery(ds.dataset).sql.Add ('From    CRECLI ');
+    TQuery(ds.dataset).sql.Add ('Where  (CL_NOME LIKE '+chr(39)+'%'+nome+'%'+chr(39)+') ');
+    TQuery(ds.dataset).sql.Add ('Order by CL_NOME ');
+    TQuery(ds.dataset).open;
+    if (frm_principal.x_F8_cliente=0) then
+      grade1.setfocus
+    else
+      grade2.setfocus;
+  end;
+  }
+  if (nome<>'') then
+  begin
+    TQuery(ds.dataset).close;
+    TQuery(ds.dataset).sql.clear;
+    TQuery(ds.dataset).sql.Add ('Select  CL_CODI,CL_NOME,CL_ENDE,CL_BAIR,CL_CPF,CL_IDEN,CL_DTNA ');
+    TQuery(ds.dataset).sql.Add ('From    CRECLI ');
+    if (chcontem.Checked = true) then
+    TQuery(ds.dataset).sql.Add ('Where  (CL_NOME LIKE '+chr(39)+'%'+nome+'%'+chr(39)+') ')
+    else
+      TQuery(ds.dataset).sql.Add ('Where  (CL_NOME LIKE '+chr(39)+nome+'%'+chr(39)+') ');
+    TQuery(ds.dataset).sql.Add ('Order by CL_NOME ');
+    TQuery(ds.dataset).open;
+    if (frm_principal.x_F8_cliente=0) then
+      grade1.setfocus
+    else
+      grade2.setfocus;
+  end;
+
+end;
+
+procedure Tfrm_f8Clientes.botao_sairClick(Sender: TObject);
+begin
+  close;
+end;
+
+{Duplo clique ***}
+procedure Tfrm_f8Clientes.grade1DblClick(Sender: TObject);
+begin
+  if (edit is Tedit) then
+    TEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+  if (edit is TMaskedit) then
+    TMaskEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+  frm_F8Clientes.close;
+end;
+
+procedure Tfrm_f8Clientes.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  TQuery(ds.dataset).close;
+end;
+
+{Escolhendo a forma de exibicao dos dados ****}
+procedure Tfrm_f8Clientes.FormShow(Sender: TObject);
+begin
+  if (frm_principal.x_F8_cliente=0) then
+  begin
+    grade1.visible:=true;
+    painel1.visible:=true;
+    grade2.visible:=false;
+    painel2.visible:=false;
+  end
+  else
+  begin
+    grade1.visible:=false;
+    painel1.visible:=false;
+    grade2.visible:=true;
+    painel2.visible:=true;
+  end;
+end;
+
+procedure Tfrm_f8Clientes.grade2DblClick(Sender: TObject);
+begin
+  if (edit is Tedit) then
+    TEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+  if (edit is TMaskedit) then
+    TMaskEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+  frm_F8Clientes.close;
+end;
+
+procedure Tfrm_f8Clientes.grade2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+     {teclando enter, seleciona}
+  if (key=K_ENTER) then
+  begin
+    if (edit is Tedit) then
+      TEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+    if (edit is TMaskedit) then
+      TMaskEdit(edit).text := TQuery(ds.dataset).fieldbyname('CL_CODI').asstring;
+    frm_F8Clientes.close;
+  end;
+  if (key=K_ESC) then
+  begin
+    TQuery(ds.dataset).close;
+    edt_nome.setfocus;
+  end;
+  if (key=K_F2) then
+    edt_nome.setfocus;
+end;
+
+procedure Tfrm_f8Clientes.edt_nomeChange(Sender: TObject);
+begin
+//  if (not frm_principal.x_onlinevpn) and (frm_principal.x_buscaaltomatica) and (trim(edt_nome.Text)<>'') then
+  if (trim(edt_nome.Text)<>'') then
+  begin
+    TQuery(ds.dataset).close;
+    TQuery(ds.dataset).sql.clear;
+    TQuery(ds.dataset).sql.Add ('Select  CL_CODI,CL_NOME,CL_ENDE,CL_BAIR,CL_CPF,CL_IDEN,CL_DTNA ');
+    TQuery(ds.dataset).sql.Add ('From    CRECLI ');
+    if (chcontem.Checked) then
+      TQuery(ds.dataset).sql.Add ('Where  (CL_NOME LIKE '+chr(39)+'%'+trim(edt_nome.Text)+'%'+chr(39)+') ')
+    else
+      TQuery(ds.dataset).sql.Add ('Where  (CL_NOME LIKE '+chr(39)+trim(edt_nome.Text)+'%'+chr(39)+') ');
+    TQuery(ds.dataset).sql.Add ('Order by CL_NOME ');
+    TQuery(ds.dataset).open;
+  end;
+
+end;
+
+procedure Tfrm_f8Clientes.chcontemClick(Sender: TObject);
+begin
+  edt_nome.OnChange(Sender);
+end;
+
+end.

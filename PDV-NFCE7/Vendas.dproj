@@ -1,0 +1,872 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{204F4F9A-DFD8-4704-8923-761D575EEE59}</ProjectGuid>
+        <MainSource>Vendas.dpr</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <TargetedPlatforms>1025</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>17.2</ProjectVersion>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_UNSAFE_TYPE>true</DCC_UNSAFE_TYPE>
+        <DCC_F>false</DCC_F>
+        <VerInfo_Locale>1046</VerInfo_Locale>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UsePackage>Vcl50;Vclx50;VclSmp50;Vcldb50;vclado50;ibevnt50;Vclbde50;vcldbx50;Qrpt50;TeeUI50;TeeDB50;Tee50;Dss50;TeeQR50;VCLIB50;Vclmid50;vclie50;Inetdb50;Inet50;NMFast50;webmid50;dclocx50;dclaxserver50;rtcAAC5002;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_K>false</DCC_K>
+        <SanitizedProjectName>Vendas</SanitizedProjectName>
+        <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+        <DCC_UNSAFE_CAST>true</DCC_UNSAFE_CAST>
+        <DCC_UNSAFE_CODE>true</DCC_UNSAFE_CODE>
+        <DCC_N>true</DCC_N>
+        <DCC_E>false</DCC_E>
+        <DCC_DebugInformation>1</DCC_DebugInformation>
+        <DCC_WriteableConstants>true</DCC_WriteableConstants>
+        <DCC_DcpOutput>C:\Temp_Compila\DCP\Vendas</DCC_DcpOutput>
+        <DCC_DcuOutput>C:\Temp_Compila\DCU\Vendas</DCC_DcuOutput>
+        <DCC_ExeOutput>C:\MistralNF</DCC_ExeOutput>
+        <DCC_S>false</DCC_S>
+        <DCC_Warnings>false</DCC_Warnings>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_UnitSearchPath>C:\FONTES2014\componentes\Geral;C:\FONTES2014\componentes\Geral\Componentes;C:\FONTES2014\componentes\Componentes_OO;C:\FONTES2014\componentes\Outros_DCU;C:\Temp_Compila\Dcu\VENDAS;C:\FONTES2014\componentes\SERIAL\TESTE1;C:\Componentes\Captura Video;C:\Temp_Compila\DCU\NFE;C:\FONTES2014\componentes\ZipUnzip;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_MapFile>3</DCC_MapFile>
+        <DCC_Hints>false</DCC_Hints>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Vendas_Icon.ico</Icon_MainIcon>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <Icon_MainIcon>Vendas_Icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_Optimize>false</DCC_Optimize>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="un_LancaVenda.pas">
+            <Form>frm_LancaVenda</Form>
+        </DCCReference>
+        <DCCReference Include="funcoes1.pas"/>
+        <DCCReference Include="funcoes2.pas"/>
+        <DCCReference Include="unMensagem.pas">
+            <Form>frm_mensagem</Form>
+        </DCCReference>
+        <DCCReference Include="procura.pas"/>
+        <DCCReference Include="classes\loja.pas"/>
+        <DCCReference Include="venda.pas"/>
+        <DCCReference Include="classes\auxiliar.pas"/>
+        <DCCReference Include="GruposProdutos\f8GruposProdutos.pas">
+            <Form>frm_F8GruposProdutos</Form>
+        </DCCReference>
+        <DCCReference Include="GruposProdutos\f8SubGrupos.pas">
+            <Form>frm_F8SubGrupos</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM1.pas">
+            <Form>DMF8</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="classes\grupos_produtos.pas"/>
+        <DCCReference Include="Produtos\f8Produtos2.pas">
+            <Form>frm_F8Produtos2</Form>
+        </DCCReference>
+        <DCCReference Include="classes\produtos.pas"/>
+        <DCCReference Include="Tamanhos\un_F8Faixas.pas">
+            <Form>frm_F8Faixas</Form>
+        </DCCReference>
+        <DCCReference Include="classes\cores.pas"/>
+        <DCCReference Include="unDialogo.pas">
+            <Form>frmDialogo</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM2.pas">
+            <Form>DMCaixa</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="un_EscolheFormaPgto.pas">
+            <Form>frm_EscolheFormaPgto</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\vendedores.pas"/>
+        <DCCReference Include="Produtos\un_ConsultaProdutos.pas">
+            <Form>frm_ConsultaProduto</Form>
+        </DCCReference>
+        <DCCReference Include="Forn\f8Forn.pas">
+            <Form>frm_F8Forn</Form>
+        </DCCReference>
+        <DCCReference Include="un_ExcVenda.pas">
+            <Form>frm_ExcVenda</Form>
+        </DCCReference>
+        <DCCReference Include="NFENFCE\un_F8CFOP.pas">
+            <Form>frm_F8CFOP</Form>
+        </DCCReference>
+        <DCCReference Include="Produtos\un_F8Sit.pas">
+            <Form>frm_F8Sit</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\f8Clientes.pas">
+            <Form>frm_f8Clientes</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux2Contrato.pas">
+            <Form>frm_aux2Contrato</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux3Contrato.pas">
+            <Form>frm_Aux3Contrato</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux4Contrato.pas">
+            <Form>frm_Aux4Contrato</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux4Contrato_demo.pas">
+            <Form>frm_Aux4Contrato_demo</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\CADCLI.PAS">
+            <Form>frm_edtCliente</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\f8Avalista.pas">
+            <Form>frm_f8Avalistas</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux1Contrato.pas">
+            <Form>frm_aux1Contrato</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\CHEQUES.PAS"/>
+        <DCCReference Include="CLASSES\CLIENTE.PAS"/>
+        <DCCReference Include="CLASSES\contratos.pas"/>
+        <DCCReference Include="Cliente\F8PLANOS.PAS">
+            <Form>frm_f8Planos</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\F8Lojas.pas">
+            <Form>frm_F8Lojas</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\f8Port.pas">
+            <Form>frm_f8Port</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\prestcontrato.pas"/>
+        <DCCReference Include="CLASSES\prestacoes.pas"/>
+        <DCCReference Include="Cliente\Rl_tite.pas">
+            <Form>frm_rl_tite</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\MEM_PRNT.PAS">
+            <Form>frm_mem_print</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM4.PAS">
+            <Form>DMcontrato</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\unEmissCarnet2.pas">
+            <Form>frm_EmisCarnet2</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unConsCheq.pas">
+            <Form>frm_ConsCheq</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unImpressoras.pas">
+            <Form>frm_impressoras</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\CREDITO.PAS"/>
+        <DCCReference Include="CLASSES\PLANO.PAS"/>
+        <DCCReference Include="Cliente\un_frmConsulta1.pas">
+            <Form>frm_Consulta1</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\chequesdev.pas"/>
+        <DCCReference Include="CLASSES\chequespg.pas"/>
+        <DCCReference Include="CLASSES\chequesdvpg.pas"/>
+        <DCCReference Include="Cliente\unPropostaCredito.pas">
+            <Form>frm_PropostaCredito</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unVersoPropostaCredito.pas">
+            <Form>frm_VersoProposta</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\CF_TBL.PAS"/>
+        <DCCReference Include="Cliente\RELAT.PAS"/>
+        <DCCReference Include="CLASSES\PORTADOR.PAS"/>
+        <DCCReference Include="Datamodules\DM3.PAS">
+            <Form>DMperm</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\unPosFinanc.pas">
+            <Form>frm_PosFinanc</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unLancReceb2OffLine.pas">
+            <Form>frm_LancReceb2OffLine</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM5.PAS">
+            <Form>DMAtualizReceb</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="CLASSES\prestcontratolote.pas"/>
+        <DCCReference Include="Cliente\unAux1LancReceb.pas">
+            <Form>frm_Aux1LancReceb</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unLancReceb.pas">
+            <Form>frm_LancReceb</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unReabreDocumento.pas">
+            <Form>frm_ReabreDocumento</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM7.PAS">
+            <Form>DMBaixAutCheq</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\unRegManContSpc.pas">
+            <Form>frm_RegManContSPC</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM9.PAS">
+            <Form>DMRegAutSpc</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\unReabManContSpc.pas">
+            <Form>frm_ReabManContSPC</Form>
+        </DCCReference>
+        <DCCReference Include="un_VerDadosPgto.pas">
+            <Form>frm_VerDadosPgto</Form>
+        </DCCReference>
+        <DCCReference Include="unProbIniciar.pas">
+            <Form>frm_ProbIniciar</Form>
+        </DCCReference>
+        <DCCReference Include="un_abresessao.pas">
+            <Form>frm_AbreSessao</Form>
+        </DCCReference>
+        <DCCReference Include="un_MudarSituacao.pas">
+            <Form>frm_MudarSituacao</Form>
+        </DCCReference>
+        <DCCReference Include="un_fecharsessao.pas">
+            <Form>frm_FecharSessao</Form>
+        </DCCReference>
+        <DCCReference Include="un_funcoesGaveta.pas">
+            <Form>frm_funcoesGaveta</Form>
+        </DCCReference>
+        <DCCReference Include="un_funcoesImpressora.pas">
+            <Form>frm_funcoesImpressora</Form>
+        </DCCReference>
+        <DCCReference Include="Administradoras\un_F8Adm.pas">
+            <Form>frm_F8Adm</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_senhaCaixa.pas">
+            <Form>frm_senhaCaixa</Form>
+        </DCCReference>
+        <DCCReference Include="un_MudarSeqVenda.pas">
+            <Form>frm_MudarSeqVenda</Form>
+        </DCCReference>
+        <DCCReference Include="un_MudarLoja.pas">
+            <Form>frm_MudarLoja</Form>
+        </DCCReference>
+        <DCCReference Include="f8Users.pas">
+            <Form>frm_f8Users</Form>
+        </DCCReference>
+        <DCCReference Include="unSenha.pas">
+            <Form>frmSenha</Form>
+        </DCCReference>
+        <DCCReference Include="unEntrada.pas">
+            <Form>frm_entrada</Form>
+        </DCCReference>
+        <DCCReference Include="Formas\un_F8FormaPgto2.pas">
+            <Form>frm_F8FormaPgto2</Form>
+        </DCCReference>
+        <DCCReference Include="Bancos\f8Bancos.pas">
+            <Form>frm_F8Bancos</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM16.pas">
+            <Form>DMmaxicod</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\un_DadosCompCliente.pas"/>
+        <DCCReference Include="CLASSES\un_Auxformulario1.pas">
+            <Form>frm_Auxformulario1</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\itensestoque.pas"/>
+        <DCCReference Include="CLASSES\itensestoqueloja.pas"/>
+        <DCCReference Include="un_BotoesOpcoes.pas">
+            <Form>frm_BotoesOpcoes</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda.pas">
+            <Form>frm_FechamentoVenda</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_Cred.pas">
+            <Form>frm_FechamentoVenda_Cred</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_Cheque.pas">
+            <Form>frm_FechamentoVenda_Cheque</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_Cartao.pas">
+            <Form>frm_FechamentoVenda_Cartao</Form>
+        </DCCReference>
+        <DCCReference Include="un_SinteseVendasPorDia.pas">
+            <Form>frm_SinteseVendasPorDia</Form>
+        </DCCReference>
+        <DCCReference Include="un_AjudaComandos.pas">
+            <Form>frm_AjudaComandos</Form>
+        </DCCReference>
+        <DCCReference Include="unSobre.pas">
+            <Form>frmSobre</Form>
+        </DCCReference>
+        <DCCReference Include="un_configLocal.pas">
+            <Form>frm_ConfigLocal</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Biblioteca_OO\CEP\cep.pas"/>
+        <DCCReference Include="D:\Biblioteca_OO\CEP\f8Cep.pas">
+            <Form>frm_f8Cep</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Biblioteca_OO\CEP\un_exibecep.pas">
+            <Form>frm_ExibeCep</Form>
+        </DCCReference>
+        <DCCReference Include="un_Indexar.pas">
+            <Form>frm_Indexar</Form>
+        </DCCReference>
+        <DCCReference Include="Movimento\un_ExportaRetaguarda.pas">
+            <Form>frm_ExportaRetaguarda</Form>
+        </DCCReference>
+        <DCCReference Include="Movimento\un_ImportaRetaguarda.pas">
+            <Form>frm_ImportaRetaguarda</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\un_BotoesECF.pas">
+            <Form>frm_BotoesECF</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Biblioteca_OO\ClasseTxt\classetxt.pas"/>
+        <DCCReference Include="D:\Biblioteca_OO\ClasseTxt\classetxt2.pas"/>
+        <DCCReference Include="D:\Biblioteca_OO\ClasseExport\classeExport.pas"/>
+        <DCCReference Include="ECF\Urano1efc.pas"/>
+        <DCCReference Include="Transferencias\un_BotoesTransf.pas">
+            <Form>frm_BotoesTransf</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM8.pas">
+            <Form>DMEstoque</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ECF\Bematech.pas"/>
+        <DCCReference Include="un_DadosAutenticacao.pas">
+            <Form>frm_DadosAutenticacao</Form>
+        </DCCReference>
+        <DCCReference Include="un_ALERTA.pas">
+            <Form>frm_ALERTA</Form>
+        </DCCReference>
+        <DCCReference Include="un_BotoesOpcoes_SubMenuVendas.pas">
+            <Form>frm_BotoesOpcoes_SubMenuVendas</Form>
+        </DCCReference>
+        <DCCReference Include="un_SumarioVendas.pas">
+            <Form>frm_SumarioVendas</Form>
+        </DCCReference>
+        <DCCReference Include="un_ListaVendasAtendimento.pas">
+            <Form>frm_ListaVendasAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="un_MudarTerminal.pas">
+            <Form>frm_MudarTerminal</Form>
+        </DCCReference>
+        <DCCReference Include="un_MudarEcf.pas">
+            <Form>frm_MudarECF</Form>
+        </DCCReference>
+        <DCCReference Include="Cores\un_F8CoresProdutos.pas">
+            <Form>frm_F8CoresProdutos</Form>
+        </DCCReference>
+        <DCCReference Include="un_CancelaVenda.pas">
+            <Form>frm_CancelaVenda</Form>
+        </DCCReference>
+        <DCCReference Include="ConsultaVendas\DM6.pas">
+            <Form>DMVendas</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cliente\un_frmConsulta1_Observacao.pas">
+            <Form>frm_Consulta1_Observacao</Form>
+        </DCCReference>
+        <DCCReference Include="Cobranca\un_Renegocia.pas">
+            <Form>frm_Renegocia</Form>
+        </DCCReference>
+        <DCCReference Include="Cobranca\un_Autentica.pas">
+            <Form>frm_Autentica</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\un_BotoesECF_LeituraMF.pas">
+            <Form>frm_BotoesECF_LeituraMF</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_Vales.pas">
+            <Form>frm_FechamentoVenda_Vales</Form>
+        </DCCReference>
+        <DCCReference Include="un_ResumoConexoes.pas">
+            <Form>frm_ResumoConexoes</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Biblioteca_OO\FTP\un_Exportacao_FTP.pas">
+            <Form>frm_ExportaFTP</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Biblioteca_OO\FTP\un_Importacao_FTP.pas">
+            <Form>frm_ImportaFTP</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\darumaFS345.pas"/>
+        <DCCReference Include="principal.pas">
+            <Form>frm_principal</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_ExibeCaixas.pas">
+            <Form>frm_ExibeCaixas</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_ExibeCaixas_NovoCaixa.pas">
+            <Form>frm_ExibeCaixas_NovoCaixa</Form>
+        </DCCReference>
+        <DCCReference Include="un_MenuPrincipal_OpcaoCrediario.pas">
+            <Form>frm_MenuPrincipal_OpcaoCrediario</Form>
+        </DCCReference>
+        <DCCReference Include="un_MenuPrincipal_OpcaoCaixa.pas">
+            <Form>frm_MenuPrincipal_OpcaoCaixa</Form>
+        </DCCReference>
+        <DCCReference Include="RelatoriosCrediario\unDiarEmiCont.pas">
+            <Form>frm_DiarEmiCont</Form>
+        </DCCReference>
+        <DCCReference Include="RelatoriosCrediario\unDiarPrestAVenc.pas">
+            <Form>frm_DiarPrestAVenc</Form>
+        </DCCReference>
+        <DCCReference Include="RelatoriosCrediario\unPrestRecCli.pas">
+            <Form>frm_PrestRecCli</Form>
+        </DCCReference>
+        <DCCReference Include="RelatoriosCrediario\unDiarioReceb.pas">
+            <Form>frm_DiarioRecebe</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\unLancReceb2.pas">
+            <Form>frm_LancReceb2</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM15.PAS">
+            <Form>DMRelatorios</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_CaixaLancamentos.pas">
+            <Form>frm_CaixaLancamentos</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\f8Contas.pas">
+            <Form>frm_F8Contas</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_CaixaLancamentos_F8TipoValor.pas">
+            <Form>frm_CaixaLancamentos_F8TipoValor</Form>
+        </DCCReference>
+        <DCCReference Include="un_MenuPrincipal_Opcao1.pas">
+            <Form>frm_MenuPrincipal_Opcao1</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_Adm.pas">
+            <Form>frm_FechamentoVenda_Adm</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\dataregis.pas"/>
+        <DCCReference Include="un_VendaDeVales.pas">
+            <Form>frm_VendaDeVales</Form>
+        </DCCReference>
+        <DCCReference Include="un_LancaVenda_InformeVendedor.pas">
+            <Form>frm_LancaVenda_InformeVendedor</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_CaixaLancamentos_Contas.pas">
+            <Form>frm_CaixaLancamentos_Contas</Form>
+        </DCCReference>
+        <DCCReference Include="Vendedores\f8Vend.pas">
+            <Form>frm_F8Vend</Form>
+        </DCCReference>
+        <DCCReference Include="ConsultaVendas\un_ConsultaVenda.pas">
+            <Form>frm_ConsultaVenda</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Entrada_Online_Lancamento.pas">
+            <Form>frm_Transf_Entrada_Online_Lancamento</Form>
+        </DCCReference>
+        <DCCReference Include="un_ValeMercadoriaFunc_Vale.pas">
+            <Form>frm_ValeMercadoriaFunc_Vale</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\un_BotoesECF_OpcoesLeituraX.pas">
+            <Form>frm_BotoesECF_OpcoesLeituraX</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\un_CarnetJatoDeTinta.pas">
+            <Form>frm_CarnetJatoDeTinta</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\un_CarnetJatoDeTinta2.pas">
+            <Form>frm_CarnetJatoDeTinta2</Form>
+        </DCCReference>
+        <DCCReference Include="MovimentoCred\un_Exportacao_Trigger.pas">
+            <Form>frm_ExportaTrigger</Form>
+        </DCCReference>
+        <DCCReference Include="MovimentoCred\un_Importacao_Trigger.pas">
+            <Form>frm_ImportaTrigger</Form>
+        </DCCReference>
+        <DCCReference Include="MovimentoCred\un_Importacao_FTP_Crediario.pas">
+            <Form>frm_ImportaFTP_Crediario</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\aux5Contrato.pas">
+            <Form>frm_Aux5Contrato</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\Urano.pas"/>
+        <DCCReference Include="un_LancaVenda_AlteraPreco.pas">
+            <Form>frm_LancaVenda_AlteraPreco</Form>
+        </DCCReference>
+        <DCCReference Include="un_TrocaVendedorNaVenda.pas">
+            <Form>frm_TrocaVendedorNaVenda</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_SuspensaoAtendimento.pas">
+            <Form>frm_SuspensaoAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos\un_F8MtvSuspensAtdo.pas"/>
+        <DCCReference Include="CLASSES\un_F8formulario1.pas">
+            <Form>frm_F8formulario1</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos\un_CancelaAtendimento.pas">
+            <Form>frm_CancelaAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\un_Auxformulario2.pas">
+            <Form>frm_Auxformulario2</Form>
+        </DCCReference>
+        <DCCReference Include="un_BotoesManut.pas">
+            <Form>frm_BotoesManut</Form>
+        </DCCReference>
+        <DCCReference Include="un_ValeMercadoriaFunc.pas">
+            <Form>frm_ValeMercadoriaFunc</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Lancamento_Salvar.pas">
+            <Form>frm_Transf_Lancamento_Salvar</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Consulta.pas">
+            <Form>frm_Transf_Consulta</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_MudaSituacao.pas">
+            <Form>frm_Transf_MudaSituacao</Form>
+        </DCCReference>
+        <DCCReference Include="Movimento\un_BotoesMovimento.pas">
+            <Form>frm_BotoesMovimento</Form>
+        </DCCReference>
+        <DCCReference Include="Inventario\un_ListaItensEstoque.pas">
+            <Form>frm_ListaItensEstoque</Form>
+        </DCCReference>
+        <DCCReference Include="Inventario\un_inventario1.pas">
+            <Form>frm_inventario1</Form>
+        </DCCReference>
+        <DCCReference Include="Inventario\un_ImportarContagem.pas">
+            <Form>frm_ImportarContagem</Form>
+        </DCCReference>
+        <DCCReference Include="Inventario\un_ExportarContagem.pas">
+            <Form>frm_ExportarContagem</Form>
+        </DCCReference>
+        <DCCReference Include="unAtualizaBd.pas">
+            <Form>frm_AtualizaBd</Form>
+        </DCCReference>
+        <DCCReference Include="Inventario\un_BotoesInventario.pas">
+            <Form>frm_BotoesInventario</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Entrada_Online.pas">
+            <Form>frm_Transf_Entrada_Online</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Lancamento.pas">
+            <Form>frm_Transf_Lancamento</Form>
+        </DCCReference>
+        <DCCReference Include="un_ListaMaisVend2.pas">
+            <Form>frm_ListaMaisVend2</Form>
+        </DCCReference>
+        <DCCReference Include="un_ListaMaisVend2_Relatorio.pas">
+            <Form>frm_ListaMaisVend2_Relatorio</Form>
+        </DCCReference>
+        <DCCReference Include="Linhas\un_F8Linhas.pas">
+            <Form>frm_F8Linhas</Form>
+        </DCCReference>
+        <DCCReference Include="Colecoes\un_F8Colecoes.pas">
+            <Form>frm_F8Colecoes</Form>
+        </DCCReference>
+        <DCCReference Include="un_botoesListagensAtdo.pas">
+            <Form>frm_botoesListagensAtdo</Form>
+        </DCCReference>
+        <DCCReference Include="un_botoesOutrasFuncoes.pas">
+            <Form>frm_botoesOutrasFuncoes</Form>
+        </DCCReference>
+        <DCCReference Include="un_TrocaVendedorNaVenda_EscolhaVendedor.pas">
+            <Form>frm_TrocaVendedorNaVenda_EscolhaVendedor</Form>
+        </DCCReference>
+        <DCCReference Include="ConsultaVendas\un_ConsultaVenda_Vendedores.pas">
+            <Form>frm_ConsultaVenda_Vendedores</Form>
+        </DCCReference>
+        <DCCReference Include="un_ListaVendas.pas">
+            <Form>frm_ListaVendas</Form>
+        </DCCReference>
+        <DCCReference Include="un_ListaAtendimentos.pas">
+            <Form>frm_ListaAtendimentos</Form>
+        </DCCReference>
+        <DCCReference Include="Transferencias\un_Transf_Acerto_Alteracao.pas">
+            <Form>frm_Transf_Acerto_Alteracao</Form>
+        </DCCReference>
+        <DCCReference Include="Cobranca\un_F8FormaPgto3.pas">
+            <Form>frm_F8FormaPgto3</Form>
+        </DCCReference>
+        <DCCReference Include="Formas\un_F8FormaPgto.pas">
+            <Form>frm_F8FormaPgto</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\un_CaixaLancamentos_Consulta.pas">
+            <Form>frm_CaixaLancamentos_Consulta</Form>
+        </DCCReference>
+        <DCCReference Include="un_principal_imagens.pas">
+            <Form>frm_principal_imagens</Form>
+        </DCCReference>
+        <DCCReference Include="Cobranca\unRecCheqDev.pas">
+            <Form>frm_RecCheqDev</Form>
+        </DCCReference>
+        <DCCReference Include="Cobranca\unRelRecCheqDev.pas">
+            <Form>frm_RelRecCheqDev</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM10.PAS">
+            <Form>DMRecCheqDev</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Produtos\un_VisaoPrecosPraticados.pas">
+            <Form>frm_VisaoPrecosPraticados</Form>
+        </DCCReference>
+        <DCCReference Include="Produtos\un_PromocoesAVencer.pas">
+            <Form>frm_PromocoesAVencer</Form>
+        </DCCReference>
+        <DCCReference Include="un_configSenhas_Atdo.pas">
+            <Form>frm_configSenhas_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="caixa.pas"/>
+        <DCCReference Include="Datamodules\DM20.pas">
+            <Form>DMLancamentos</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="CLASSES\un_AuxFormularioVendas.pas">
+            <Form>frm_AuxFormularioVendas</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\unSangria.pas">
+            <Form>frmSangria</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\unSangria_Sumario.pas">
+            <Form>frmSangria_Sumario</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\unSangria_Motivos.pas">
+            <Form>frmSangria_Motivos</Form>
+        </DCCReference>
+        <DCCReference Include="un_BotoesConfig.pas">
+            <Form>frm_BotoesConfig</Form>
+        </DCCReference>
+        <DCCReference Include="un_Mapa.pas">
+            <Form>frm_Mapa</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\cupomfiscal.pas"/>
+        <DCCReference Include="ECF\un_BotoesECF_Aliquotas.pas">
+            <Form>frm_BotoesECF_Aliquotas</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_BotoesConfig_Atdo.pas">
+            <Form>frm_BotoesConfig_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ConfigLocal_Atdo.pas">
+            <Form>frm_ConfigLocal_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_MudarSeqAtdo.pas">
+            <Form>frm_MudarSeqAtdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ExcAtendimento.pas">
+            <Form>frm_ExcAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ConfirmaAtendimento.pas">
+            <Form>frm_ConfirmaAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_LancaAtdo_InformeVendedor.pas">
+            <Form>frm_LancaAtdo_InformeVendedor</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ConsultaCodigoDeBarras.pas">
+            <Form>frm_ConsultaCodigoDeBarras</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\unSenha_Atdo.pas">
+            <Form>frmSenha_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_LancaAtendimento.pas">
+            <Form>frm_LancaAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_BotoesOpcoes_Atdo.pas">
+            <Form>frm_BotoesOpcoes_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_AjudaComandos_Atdo.pas">
+            <Form>frm_AjudaComandos_Atdo</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_SumarioAtdos.pas">
+            <Form>frm_SumarioAtdos</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ConsultaAtendimento.pas">
+            <Form>frm_ConsultaAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="un_ConfigFuncionamentoDoSistema.pas">
+            <Form>frm_ConfigFuncionamentoDoSistema</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos\un_BuscaAtendimento.pas">
+            <Form>frm_BuscaAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_BotoesOpcoes_Atdo_Suspensao.pas">
+            <Form>frm_BotoesOpcoes_Atdo_Suspensao</Form>
+        </DCCReference>
+        <DCCReference Include="un_configSenhas.pas">
+            <Form>frm_configSenhas</Form>
+        </DCCReference>
+        <DCCReference Include="un_FechamentoVenda_ValeMerc.pas">
+            <Form>frm_FechamentoVenda_ValeMerc</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ReabrirAtendimentoSuspenso.pas">
+            <Form>frm_ReabrirAtendimentoSuspenso</Form>
+        </DCCReference>
+        <DCCReference Include="Atendimentos_\un_ExibeNumeroAtendimento.pas">
+            <Form>frm_ExibeNumeroAtendimento</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Geral\GridCons.pas">
+            <Form>Frm_GridCons</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Geral\Consultas\Un_ConsImpExp.pas">
+            <Form>Form1</Form>
+        </DCCReference>
+        <DCCReference Include="Caixa\Un_FechamentoCaixa.pas">
+            <Form>Frm_FechamentoCaixa</Form>
+        </DCCReference>
+        <DCCReference Include="Un_MenuPrincipal_OpcaoListaCrediario.pas">
+            <Form>frm_MenuPrincipal_OpcaoListaCrediario</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Cred5\credito\unConfigLocal2.pas">
+            <Form>frm_ConfigLocal2</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Cred5\credito\un_SenhaAdmin.pas">
+            <Form>frm_SenhaAdmin</Form>
+        </DCCReference>
+        <DCCReference Include="D:\Cred5\credito\un_ConfigCobranca.pas">
+            <Form>frm_ConfigCobranca</Form>
+        </DCCReference>
+        <DCCReference Include="Produtos\Un_ConsProdutosEstoque.pas">
+            <Form>Frm_ConsProdutosEstoque</Form>
+        </DCCReference>
+        <DCCReference Include="un_senhaSupervisor.pas">
+            <Form>frm_senhaSupervisor</Form>
+        </DCCReference>
+        <DCCReference Include="un_SenhaAdministrador.pas">
+            <Form>frm_SenhaAdministrador</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\AbreCupomMFD.pas">
+            <Form>frm_AbreCupomMFD</Form>
+        </DCCReference>
+        <DCCReference Include="Captura Foto\mainf.pas">
+            <Form>Main</Form>
+        </DCCReference>
+        <DCCReference Include="Captura Foto\dlgaufz.pas">
+            <Form>DlgVPara</Form>
+        </DCCReference>
+        <DCCReference Include="Captura Foto\DlgTreiber.pas">
+            <Form>DlgEinstell</Form>
+        </DCCReference>
+        <DCCReference Include="Captura Foto\aboutx.pas">
+            <Form>AboutDlg</Form>
+        </DCCReference>
+        <DCCReference Include="un_VerProdutos.pas">
+            <Form>frm_VerProdutos</Form>
+        </DCCReference>
+        <DCCReference Include="DTEF\uDPOSDLL.pas"/>
+        <DCCReference Include="un_Opcoes_2via.pas">
+            <Form>frm_Opcoes_2via</Form>
+        </DCCReference>
+        <DCCReference Include="un_Emissao_Comprovante.pas">
+            <Form>frm_Emissao_Comprovante</Form>
+        </DCCReference>
+        <DCCReference Include="un_InfBoletaVenda.pas">
+            <Form>frm_InfBoletaVenda</Form>
+        </DCCReference>
+        <DCCReference Include="CLASSES\unPooling.pas"/>
+        <DCCReference Include="Cliente\USenhaConfirmacao.pas">
+            <Form>frmSenhaConfirmacao</Form>
+        </DCCReference>
+        <DCCReference Include="un_RelOrcamento.pas">
+            <Form>frm_RelOrcamento</Form>
+        </DCCReference>
+        <DCCReference Include="Uf8Comprador.pas">
+            <Form>frm_f8Comprador</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\f8Cidade.pas">
+            <Form>FrmF8Cidade</Form>
+        </DCCReference>
+        <DCCReference Include="Cliente\f8Pais.pas">
+            <Form>FrmF8Pais</Form>
+        </DCCReference>
+        <DCCReference Include="unAlertaProtecao.pas">
+            <Form>frm_AlertaProtecao</Form>
+        </DCCReference>
+        <DCCReference Include="un_AlertaGeral.pas">
+            <Form>frm_AlertaGeral</Form>
+        </DCCReference>
+        <DCCReference Include="ECF\UIdentificaCliente.pas">
+            <Form>frm_IdentificaCliente</Form>
+        </DCCReference>
+        <DCCReference Include="NFENFCE\un_FrmInfoAdicionais.pas">
+            <Form>Frm_InfoAdicionais</Form>
+        </DCCReference>
+        <DCCReference Include="NFENFCE\un_TrataNFENFCE.pas">
+            <Form>frm_TrataNFENFCE</Form>
+        </DCCReference>
+        <DCCReference Include="NFENFCE\AuxiliarNFE.pas"/>
+        <DCCReference Include="NFENFCE\un_FrmCancInutNFE.pas">
+            <Form>frm_CancInutNFE</Form>
+        </DCCReference>
+        <DCCReference Include="NFENFCE\un_InutilizaNFE.pas">
+            <Form>Frm_InutilizaNFE</Form>
+        </DCCReference>
+        <DCCReference Include="Datamodules\DM30.pas">
+            <Form>DMNFE</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Cores\un_F8Cores.pas">
+            <Form>frm_F8Cores</Form>
+        </DCCReference>
+        <DCCReference Include="Nfe\URetornoNfe_AtualizaVenda.pas"/>
+        <DCCReference Include="Nfe\UVendaNfe.pas"/>
+        <DCCReference Include="Nfe\URetornoNfe.pas"/>
+        <DCCReference Include="Nfe\URetornoNfe_CancelaVenda.pas"/>
+        <None Include="Vendas.todo"/>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">Vendas.dpr</Source>
+                </Source>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="iOSDevice64">True</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

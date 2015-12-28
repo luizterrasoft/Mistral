@@ -1,0 +1,213 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1046\deflangfe1046{\fonttbl{\f0\fmodern\fprq1\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;\red255\green0\blue0;\red0\green0\blue0;}
+\viewkind4\uc1\pard\nowidctlpar\qc\cf1\b\f0\fs56 RDprint 2.1\par
+\cf2\b0\i\fs28 O que era Bom ficou simplesmente Fant\'e1stico...\par
+\pard\nowidctlpar\fs36\par
+\cf1\ul\b\i0\fs24 INTRODU\'c7\'c3O E APRESENTA\'c7\'c3O:\ulnone\par
+\cf0\b0\fs20\par
+\pard\nowidctlpar\qj COMO VOC\'ca E COMO MUITOS OUTROS PROGRAMADORES EU ME DEPAREI COM S\'c9RIOS PROBLEMAS DE IMPRESS\'c3O NO AMBIENTE WINDOWS / DELPHI. UM SIMPLES RELAT\'d3RIO QUE EU FAZIA EM COBOL OU CLIPPER EU N\'c3O CONSIGO MAIS.\par
+   \par
+O WINDOWS ABRIU UM LEQUE DE OP\'c7\'d5ES PARA RELAT\'d3RIOS.  A PRIMEIRA VISTA \'c9 TUDO MARAVILHOSO, IMPRESSORA LASER, JATO DE TINTA, GR\'c1FICOS, QUICKREPORT E OUTROS, POR\'c9M COMO FICAM OS RELAT\'d3RIOS MAIS SIMPLES COMO NOTAS FISCAIS, DUPLICATAS, CHEQUES, BOLETOS? \par
+\pard\nowidctlpar\par
+ENTRE OUTROS PROBLEMAS OS QUE EU TIVE FORAM:\par
+\par
+   - IMPRIMIR EM SEXTOS E OITAVOS \par
+   - IMPRIMIR CARACTERES COMPRIMIDOS, EXPANDIDOS E OUTROS\par
+   - CONFIGURAR O TAMANHO DE P\'c1GINA PARA OS DIVERSOS IMPRESSOS UTILIZADOS\par
+   - VELOCIDADE DE IMPRESS\'c3O EM MATRICIAIS\par
+\par
+SE VOCE USAR: \par
+    \par
+\b QUICKREPORT:\b0  \'c9 UM EXCELENTE GERADOR DE RELAT\'d3RIOS, IMPRIME GR\'c1FICOS, QUEBRA DE GRUPOS, ETC. \'c9 MUITO BOM, MAS VOCE JA TENTOU MUDAR A CONFIGURA\'c7\'c3O DE UMA IMPRESSORA TAL COMO, TAMANHO DO PAPEL, IMPRESSORA NA REDE, ETC.\par
+\par
+\b PRINTER CANVAS\b0 : FOI MINHA PRIMEIRA SOLU\'c7\'c3O AT\'c9 QUE TIVE PROBLEMAS COM IMPRESSORAS COM RESOLU\'c7\'d5ES DIFERENTES, E TAMBEM DEPENDIA DE ELA ESTAR CONFIGURADA CORRETAMENTE NO WINDOWS.\par
+\par
+\b FILE/WRITELN\b0 : IMPRIMIR DIRETO PARA IMPRESSORA \'c9 A SOLU\'c7\'c3O. MAS O TRABALHO QUE DA. TENHO QUE MONTAR LINHA, ENVIAR CARACTERES DE CONTROLE, AINDA TENHO OS SEGUINTES PROBLEMAS:\par
+\par
+       - E SE MEU USU\'c1RIO TROCAR O MODELO DE IMPRESSORA ?\par
+       - IMPRESS\'c3O NA REDE ??\par
+       - PREVIEW ???\par
+       - SELE\'c7\'c3O DE P\'c1GINA ???\par
+\par
+\pard\nowidctlpar\qc\cf2\ul\b\fs24 A    S O L U \'c7 A O    \'c9     R D P R I N T:\par
+\pard\nowidctlpar\cf0\ulnone\b0\fs20\par
+RDPRINT FOI ESCRITO COM A FINALIDADE DE OFERECER MAIS UM RECURSO DE IMPRESS\'c3O AOS PROGRAMADORES, EU NAO QUERO QUE VOCE TROQUE O QUICKREPORT OU OUTRO GERADOR POR ELE, MINHA INTENS\'c3O \'c9 OFERECER RECURSOS PARA SIMPLIFICAR A IMPRESS\'c3O DE RELAT\'d3RIOS EM MATRICIAIS E/OU JATO DE TINTA/LASER DE FORMA  R\'c1PIDA, AL\'c9M  DE IMPRIMIR COM FACILIDADE: NOTAS FISCAIS, DUPLICATAS, BOLETOS, CHEQUES E TODOS OS TIPOS DE RELAT\'d3RIO PR\'c9-IMPRESSOS.\par
+\par
+\cf1\ul\b\fs24 CARACTER\'cdSTICAS:\cf0\ulnone\b0\par
+\fs20\par
+- \b Configura\b0 :     Porta de impress\'e3o inclusive na rede e/ou em arquivo\par
+                 Avan\'e7o de linha em sexto e oitavos                 \par
+                 Tamanho da P\'e1gina \par
+             \cf2 new \cf0 Modelo da impressora utilizada com nova op\'e7\'e3o para modo gr\'e1fico,\par
+                        para modelos que n\'e3o aceitam impress\'e3o em modo direto (MS-DOS)\tab\par
+                 Sele\'e7\'e3o de Fonte default de impress\'e3o\par
+\par
+- \b Recursos avan\'e7ados\b0 : \cf2 new \cf0 Preview real de impress\'e3o (Aprimorado)\par
+                      \cf2 new \cf0 Op\'e7\'e3o de Setup para o usu\'e1rio final com op\'e7\'e3o de "cancelar"\par
+                          Sele\'e7\'e3o do intervalo de p\'e1ginas a serem impressas\par
+                          Sele\'e7\'e3o do n\'famero de c\'f3pias \par
+                      \cf2 new \cf3 Utiliza o gerenciador de impress\'e3o do Windows\par
+\cf2                       new \cf3 Barra de progresso indicando o andamento da impress\'e3o\cf2  \cf0  \par
+                      \cf2 new \cf3 Confira Captions/Fontes/Cor dos form SETUP/PREVIEW\cf0\par
+                      \cf2 new \cf3 Define o ZOOM inicial para a visualiza\'e7\'e3o do PREVIEW\cf0  \par
+                      \cf2 new \cf3 Mant\'eam compatibilidade com relat\'f3rios da vers\'e3o 1.3X\cf2  \cf0  \par
+                      \cf2 new \cf3 Impress\'e3o com sobreposi\'e7\'e3o, permitindo fazer negrito com qualquer\par
+                          fonte e modelo de impressora e ainda criar formul\'e1rios fant\'e1stico\par
+                          de maneira simples e r\'e1pida\cf0\par
+ \par
+\par
+\cf1\ul\b\fs24 PROPRIEDADES:\par
+\cf0\ulnone\b0\fs20     property Autor              : Nome do autor (FIXO);    \par
+\cf2\par
+new \cf0 property Impressora         : Modelo da impressora a ser utilizada \par
+                                  utiliza o modelo padr\'e3o de compatibilidade.\par
+                                  \cf1\i Epson   \cf0\i0 = Toda a linha epson matriciais/Jato/Laser\par
+                                  \cf1\i HP      \cf0\i0 = Toda linha HP Laser / Jato de Tinta\par
+                                  \cf1\i Rima    \cf0\i0 = Modelos nacionais Rima e Emilia\par
+                             \cf2 new \cf0  \cf1\i Gr\'e1fico \cf0\i0 = Impress\'e3o em modo Gr\'e1fico (Printer Canvas)\par
+                                  * Use este modo para modelos que n\'e3o aceitam impress\'e3o\par
+                                    em modo MS-DOS, ou seja, diretamente para LPT1.\par
+\par
+    property PortaComunicacao   : Porta ou caminho para impress\'e3o \par
+                                  Ex: LPT1,LPT2,COM2, //SERVIDOR/EPSON, etc)\par
+\par
+    property TamanhoQteLinhas   : Altura do formul\'e1rio em Linhas (Salto)\par
+                                  Ex: 66 (carta)\par
+\par
+    property TamanhoQteColunas  : Largura do formul\'e1rio em colunas (Ex:80/132).\par
+\par
+    property TamanhoQteLPP      : Define o avan\'e7o entrelinhas: \par
+                                  \cf1\i Seis \cf0\i0 = Sexto (6 linhas por polegada)\par
+                                  \cf1\i Oito \cf0\i0 = Oitavo (8 linhas por polegada)\par
+\par
+    property Preview            : ver preview antes de imprimir (boolean).\par
+\par
+    property NumeroPaginaInicial: N\'famero da pagina inicial. (controle Interno).\par
+\par
+    property PaginaInicial      : P\'e1gina inicial para impress\'e3o.\par
+\par
+    property PaginaFinal        : P\'e1gina final para impress\'e3o.\par
+\par
+    property NumerodeCopias     : n\'famero de c\'f3pias.\par
+\par
+    property FonteTamanhoPadrao : Tamanho da fonte default.\par
+\par
+    property FonteEstiloPadrao  : Estilo da fonte default. \par
+\par
+\cf2 new \cf0 property About              : Informa\'e7\'f5es sobre o componente\par
+\cf2 new \cf0 property Acentuacao         : Define o mode de acentua\'e7\'e3o e pode ser:\par
+                                  \cf1\i Transliterate \cf0\i0 = Converte caracteres p/ ASCII\par
+                                  \cf1\i SemAcento     \cf0\i0 = Troca caracteres acentuados (\'e1=a)\par
+ \par
+\cf2\lang1033 new \cf0 property CaptionSetup       : String que define o Caption do form Setup\par
+\cf2\par
+new \cf0 property CaptionPreview     : String que define o Caption do form Preview\par
+\par
+\cf2\lang1046 new \cf0 property TitulodoRelatorio  : String que define o nome do relat\'f3rio\par
+\par
+\cf2\lang1033 new \cf0 property PreviewZoom        : Zoom inicial no preview\par
+\par
+\cf2\lang1046 new \cf0 property UsaNovoMetodoPrint : Define se deseja utilizar os novos m\'e9todo de impress\'e3o\par
+                                  Deve estar FALSE para relat\'f3rios antigos\par
+\par
+\cf2 new \cf0 property UsaGerenciadorImpr : Se false a impress\'e3o \'e9 feita diretamente para a Porta, \par
+                                  Se True a impress\'e3o \'e9 enviada para o gerenciador de \par
+                                  impress\'e3o do Windows\par
+                                  \cf2\b * Observa\'e7\'f5es\cf0\b0 :\par
+                                  \cf1\i 1) A op\'e7\'e3o false foi feita para manter compatibilidade\par
+                                  2) Sempre que poss\'edvel coloque como True\par
+                                  3) Em grandes relat\'f3rios, libera seu programa muito \par
+                                     mais r\'e1pido e evita travamentos indesejados.\par
+                                  4) Se TRUE a propriedade TESTAPORTA deve estar FALSE e\par
+                                     a propriedade UsaNovoMetodoPrint = True\cf0\i0\par
+ \par
+\par
+\cf2\lang1033 new \cf0 property CorForm            : Cor do Form Setup e Preview;\par
+\cf2\par
+\lang1046 new \cf0 property CorFonte           : Cor da Fonte do Setup e Preview;\par
+\cf2\par
+\lang1033 new \cf0 property CorPapelPreview    : Cor do Papel no Form Preview;\par
+\cf2\par
+new \cf0 property CorLetraPreview    : Cor da Letra no Form Preview;\par
+\cf2\par
+\lang1046 new \cf0 property TestarPorta        : Informa se deve testar a impressora antes e durante a \par
+                                  impress\'e3o, se usar estiver utilizando o WINDOWS NT ou\par
+                                  gerenciador de impress\'e3o deve estar false; \par
+\par
+\par
+\par
+\par
+\cf1\ul\b\fs24 EVENTOS\par
+\cf0\ulnone\b0\fs20     property OnErro             : Chamado quando ocorrer algum erro na impress\'e3o.\par
+    property OnNewPage          : chamado ap\'f3s iniciar uma nova p\'e1gina(cabe\'e7alho). \par
+    property OnBeforeNewPage    : chamado antes de iniciar uma nova p\'e1gina(rodap\'e9).\par
+\par
+\cf1\ul\b\fs24 FUN\'c7\'d5ES:\cf0\ulnone\b0\par
+\fs20     Function  Abrir        : Inicializa arquivo de impress\'e3o.\par
+    Function  Fechar       : Finaliza arquivo de impress\'e3o, \par
+                             chama preview ou inicia impress\'e3o.\par
+\cf2 new \cf0 Function  Abortar      : Aborta a impress\'e3o;\par
+    Function  Novapagina   : Inicializa nova p\'e1gina ou salta uma p\'e1gina em branco.\par
+    procedure Setup        : Mostra tela para setup da impress\'e3o\par
+    procedure OnLine       : Verifica se a impressora esta ligada\par
+\par
+    ** impress\'e3o **\par
+\par
+    Function  Imp (linha,coluna:integer; texto:string) : boolean;\par
+    Function  ImpF(linha,coluna:integer; texto:string; Fonte:TFonte):boolean;\par
+\cf2 new \cf0 Function  ImpD(linha,coluna:integer; texto:string; Fonte:TFonte):boolean;\par
+\cf2\lang1033 new \cf0 Function  ImpC(linha,coluna:integer; texto:string; Fonte:TFonte):boolean;\par
+  \par
+    \lang1046 onde: \b Linha  \b0 = Linha de impress\'e3o\par
+          \b Coluna \b0 = Coluna de impress\'e3o, observe a compress\'e3o para determinar o \par
+                   correto posicionamento da coluna (veja o programa exemplo)\par
+          \b Texto  \b0 = Texto a ser impresso\par
+          \b Fonte  \b0 = Fonte e estilo de impress\'e3o podendo ser combinados da seguinte\par
+                   Forma:  [\b negrito\b0 , \i it\'e1lico\i0 , \ul sublinhado\ulnone  + \cf2 *tamanho\cf0 ]\par
+                   \cf2 *tamanho pode ser: \cf0 [ expandido,  normal, comp12, comp17, comp20];\par
+     \par
+    IMP  -> Impress\'e3o com fonte padr\'e3o (default);\par
+    IMPF -> Impress\'e3o com fonte especificada em FONTE\par
+\cf2 new \cf0 IMPC -> idem a IMPF, mas com Impress\'e3o centralizada\par
+\cf2 new \cf0 IMPD -> idem a IMPF, mas com Impress\'e3o alinhada a direita\par
+\par
+    Os comandos IMPC e IMPD poder\'e3o n\'e3o funcionar corretamente dependendo da \par
+    Fonte padr\'e3o (default) e da fonte utilizada no comando, de maneira geral \par
+    os comandos funcionaram bem se as fontes forem do mesmo tamanho e estilo.\par
+\par
+    Veja o exemplo e teste com sua impressora.\par
+\par
+\par
+\par
+\cf1\ul\b\fs32 COMO COMPRAR / PAGAR / RECEBER:\fs24\par
+\cf0\ulnone\b0\fs20\par
+SE VOCE FICAR SATISFEITO COM A C\'d3PIA DE DEMONSTRA\'c7\'c3O E QUISER ADQUIRI-LO\par
+\par
+PRE\'c7O S/FONTES PARA D3,D4 e D5 => R$ 50,00 \par
+PRE\'c7O C/FONTES PARA D3,D4 e D5 => AINDA N\'c3O DISPON\'cdVEL, \par
+                                 \par
+\par
+\b DEPOSITO BANC\'c1RIO\b0 : BANCO  : \cf1 BRADESCO\cf0             \par
+                   AGENCIA: \cf1 2155-5\cf0            \par
+                   CONTA  : \cf1 4439-3\cf0            \par
+                   NOME   : \cf1 VALDEREZ CANUTO DINIZ\cf0\par
+\par
+AP\'d3S DEP\'d3SITO, ENVIE SEUS DADOS COMPLETOS: NOME/ENDERE\'c7O COMPLETO/FONE/FAX E EMAIL PARA QUE POSSAMOS REGISTRAR E ENVIAR A VERS\'c3O FINAL DO COMPONENTE.\par
+\par
+\b VIA EMAIL\b0  -> SEM CUSTO ADICIONAL\par
+\par
+\cf1\ul\b\fs24 MAIORES INFORMA\'c7\'d5ES:\par
+\par
+\cf0\ulnone\b0\fs20 DELTRESS INFORM\'c1TICA LTDA\par
+RUA NASSIMEN MUSSI, 575 - JD. ITAIP\'da\par
+17519-570 - MARILIA - SP\par
+FONE/FAX (14) 427-5322\par
+ANALISTA: VALDEREZ CANUTO DINIZ \par
+WEB SITE: \cf1\ul www.deltress.com.br\cf0\ulnone\par
+EMAIL   : \cf1\ul deltress@deltress.com.br\par
+\pard\nowidctlpar\qc\cf2\ulnone\par
+\b\fs24 CR\'cdTICAS, SUGEST\'d5ES, RECLAMA\'c7\'d5ES E ELOGIOS SER\'c3O ACEITOS! \par
+POR FAVOR, ENVIE-NOS!\par
+\cf0\b0\fs20\par
+}
+ 

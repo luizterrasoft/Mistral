@@ -1,0 +1,90 @@
+		MODO DE FUNCIONAMENTO DO DRIVER DRVECF.SYS P/DOS
+		------------------------------------------------
+
+
+1. O DRIVER DEVE SER INSTALADO NO ARQUIVO CONFIG.SYS:
+
+	.
+	.
+	.
+	
+	DEVICEHIGH = C:\DOS\DRVECF.SYS /1 
+
+	.
+	.
+	.
+
+	
+	Neste exemplo, o arquivo DRVECF.SYS esta no diretorio c:\dos.
+	O parametro /1 indica que o ECF esta instalado na com1. Caso
+	se deseje instalar na com2, o parametro sera "/2".
+
+2. O driver se comunica com o aplicativo atraves da escrita e leitura de 
+   um arquivo chamado "DRVCIF@C".
+
+   Para enviar um comando, deve-se escrever neste arquivo (fwrite()) a sequencia sem
+   sem o protocolo (ex.: ESC $ 1 5, sem STX ou ETX; ver manual de programacao).
+  
+   Para recepcao, deve-se realizar uma leitura deste arquivo (fread()) para a 
+   obtencao da resposta do ECF (ou a resposta do driver).
+  
+   A sequencia correta para cada comando seria:
+	- Abrir o arquivo (fopen());
+	- Escrever o comando no arquivo (fwrite());
+	- Ler o comando do arquivo (fread());
+	- Fechar o arquivo (fclose());
+
+3. As mensagens retornadas neste arquivo sao a resposta do ECF, porem o proprio
+   driver pode responder algumas mensagens de erro obedecendo a mesma sintaxe do
+   ECF.
+
+   Os codigos de erro entre "-96" e "-99" sao retornados pelo driver, enquanto
+   que os demais sao a resposta do ECF:
+
+	
+   |CODIGO DO ERRO|         MENSAGEM         |    SIGNIFICADO                |  
+   |--------------|--------------------------|-------------------------------|
+   |	       	  |			     |				     |
+   | - 96	  | TAMPA ABERTA	     | Tampa esta Aberta. 	     |
+   | - 97 	  | SEM MENSAGEM EM ANDAMENTO| Nao ha resposta pendente      |
+   | - 98	  | OVERFLOW		     | Erro de comunicacao serial    |
+   | - 99	  | TIMEOUT		     | Nao ha resposta do ECF	     |
+
+
+   Erro -96 TAMPA ABERTA:
+
+	Este retorno ocorre quando a tampa for aberta enquanto se espera a 
+   resposta do ECF. Neste caso, deve-se corrigir o problema (fechar a tampa)
+   e realizar uma nova leitura do arquivo ate que a resposta do ECF esteja 
+   disponivel.
+
+   Erro -97 SEM MENSAGEM EM ANDAMENTO:
+
+	Este retorno ocorre quando e' feita uma leitura no arquivo sem que 
+   um comando tenha sido enviado.
+
+   Erro -98 OVERFLOW:
+
+	Caso ocorra algum problema de leitura na comunicacao serial, o driver
+   retornara este erro. Isto significa que algum dado pode ter sido perdido.
+
+   Erro -99 TIMEOUT:
+
+	Caso o driver nao consiga se comunicar com o ECF durante o processo de
+   espera de resposta a um comando enviado, sera retornado este erro.
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+

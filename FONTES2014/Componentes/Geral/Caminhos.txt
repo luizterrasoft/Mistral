@@ -1,0 +1,2 @@
+F:\Safi_Desenvolvimento\Apoio;F:\Componentes\Precision;F:\Componentes\Precision\Diversos;F:\componentes\Outros\impbo;F:\componentes\Outros\Impfiscal;F:\Componentes\Precision\Seguranca;F:\Componentes\Outros\Cnab;F:\Componentes\Tef;F:\Safi_Desenvolvimento\Dcu
+F:\Safi_Desenvolvimento\dcu

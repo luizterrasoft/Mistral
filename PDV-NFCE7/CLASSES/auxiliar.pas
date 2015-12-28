@@ -1,0 +1,200 @@
+{*** classe geral de acesso a entidade plano de pagamento}
+unit auxiliar;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  DB, StdCtrls, DBTables;
+
+type
+  TClassAuxiliar = class(TObject)
+  private
+  public
+    consulta: TQuery;            {publica, para ser acessada externamente ***}
+    procedure Conect             (banco: String; Owner: TComponent);
+    procedure Desconect          ;
+
+    function  AddParam           (linha: String):Boolean;
+    function  Execute            :Boolean;
+    function  Result             (campo: String):Variant;
+
+    function  ClearSql           :Boolean;
+    function  Filter             (filtro: String):Boolean;
+
+    function  Next               :Boolean;
+    function  Prior              :Boolean;
+    function  First              :Boolean;
+    function  Last               :Boolean;
+    function  RecCount           :Integer;
+    function  Eof                :Boolean;
+    function  Bof                :Boolean;
+  end;
+
+implementation
+
+{Classe de realizacao do filtro do cliente, apos a classe estar aberta}
+function TClassAuxiliar.Filter (filtro: String):Boolean;
+begin
+  consulta.filtered := false;
+  consulta.filter   := filtro;
+  consulta.filtered := true;
+  Filter            := true;
+end;
+
+{Construtor padrao da classe - serve para instanciar a query em tempo de execucao}
+{Alem de inicializa-la automaticamente de acordo com a conexao utilizada}
+procedure TClassAuxiliar.Conect (banco: String; Owner: TComponent);
+begin
+  consulta := TQuery.Create(Owner);
+  consulta.databasename := banco;
+end;
+
+{Desconexao ao banco}
+procedure TClassAuxiliar.Desconect;
+begin
+  consulta.Free;
+end;
+
+{Eesta funcao vai ficar sob observacao - a COERCAO, conversao de tipos segundo}
+{alguns programadores é lenta}
+{ATENCAO: A melhor forma de trabalhar com essa funcao é armazenar os valores em}
+{variaveis fixas e realizar operacoes nessas variaveis, tornando os processamentos}
+{mais rapidos}
+function TClassAuxiliar.Result (campo: String) :Variant;
+var
+  data: TDateTime;
+begin
+     {se o campo estiver NULO}
+  if (consulta.fieldbyname(campo).isNull) then
+  begin
+          {devolve ZERO para campos numericos}
+    if (consulta.fieldbyname(campo).datatype=ftInteger) or
+      (consulta.fieldbyname(campo).datatype=ftWord) or
+      (consulta.fieldbyname(campo).datatype=ftSmallint) or
+      (consulta.fieldbyname(campo).datatype=ftFloat) or
+      (consulta.fieldbyname(campo).datatype=ftCurrency) then
+      result := 0
+             {devolve STRING NULA para campos string}
+    else
+    if (consulta.fieldbyname(campo).datatype=ftString) then
+      result := ''
+             {devolve DATA NULA para campos datetime}
+    else
+    if (consulta.fieldbyname(campo).datatype=ftDateTime) then
+    begin
+      data := consulta.fieldbyname(campo).asdatetime;
+      Result := data;
+    end;
+  end
+  else
+  if (consulta.fieldbyname(campo).datatype=ftDateTime) then
+  begin
+    data := consulta.fieldbyname(campo).asdatetime;
+    Result := data;
+  end
+  else
+    Result := consulta.fieldbyname(campo).value{Para campos DATA é feito um trat. especial};
+end;
+
+{Limpeza da propriedade SQL da querie criada para selecao}
+function TClassAuxiliar.ClearSql           :Boolean;
+begin
+  consulta.sql.clear;
+  ClearSql:=true;
+end;
+
+{Esta funcao a cada vez que e chamada, coloca a string determinada no AddParametro
+ SQL da querie - para queries criadas em tempo de design}
+function TClassAuxiliar.AddParam      (linha: String):Boolean;
+begin
+  consulta.close;
+  consulta.sql.add (linha);
+  AddParam := true;
+end;
+
+{Funcao que implementa um SELECT na tabela dos clientes}
+{ATENCAO: Esta funcao aparentemente esta oferecendo um GARGALO na classe}
+{Aparentemente, o GARGALO esta no primeiro select logo apos o Conect}
+function TClassAuxiliar.Execute:Boolean;
+var
+  trecho: String;
+begin
+  if (consulta.Sql.count=0) then
+    Execute := false
+  else
+  begin
+    trecho:=UpperCase(consulta.sql[0]);
+    Execute := false;
+    if (Pos('SELECT',trecho)>0) then
+    begin
+      consulta.open;
+      if (RecCount=0) then
+        Execute := false
+      else
+        Execute := true;
+    end;
+    if ((Pos('DELETE',trecho)>0) or (Pos('UPDATE',trecho)>0) or
+      (Pos('CREATE TABLE',trecho)>0) or (Pos('INSERT',trecho)>0) or
+      (Pos('DROP TABLE',trecho)>0) or 
+      (Pos('ALTER TABLE',trecho)>0) or (Pos('ALTER TRIGGER',trecho)>0)) then
+    begin
+      Execute := false;
+      consulta.execsql;
+    end;
+  end;
+end;
+
+{Funcao que coloca o CURSOR de acesso a tabela na posicao do primeiro registro}
+{****** NAVEGACAO na Querie padrao}
+function TClassAuxiliar.Next:Boolean;
+begin
+  consulta.next;
+  Next := true;
+end;
+
+function TClassAuxiliar.Prior:Boolean;
+begin
+  consulta.prior;
+  Prior := true;
+end;
+
+function TClassAuxiliar.First:Boolean;
+begin
+  consulta.first;
+  First := true;
+end;
+
+function TClassAuxiliar.Last:Boolean;
+begin
+  consulta.last;
+  Last := true;
+end;
+
+function TClassAuxiliar.Eof:Boolean;
+begin
+  if (consulta.eof) then
+    Eof:=true
+  else
+    Eof:=false;
+end;
+
+function TClassAuxiliar.Bof:Boolean;
+begin
+  if (consulta.eof) then
+    Bof:=true
+  else
+    Bof:=false;
+end;
+
+{Funcao que retorna o numero de registros - no caso da querie estiver aberta
+ se a querie estiver fechada, ela retorna -1}
+function TClassAuxiliar.RecCount:Integer;
+begin
+  if (not consulta.active) then
+    RecCount:=(-1)
+  else
+    RecCount:=consulta.recordcount;
+end;
+
+end.

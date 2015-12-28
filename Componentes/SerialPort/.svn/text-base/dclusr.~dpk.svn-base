@@ -1,0 +1,64 @@
+package dclusr;
+
+{$R *.res}
+{$R 'C:\Componentes\Componentes_OO\BotaoSair.dcr'}
+{$R 'C:\Componentes\Componentes_OO\CheckBoxOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\ColorPanelOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\ComboBoxOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\DbGridOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\GaugeOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\LabelOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\MaskEditOO.dcr'}
+{$R 'C:\Componentes\Componentes_OO\PanelOO.dcr'}
+{$R 'C:\Componentes\SERIAL\TESTE1\Serial.dcr'}
+{$R 'C:\Componentes\CODIGO4\Barcode.dcr'}
+{$ALIGN 8}
+{ ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{ DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{ LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{ STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $51000000}
+{$DESCRIPTION 'Borland User Components'}
+{$LIBSUFFIX '60'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  dbrtl,
+  vcldb,
+  bdertl,
+  VclSmp;
+
+contains
+  BotaoSair in 'C:\Componentes\Componentes_OO\BotaoSair.pas',
+  CheckBoxOO in 'C:\Componentes\Componentes_OO\CheckBoxOO.pas',
+  ColorPanelOO in 'C:\Componentes\Componentes_OO\ColorPanelOO.pas',
+  ComboBoxOO in 'C:\Componentes\Componentes_OO\ComboBoxOO.pas',
+  componentesOO in 'C:\Componentes\Componentes_OO\componentesOO.pas',
+  DbGridOO in 'C:\Componentes\Componentes_OO\DbGridOO.pas',
+  GaugeOO in 'C:\Componentes\Componentes_OO\GaugeOO.pas',
+  LabelOO in 'C:\Componentes\Componentes_OO\LabelOO.pas',
+  MaskEditOO in 'C:\Componentes\Componentes_OO\MaskEditOO.pas',
+  PanelOO in 'C:\Componentes\Componentes_OO\PanelOO.pas',
+  Serial in 'C:\Componentes\Componentes_OO\Serial.pas',
+  Barcode in 'C:\Componentes\Componentes_OO\Barcode.pas';
+
+end.

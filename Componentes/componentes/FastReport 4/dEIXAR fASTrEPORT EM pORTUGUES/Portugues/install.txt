@@ -1,0 +1,15 @@
+Portugues
+personalisar fastreport 4
+
+Se o Delphi estiver aberto deve-se fechar
+em seguida:
+copiar todos os arquivos para:
+C:\Arquivos de programas\Borland\Delphi7\Lib
+
+frxrcClass.pas 
+frxrcDesgn.pas 
+frxrcExports.pas
+frxrcInsp.pas  
+
+Quando copiar tudo abra o Delphi
+

@@ -1,0 +1,75 @@
+package RahDelphi6A;
+
+{$R *.res}
+{$R 'Elihint.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Criado por Marcio para Delphi 6'}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  bdertl,
+  vclx,
+  vcldb,
+  qrpt,
+  VclSmp,
+  dbrtl,
+  RahDelphi6Safi;
+
+contains
+  Ajuda in 'Ajuda.pas',
+  ExpQuickRep in '..\ExpQuickRep.pas',
+  BitBtnControle in 'BitBtnControle.pas',
+  BitBtnGravacao in 'BitBtnGravacao.pas',
+  ButtonControle in 'ButtonControle.pas',
+  CheckControle in 'CheckControle.pas',
+  ComboSql in 'ComboSql.pas',
+  CondPag in 'CondPag.pas',
+  DBGridControle in 'DBGridControle.pas',
+  Direito in 'Direito.pas',
+  EditControle in 'EditControle.pas',
+  Elihint in 'Elihint.pas',
+  FuncoesGlobais in 'FuncoesGlobais.pas',
+  GridControl in 'GridControl.pas',
+  GridSql in 'GridSql.pas',
+  MaskEdit in 'MaskEdit.pas',
+  PanelBarra in 'PanelBarra.pas',
+  PanelControle in 'PanelControle.pas',
+  PanelInforma in 'PanelInforma.pas',
+  PanelObj in 'PanelObj.pas',
+  PiscaLabel in 'PiscaLabel.pas',
+  RadioBControle in 'RadioBControle.pas',
+  RadioGControle in 'RadioGControle.pas',
+  SelecaoRel in 'SelecaoRel.pas',
+  Sequencial in 'Sequencial.pas',
+  antAngleLabel in '..\Outros_Componentes\Angle_Label\antAngleLabel.pas',
+  MensPisca in '..\MensPisca.pas' {FrmMensPisca},
+  un_AjudaCons in '..\un_AjudaCons.pas' {frm_AjudaCons},
+  OpcoesMensagem in 'OpcoesMensagem.pas' {FrmOpcao},
+  Animate in 'Animate.pas',
+  SetupGraf in '..\SetupGraf.pas' {Frm_SetupGraf},
+  GridCons in '..\gridcons.pas' {Frm_GridCons},
+  MemoControle in 'MemoControle.pas';
+
+end.

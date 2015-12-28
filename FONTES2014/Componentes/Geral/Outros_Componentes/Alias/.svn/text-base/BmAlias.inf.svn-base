@@ -1,0 +1,31 @@
+[DSP upload]
+Filename=BmAlias.zip
+Replacements=
+Version=1.0
+FileURL=
+Description=Component allowing developer to create and delete BDE aliases. With this component, the same program compiles with all Delphi versions.
+Delphi 1.0=Y
+Delphi 2.0=Y
+Delphi 3.0=Y
+Delphi 4.0=Y
+C++Builder 1.0=Y
+C++Builder 3.0=Y
+File Status=Freeware
+Full Source=Included
+Category=Visible Components
+Note=see BmAlias.txt for instructions
+Additional info=
+
+[DSP Support]
+DSP Support=N
+
+[Versions available]
+Delphi 1.0=
+Delphi 2.0=
+Delphi 3.0=
+C++Builder 1.0=
+
+[Uploader]
+Author name=BOURMAD Mehdi
+Author E-mail=bourmad@multimania.com
+Author URL=http://www.multimania.com/bourmad

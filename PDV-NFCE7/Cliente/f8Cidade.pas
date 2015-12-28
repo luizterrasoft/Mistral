@@ -1,0 +1,165 @@
+unit f8Cidade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, Grids, DBGrids, ExtCtrls, StdCtrls, Mask, DBTables;
+
+type
+  TFrmF8Cidade = class(TForm)
+    botao1: TPanel;
+    botao_sair: TPanel;
+    botaoProcurar: TPanel;
+    botao_procurar: TPanel;
+    lbl1: TLabel;
+    edt_nome: TMaskEdit;
+    botao2: TPanel;
+    botao3: TPanel;
+    img1: TImage;
+    lbl2: TLabel;
+    lbl3: TLabel;
+    dbgGrade: TDBGrid;
+    ds: TDataSource;
+    procedure botao_sairClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure botaoProcurarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure dbgGradeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure dbgGradeDblClick(Sender: TObject);
+    procedure edt_nomeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure edt_nomeChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    edit: TObject;
+    labelCidadeIBGE: TObject;
+    labelUFIBGE: TObject;
+    editUF: TObject;
+  end;
+
+var
+  FrmF8Cidade: TFrmF8Cidade;
+
+implementation
+
+uses principal, funcoes2, un_AjudaComandos;
+
+{$R *.dfm}
+
+procedure TFrmF8Cidade.botao_sairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFrmF8Cidade.FormActivate(Sender: TObject);
+begin
+  TQuery(ds.DataSet).Filtered := false;
+  TQuery(ds.DataSet).Filter   := '';
+  if (not TQuery(ds.DataSet).Active) then
+  begin
+    mostra_mensagem ('Carregando cidades... Aguarde!');
+    TQuery(ds.DataSet).Open;
+    TQuery(ds.DataSet).Last;
+    esconde_mensagem;
+  end;
+  TQuery(ds.DataSet).First;
+  edt_nome.Text := '';
+  edt_nome.SetFocus;
+end;
+
+procedure TFrmF8Cidade.botaoProcurarClick(Sender: TObject);
+begin
+  with TQuery(ds.DataSet) do
+    if (Trim(edt_nome.Text) <> '') then
+    begin
+      Filter   := 'CIDADE='+chr(39)+Trim(edt_nome.Text)+'*'+chr(39);
+      Filtered := true;
+    end
+    else
+    begin
+      Filter   := '';
+      Filtered := false;
+    end;
+end;
+
+procedure TFrmF8Cidade.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key = K_ESC) then
+    Close;
+  if (key = K_F1) then
+  begin
+    ListaAtalhosF1.Clear;
+    ListaAtalhosF1.Add('                        -- Atalhos --');
+    ListaAtalhosF1.Add(' ');
+    ListaAtalhosF1.Add('  [F2]  - Alterna entre grade e filtro ');
+    ListaAtalhosF1.Add('  [ESC] - Sai');
+    Application.CreateForm(Tfrm_AjudaComandos, frm_AjudaComandos);
+    frm_AjudaComandos.ShowModal;
+    frm_AjudaComandos.Free;
+  end;
+end;
+
+procedure TFrmF8Cidade.dbgGradeKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key = K_ENTER) then
+  begin
+    if (edit is Tedit) then
+      TEdit(edit).Text := TQuery(ds.dataset).FieldByName('CIDADE').AsString;
+    if (edit is TMaskedit) then
+      TMaskEdit(edit).Text := TQuery(ds.dataset).FieldByName('CIDADE').AsString;
+    if (editUF is TEdit) then
+      TEdit(editUF).Text := TQuery(ds.dataset).FieldByName('UF').AsString;
+    if (editUF is TMaskEdit) then
+      TMaskEdit(editUF).Text := TQuery(ds.dataset).FieldByName('UF').AsString;
+    TLabel(labelCidadeIBGE).Caption := IntToStr(TQuery(ds.DataSet).FieldByName('IBGE').AsInteger);
+    TLabel(labelUFIBGE).Caption := IntToStr(TQuery(ds.DataSet).FieldByName('IBGE_UF').AsInteger);
+    Close;
+  end;
+  if (key = K_ESC) then
+    Close;
+  if (key = K_F2) then
+    edt_nome.SetFocus;
+end;
+
+procedure TFrmF8Cidade.dbgGradeDblClick(Sender: TObject);
+begin
+  if (edit is Tedit) then
+    TEdit(edit).Text := TQuery(ds.dataset).FieldByName('CIDADE').AsString;
+  if (edit is TMaskedit) then
+    TMaskEdit(edit).Text := TQuery(ds.dataset).FieldByName('CIDADE').AsString;
+  if (editUF is TEdit) then
+    TEdit(editUF).Text := TQuery(ds.dataset).FieldByName('UF').AsString;
+  if (editUF is TMaskEdit) then
+    TMaskEdit(editUF).Text := TQuery(ds.dataset).FieldByName('UF').AsString;
+  TLabel(labelCidadeIBGE).Caption := IntToStr(TQuery(ds.DataSet).FieldByName('IBGE').AsInteger);
+  TLabel(labelUFIBGE).Caption := IntToStr(TQuery(ds.DataSet).FieldByName('IBGE_UF').AsInteger);
+  Close;
+end;
+
+procedure TFrmF8Cidade.edt_nomeKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key = K_ENTER) then
+  begin
+    botaoProcurar.OnClick(Self);
+    dbgGrade.SetFocus;
+  end;
+  if (key = K_F2) then
+    dbgGrade.SetFocus;
+  if (key = K_ESC) then
+    Close;
+end;
+
+procedure TFrmF8Cidade.edt_nomeChange(Sender: TObject);
+begin
+  botaoProcurarClick(Self);
+end;
+
+end.

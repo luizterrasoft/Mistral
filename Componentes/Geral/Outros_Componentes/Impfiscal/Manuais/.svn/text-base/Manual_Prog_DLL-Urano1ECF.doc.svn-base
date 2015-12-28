@@ -1,0 +1,767 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1046{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New{\*\falt Courier New};}{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f4\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Times{\*\falt Times New Roman};}
+{\f5\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Helvetica{\*\falt Arial};}{\f6\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Courier;}{\f7\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Geneva{\*\falt Arial};}
+{\f8\froman\fcharset0\fprq2{\*\panose 00000000000000000000}Tms Rmn;}{\f9\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Helv;}{\f10\froman\fcharset0\fprq2{\*\panose 00000000000000000000}MS Serif;}
+{\f11\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}MS Sans Serif;}{\f12\froman\fcharset0\fprq2{\*\panose 00000000000000000000}New York{\*\falt Times New Roman};}{\f13\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}System;}
+{\f14\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}{\f15\fswiss\fcharset0\fprq2{\*\panose 020b0604030504040204}Tahoma;}{\f16\fdecor\fcharset0\fprq2{\*\panose 00000000000000000000}Colonna MT;}
+{\f17\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Arial Rounded MT Bold;}{\f18\froman\fcharset0\fprq2{\*\panose 02020404030301010803}Garamond;}{\f19\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}AmericanText BT;}
+{\f20\fmodern\fcharset0\fprq1{\*\panose 00000000000000000000}Fixedsys;}{\f21\fmodern\fcharset255\fprq1{\*\panose 00000000000000000000}Terminal;}{\f22\fswiss\fcharset0\fprq2{\*\panose 00000000000000000000}Small Fonts;}
+{\f23\fnil\fcharset2\fprq2{\*\panose 00000000000000000000}Marlett;}{\f24\fswiss\fcharset0\fprq2{\*\panose 020b0604030504040204}Verdana;}{\f25\froman\fcharset2\fprq2{\*\panose 05030102010509060703}Webdings;}
+{\f26\fswiss\fcharset0\fprq2{\*\panose 020b0a04020102020204}Arial Black;}{\f27\fscript\fcharset0\fprq2{\*\panose 030f0702030302020204}Comic Sans MS;}{\f28\fswiss\fcharset0\fprq2{\*\panose 020b0806030902050204}Impact;}
+{\f29\fswiss\fcharset0\fprq2{\*\panose 020b0706040902060204}Haettenschweiler;}{\f30\fswiss\fcharset0\fprq2{\*\panose 020b0506020202030204}Arial Narrow;}{\f31\froman\fcharset0\fprq2{\*\panose 02050604050505020204}Bookman Old Style;}
+{\f32\fnil\fcharset2\fprq2{\*\panose 01010601010101010101}Monotype Sorts;}{\f33\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}MS Outlook;}{\f34\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Americana BT;}
+{\f35\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Broadway BT;}{\f36\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Charter BT;}{\f37\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}CloisterBlack BT;}
+{\f38\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Cooper Blk BT;}{\f39\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}DomCasual BT;}{\f40\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}English157 BT;}
+{\f41\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Fraktur BT;}{\f42\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Impress BT;}{\f43\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Informal011 BT;}
+{\f44\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}PosterBodoni BT;}{\f45\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT;}{\f46\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT;}
+{\f47\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Seagull Hv BT;}{\f48\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Staccato555 BT;}{\f49\fnil\fcharset0\fprq2{\*\panose 00000000000000000000}Umbra BT;}
+{\f50\froman\fcharset0\fprq0{\*\panose 00000000000000000000}MS LineDraw;}{\f51\froman\fcharset0\fprq0{\*\panose 00000000000000000000}(texto normal);}
+{\f52\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}AmericanText BT CE{\*\falt Bookman Old Style};}{\f53\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}AmericanText BT Cyr{\*\falt Bookman Old Style};}
+{\f54\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}AmericanText BT Greek{\*\falt Bookman Old Style};}{\f55\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}AmericanText BT Baltic{\*\falt Bookman Old Style};}
+{\f56\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Americana BT CE{\*\falt Bookman Old Style};}{\f57\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Americana BT Cyr{\*\falt Bookman Old Style};}
+{\f58\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Americana BT Greek{\*\falt Bookman Old Style};}{\f59\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Americana BT Baltic{\*\falt Bookman Old Style};}
+{\f60\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Broadway BT CE{\*\falt Bookman Old Style};}{\f61\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Broadway BT Cyr{\*\falt Bookman Old Style};}
+{\f62\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Broadway BT Greek{\*\falt Bookman Old Style};}{\f63\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Broadway BT Baltic{\*\falt Bookman Old Style};}
+{\f64\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Charter BT CE{\*\falt Bookman Old Style};}{\f65\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Charter BT Cyr{\*\falt Bookman Old Style};}
+{\f66\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Charter BT Greek{\*\falt Bookman Old Style};}{\f67\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Charter BT Baltic{\*\falt Bookman Old Style};}
+{\f68\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}CloisterBlack BT CE{\*\falt Bookman Old Style};}{\f69\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}CloisterBlack BT Cyr{\*\falt Bookman Old Style};}
+{\f70\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}CloisterBlack BT Greek{\*\falt Bookman Old Style};}{\f71\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}CloisterBlack BT Baltic{\*\falt Bookman Old Style};}
+{\f72\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Cooper Blk BT CE{\*\falt Bookman Old Style};}{\f73\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Cooper Blk BT Cyr{\*\falt Bookman Old Style};}
+{\f74\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Cooper Blk BT Greek{\*\falt Bookman Old Style};}{\f75\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Cooper Blk BT Baltic{\*\falt Bookman Old Style};}
+{\f76\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}DomCasual BT CE{\*\falt Bookman Old Style};}{\f77\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}DomCasual BT Cyr{\*\falt Bookman Old Style};}
+{\f78\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}DomCasual BT Greek{\*\falt Bookman Old Style};}{\f79\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}DomCasual BT Baltic{\*\falt Bookman Old Style};}
+{\f80\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}English157 BT CE{\*\falt Bookman Old Style};}{\f81\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}English157 BT Cyr{\*\falt Bookman Old Style};}
+{\f82\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}English157 BT Greek{\*\falt Bookman Old Style};}{\f83\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}English157 BT Baltic{\*\falt Bookman Old Style};}
+{\f84\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Fraktur BT CE{\*\falt Bookman Old Style};}{\f85\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Fraktur BT Cyr{\*\falt Bookman Old Style};}
+{\f86\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Fraktur BT Greek{\*\falt Bookman Old Style};}{\f87\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Fraktur BT Baltic{\*\falt Bookman Old Style};}
+{\f88\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Impress BT CE{\*\falt Bookman Old Style};}{\f89\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Impress BT Cyr{\*\falt Bookman Old Style};}
+{\f90\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Impress BT Greek{\*\falt Bookman Old Style};}{\f91\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Impress BT Baltic{\*\falt Bookman Old Style};}
+{\f92\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Informal011 BT CE{\*\falt Bookman Old Style};}{\f93\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Informal011 BT Cyr{\*\falt Bookman Old Style};}
+{\f94\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Informal011 BT Greek{\*\falt Bookman Old Style};}{\f95\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Informal011 BT Baltic{\*\falt Bookman Old Style};}
+{\f96\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}PosterBodoni BT CE{\*\falt Bookman Old Style};}{\f97\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Cyr{\*\falt Bookman Old Style};}
+{\f98\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Greek{\*\falt Bookman Old Style};}{\f99\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Baltic{\*\falt Bookman Old Style};}
+{\f100\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT CE{\*\falt Bookman Old Style};}{\f101\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT Cyr{\*\falt Bookman Old Style};}
+{\f102\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT Greek{\*\falt Bookman Old Style};}{\f103\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT Baltic{\*\falt Bookman Old Style};}
+{\f104\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT CE{\*\falt Bookman Old Style};}{\f105\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT Cyr{\*\falt Bookman Old Style};}
+{\f106\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT Greek{\*\falt Bookman Old Style};}{\f107\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT Baltic{\*\falt Bookman Old Style};}
+{\f108\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Seagull Hv BT CE{\*\falt Bookman Old Style};}{\f109\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Seagull Hv BT Cyr{\*\falt Bookman Old Style};}
+{\f110\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Seagull Hv BT Greek{\*\falt Bookman Old Style};}{\f111\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Seagull Hv BT Baltic{\*\falt Bookman Old Style};}
+{\f112\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Staccato555 BT CE{\*\falt Bookman Old Style};}{\f113\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Staccato555 BT Cyr{\*\falt Bookman Old Style};}
+{\f114\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Staccato555 BT Greek{\*\falt Bookman Old Style};}{\f115\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Staccato555 BT Baltic{\*\falt Bookman Old Style};}
+{\f116\fnil\fcharset238\fprq2{\*\panose 00000000000000000000}Umbra BT CE{\*\falt Bookman Old Style};}{\f117\fnil\fcharset204\fprq2{\*\panose 00000000000000000000}Umbra BT Cyr{\*\falt Bookman Old Style};}
+{\f118\fnil\fcharset161\fprq2{\*\panose 00000000000000000000}Umbra BT Greek{\*\falt Bookman Old Style};}{\f119\fnil\fcharset186\fprq2{\*\panose 00000000000000000000}Umbra BT Baltic{\*\falt Bookman Old Style};}
+{\f120\froman\fcharset204\fprq0{\*\panose 00000000000000000000}(texto normal) Cyr{\*\falt Bookman Old Style};}{\f121\froman\fcharset186\fprq0{\*\panose 00000000000000000000}(texto normal) Baltic{\*\falt Bookman Old Style};}
+{\f122\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}AmericanText BT Tur;}{\f123\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Americana BT Tur;}{\f124\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Broadway BT Tur;}
+{\f125\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Charter BT Tur;}{\f126\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}CloisterBlack BT Tur;}{\f127\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Cooper Blk BT Tur;}
+{\f128\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}DomCasual BT Tur;}{\f129\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Fraktur BT Tur;}{\f130\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Impress BT Tur;}
+{\f131\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Informal011 BT Tur;}{\f132\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}PosterBodoni BT Tur;}{\f133\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Raleigh DmBd BT Tur;}
+{\f134\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Schadow BlkCn BT Tur;}{\f135\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Seagull Hv BT Tur;}{\f136\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Staccato555 BT Tur;}
+{\f137\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}Umbra BT Tur;}{\f138\froman\fcharset238\fprq2{\*\panose 00000000000000000000}Times New Roman CE;}{\f139\froman\fcharset204\fprq2{\*\panose 00000000000000000000}Times New Roman Cyr;}
+{\f140\froman\fcharset161\fprq2{\*\panose 00000000000000000000}Times New Roman Greek;}{\f141\froman\fcharset162\fprq2{\*\panose 00000000000000000000}Times New Roman Tur;}
+{\f142\froman\fcharset186\fprq2{\*\panose 00000000000000000000}Times New Roman Baltic;}{\f143\fswiss\fcharset238\fprq2{\*\panose 00000000000000000000}Arial CE;}{\f144\fswiss\fcharset204\fprq2{\*\panose 00000000000000000000}Arial Cyr;}
+{\f145\fswiss\fcharset161\fprq2{\*\panose 00000000000000000000}Arial Greek;}{\f146\fswiss\fcharset162\fprq2{\*\panose 00000000000000000000}Arial Tur;}{\f147\fswiss\fcharset186\fprq2{\*\panose 00000000000000000000}Arial Baltic;}
+{\f148\fmodern\fcharset238\fprq1{\*\panose 00000000000000000000}Courier New CE{\*\falt Courier New};}{\f149\fmodern\fcharset204\fprq1{\*\panose 00000000000000000000}Courier New Cyr{\*\falt Courier New};}
+{\f150\fmodern\fcharset161\fprq1{\*\panose 00000000000000000000}Courier New Greek{\*\falt Courier New};}{\f151\fmodern\fcharset162\fprq1{\*\panose 00000000000000000000}Courier New Tur{\*\falt Courier New};}
+{\f152\fmodern\fcharset186\fprq1{\*\panose 00000000000000000000}Courier New Baltic{\*\falt Courier New};}{\f153\fnil\fcharset162\fprq2{\*\panose 00000000000000000000}English157 BT Tur;}{\f244\fswiss\fcharset238\fprq2 Tahoma CE;}
+{\f245\fswiss\fcharset204\fprq2 Tahoma Cyr;}{\f247\fswiss\fcharset161\fprq2 Tahoma Greek;}{\f248\fswiss\fcharset162\fprq2 Tahoma Tur;}{\f249\fswiss\fcharset186\fprq2 Tahoma Baltic;}{\f262\froman\fcharset238\fprq2 Garamond CE;}
+{\f263\froman\fcharset204\fprq2 Garamond Cyr;}{\f265\froman\fcharset161\fprq2 Garamond Greek;}{\f266\froman\fcharset162\fprq2 Garamond Tur;}{\f267\froman\fcharset186\fprq2 Garamond Baltic;}{\f298\fswiss\fcharset238\fprq2 Verdana CE;}
+{\f299\fswiss\fcharset204\fprq2 Verdana Cyr;}{\f301\fswiss\fcharset161\fprq2 Verdana Greek;}{\f302\fswiss\fcharset162\fprq2 Verdana Tur;}{\f303\fswiss\fcharset186\fprq2 Verdana Baltic;}{\f310\fswiss\fcharset238\fprq2 Arial Black CE;}
+{\f311\fswiss\fcharset204\fprq2 Arial Black Cyr;}{\f313\fswiss\fcharset161\fprq2 Arial Black Greek;}{\f314\fswiss\fcharset162\fprq2 Arial Black Tur;}{\f315\fswiss\fcharset186\fprq2 Arial Black Baltic;}{\f322\fswiss\fcharset238\fprq2 Impact CE;}
+{\f323\fswiss\fcharset204\fprq2 Impact Cyr;}{\f325\fswiss\fcharset161\fprq2 Impact Greek;}{\f326\fswiss\fcharset162\fprq2 Impact Tur;}{\f327\fswiss\fcharset186\fprq2 Impact Baltic;}{\f334\fswiss\fcharset238\fprq2 Arial Narrow CE;}
+{\f335\fswiss\fcharset204\fprq2 Arial Narrow Cyr;}{\f337\fswiss\fcharset161\fprq2 Arial Narrow Greek;}{\f338\fswiss\fcharset162\fprq2 Arial Narrow Tur;}{\f339\fswiss\fcharset186\fprq2 Arial Narrow Baltic;}
+{\f340\froman\fcharset238\fprq2 Bookman Old Style CE;}{\f341\froman\fcharset204\fprq2 Bookman Old Style Cyr;}{\f343\froman\fcharset161\fprq2 Bookman Old Style Greek;}{\f344\froman\fcharset162\fprq2 Bookman Old Style Tur;}
+{\f345\froman\fcharset186\fprq2 Bookman Old Style Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;
+\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid 
+\snext0 Normal;}{\s1\qc\keepn\nowidctlpar\widctlpar\outlinelevel0\adjustright \b\lang1046\cgrid \sbasedon0 \snext0 heading 1;}{\s2\qj\keepn\nowidctlpar\widctlpar\outlinelevel1\adjustright \b\f1\fs32\lang1046\cgrid \sbasedon0 \snext0 heading 2;}{
+\s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid \sbasedon0 \snext0 heading 3;}{\s4\qj\sb20\sa20\keepn\nowidctlpar\widctlpar\outlinelevel3\adjustright \lang1046\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive 
+Default Paragraph Font;}{\s15\qj\nowidctlpar\widctlpar\adjustright \lang1046\cgrid \sbasedon0 \snext15 Body Text;}}{\info{\title Fun\'e7\'f5es da Biblioteca de Comunica\'e7\'e3o 2EFC32}{\author Evandro Sombrio}{\operator Evandro Sombrio}
+{\creatim\yr1999\mo1\dy12\hr10\min43}{\revtim\yr1999\mo11\dy8\hr13\min6}{\printim\yr1999\mo3\dy15\hr16\min44}{\version18}{\edmins41}{\nofpages18}{\nofwords3688}{\nofchars21022}{\*\company SOHO}{\nofcharsws0}{\vern73}}
+\paperw11907\paperh16840\margl1418\margr1134\margt1418\margb1418 \deftab708\widowctrl\ftnbj\aenddoc\hyphhotz425\hyphcaps0\formshade\viewkind4\viewscale100\pgbrdrhead\pgbrdrfoot \fet0\sectd 
+\psz9\linex0\headery709\footery709\colsx709\endnhere\pgbrdropt32\sectdefaultcl {\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang
+{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7
+\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \qc\nowidctlpar\widctlpar
+\tx1701\adjustright \fs20\lang1046\cgrid {\b\fs32 Fun\'e7\'f5es das Bibliotecas de Comunica\'e7\'e3o do modelo de ECF 1EFC
+\par Vers\'e3o software b\'e1sico 3.00
+\par Manual DLL
+\par 16 bits \endash  1EFC16.DLL
+\par 32 bits \endash  DLL1EFC32.DLL
+\par }\pard \qj\nowidctlpar\widctlpar\tx1701\adjustright {\b 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par 
+\par }\pard\plain \s1\keepn\nowidctlpar\widctlpar\outlinelevel0\adjustright \b\lang1046\cgrid {\f1\fs32 Revis\'f5es
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab Listagem cronol\'f3gica de revis\'f5es deste manual
+\par 
+\par }\trowd \trqc\trgaph70\trleft-70\trbrdrt\brdrs\brdrw15\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw15\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrv\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl
+\brdrs\brdrw30\brdrcf1 \clbrdrr\brdrs\brdrw15\brdrcf1 \clcfpat7\clcbpat8\clshdng3000\cltxlrtb \cellx644\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \clcfpat7\clcbpat8\clshdng3000\cltxlrtb 
+\cellx1678\pard\plain \s1\qc\keepn\nowidctlpar\widctlpar\intbl\outlinelevel0\adjustright \b\lang1046\cgrid {Data\cell Revis\'e3o\cell }\pard\plain \nowidctlpar\widctlpar\intbl\adjustright \fs20\lang1046\cgrid {\b\fs24 \row }\trowd \trqc\trgaph70\trleft-70
+\trbrdrt\brdrs\brdrw15\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw15\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrv\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr
+\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx644\clvertalt\clbrdrl\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx1678\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 11/99\cell A0\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \qj\nowidctlpar\widctlpar\adjustright {
+\par }{\fs24 
+\par 
+\par }\pard\plain \s2\qj\keepn\nowidctlpar\widctlpar\outlinelevel1\adjustright \b\f1\fs32\lang1046\cgrid {Introdu\'e7\'e3o
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab As DLLs 1EFC16.DLL (16 bits \endash  Windows\'ae 3.xx) e DLL1EFC32.DLL (32 bits \endash  Windows\'ae 95 ou superior e Windows\'ae NT) s\'e3o bibliotecas de fun\'e7\'f5es disponibilizadas aos desenvolvedores de aplica\'e7\'f5
+es com o objetivo de simplificar a tarefa de comunica\'e7\'e3o com a impressora fiscal modelo 1EFC. Seu uso \'e9 destinado a aplica\'e7\'f5es que executem sobre sistemas operacionais de 16 ou 32 bits Windows\'ae 95/98/NT. Para familiariza\'e7\'e3
+o com a utiliza\'e7\'e3o das fun\'e7\'f5es de comunica\'e7\'e3o da biblioteca, acompanham programas de demonstra\'e7\'e3o de uso (}{\b\fs24 DEMO32.PRG}{\fs24  e }{\b\fs24 DEMO16.PRG}{\fs24 . Para execut\'e1-los \'e9 necess\'e1
+rio que a DLL correspondente esteja presente no mesmo diret\'f3rio ou no diret\'f3rio SYSTEM logo abaixo do qual est\'e1 instalado o sistema operacional. Como foi desenvolvida no ambiente Visual FoxPro vers\'e3o 3.0, \'e9 necess\'e1rio tamb\'e9
+m o arquivo VFP300.ESL (n\'e3o fornecido no disquete) para executar fora do ambiente. Caso haja disponibilidade de outra vers\'e3o de FoxPro, basta recompilar o fonte e executar o programa.
+\par \tab 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\f1\fs32 {\*\bkmkstart _Toc381152469}{\*\bkmkstart _Toc381521873}{\*\bkmkstart _Toc382018935}{\*\bkmkstart _Toc382040174}{\*\bkmkstart _Toc382898690}
+{\*\bkmkstart _Toc382899798}{\*\bkmkstart _Toc382900001}{\*\bkmkstart _Toc388690382}{\*\bkmkstart _Toc389386836}Ambiente{\*\bkmkend _Toc381152469}{\*\bkmkend _Toc381521873}{\*\bkmkend _Toc382018935}{\*\bkmkend _Toc382040174}{\*\bkmkend _Toc382898690}
+{\*\bkmkend _Toc382899798}{\*\bkmkend _Toc382900001}{\*\bkmkend _Toc388690382}{\*\bkmkend _Toc389386836}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab Para utiliza\'e7\'e3o desta biblioteca, \'e9 necess\'e1rio o sistema operacional Windows\'ae 95/98/NT ou posteriores.
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\f1\fs32 {\*\bkmkstart _Toc381152471}{\*\bkmkstart _Toc381521875}{\*\bkmkstart _Toc382018937}{\*\bkmkstart _Toc382040176}{\*\bkmkstart _Toc382898692}
+{\*\bkmkstart _Toc382899800}{\*\bkmkstart _Toc382900003}{\*\bkmkstart _Toc388690384}{\*\bkmkstart _Toc389386838}Utiliza\'e7\'e3o{\*\bkmkend _Toc381152471}{\*\bkmkend _Toc381521875}{\*\bkmkend _Toc382018937}{\*\bkmkend _Toc382040176}
+{\*\bkmkend _Toc382898692}{\*\bkmkend _Toc382899800}{\*\bkmkend _Toc382900003}{\*\bkmkend _Toc388690384}{\*\bkmkend _Toc389386838}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab A biblioteca desejada deve ser copiadas para o diret\'f3rio da aplica\'e7\'e3o ou para o subdiret\'f3rio \\WINDOWS\\SYSTEM. Desta forma, a DLL poder\'e1 ser referenciada pela aplica\'e7\'e3o em todas as suas fun\'e7\'f5es, habilitando o seu uso.
+
+\par 
+\par \tab Para uma maior compreens\'e3o de como chamar as fun\'e7\'f5es da biblioteca dentro do c\'f3digo da aplica\'e7\'e3o, existem os fontes (em  Visual FoxPro) do programa DEMO32.PRG / DEMO16.PRG que exemplificam como utilizar as fun\'e7\'f5
+es da biblioteca.
+\par 
+\par \tab Qualquer linguagem de programa\'e7\'e3o que tenha os recursos necess\'e1rios para acessar uma DLL poder\'e1 usufruir das facilidades desta biblioteca, a qual foi desenvolvida de acordo com os padr\'f5
+es exigidos pelos sistemas operacionais onde pode ser usada.
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\f1\fs32 {\*\bkmkstart _Toc381152472}{\*\bkmkstart _Toc381521876}{\*\bkmkstart _Toc382018938}{\*\bkmkstart _Toc382040177}{\*\bkmkstart _Toc382898693}
+{\*\bkmkstart _Toc382899801}{\*\bkmkstart _Toc382900004}{\*\bkmkstart _Toc388690385}{\*\bkmkstart _Toc389386839}Fun\'e7\'f5es da {\*\bkmkend _Toc381152472}{\*\bkmkend _Toc381521876}{\*\bkmkend _Toc382018938}{\*\bkmkend _Toc382040177}
+{\*\bkmkend _Toc382898693}{\*\bkmkend _Toc382899801}{\*\bkmkend _Toc382900004}{\*\bkmkend _Toc388690385}{\*\bkmkend _Toc389386839}DLL
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par }\pard\plain \s15\qj\nowidctlpar\widctlpar\adjustright \lang1046\cgrid {\tab Com poucas exce\'e7\'f5es, cada fun\'e7\'e3o dispon\'edvel na biblioteca representa um comando da impressora fiscal. Portanto, para maiores informa\'e7\'f5
+es sobre a funcionalidade de cada uma das fun\'e7\'f5es relacionadas neste manual, deve ser consultado o manual do usu\'e1rio da impressora. As fun\'e7\'f5es da biblioteca s\'e3o apresentadas neste cap\'edtulo dentro das seguintes caracter\'edsticas: 
+
+\par }\pard\plain \qj\fi708\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par }{\i\fs24 Descri\'e7\'e3o}{\fs24  \'e9 um resumo sobre o que a fun\'e7\'e3o faz efetivamente; 
+\par }{\i\fs24 
+\par Par\'e2metros}{\fs24  define os argumentos complementares e seus tipos, necess\'e1rios para a execu\'e7\'e3o da fun\'e7\'e3o; 
+\par 
+\par }{\i\fs24 Retorno}{\fs24 , ou seja, a informa\'e7\'e3o que a fun\'e7\'e3o retorna para o m\'f3dulo chamador como resultado da opera\'e7\'e3o solicitada;
+\par 
+\par }{\i\fs24 Exemplo}{\fs24 , o qual ilustra a utiliza\'e7\'e3o da fun\'e7\'e3o em um trecho de programa (normalmente escrito em linguagem C).
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par 
+\par \tab O }{\i\fs24 Retorno}{\fs24  de uma fun\'e7\'e3o determina o resultado da execu\'e7\'e3o da mesma. Normalmente o valor }{\i\fs24 0 (zero)}{\fs24  ou }{\i\fs24 33 }{\fs24 significa que a fun\'e7\'e3o foi executada com sucesso com exce\'e7\'e3o das fun
+\'e7\'f5es }{\i\fs24 EstadoImpressora}{\fs24  e }{\i\fs24 LeSensor}{\fs24 . A tabela contendo os c\'f3digos de retorno com as suas descri\'e7\'f5es encontra-se no ap\'eandice B. Nos ap\'eandices C e D encontram-se as tabelas com os c\'f3
+digos de retorno das fun\'e7\'f5es }{\i\fs24 EstadoImpressora}{\fs24  e }{\i\fs24 LeSensor}{\fs24  respectivamente.
+\par 
+\par \tab Os tipos de par\'e2metros e retornos de fun\'e7\'f5es referenciados neste manual s\'e3o:
+\par 
+\par \tab }{\i\fs24 String}{\fs24 : cadeia de caracteres com tamanho informado em cada caso espec\'edfico. Todo string deve ser terminado com um caracter finalizador (caracter }{\i\fs24 zero}{\fs24 ).
+\par 
+\par \tab }{\i\fs24 Inteiro:}{\fs24  tipo de dado num\'e9rico com tamanho fixo de 4 bytes.
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 VersaoDLL
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Vers\'e3o atual da DLL.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 String terminada em nulo pr\'e9-alocada com 45 bytes.
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro (4 bytes), indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:}{\fs24 
+\par 
+\par \tab \tab char versao[45];
+\par \tab \tab VersaoDLL(versao);
+\par \tab \tab // Retornar\'e1 a vers\'e3o, como por exemplo: 
+\par \tab \tab // \ldblquote Versao 1.00 - DLL 32 bits para o ECF-IF 1EFC\rdblquote 
+\par \tab \tab // para a string }{\i\fs24 vers\'e3o}{\fs24 
+\par \tab \tab printf (\ldblquote %s\rdblquote ,versao);\tab // Imprime a vers\'e3o da biblioteca na tela
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 InicializaDLL
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Inicializa a porta serial para comunica\'e7\'e3o com a impressora fiscal. Deve ser utilizada antes de qualquer outra fun\'e7\'e3o que exija comunica\'e7\'e3o com a impressora fiscal.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 String de 4 bytes terminada em nulo no formato \ldblquote COMn\rdblquote  indicando a porta serial. Ex: \ldblquote COM1\rdblquote , \ldblquote COM2\rdblquote .
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:}{\fs24 
+\par \tab \tab int ret;
+\par 
+\par \tab \tab ret = InicializaDLL(\ldblquote COM1\rdblquote );
+\par \tab \tab If (ret != 0)
+\par \tab \tab \tab printf (\ldblquote Erro %d em InicializaDLL\rdblquote ,ret);
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152475}{\*\bkmkstart _Toc381521879}{\*\bkmkstart _Toc382018941}{\*\bkmkstart _Toc382040180}{\*\bkmkstart _Toc382898696}
+{\*\bkmkstart _Toc382899804}{\*\bkmkstart _Toc382900007}{\*\bkmkstart _Toc388690388}{\*\bkmkstart _Toc389386842}Finaliza{\*\bkmkend _Toc381152475}{\*\bkmkend _Toc381521879}{\*\bkmkend _Toc382018941}{\*\bkmkend _Toc382040180}{\*\bkmkend _Toc382898696}
+{\*\bkmkend _Toc382899804}{\*\bkmkend _Toc382900007}{\*\bkmkend _Toc388690388}{\*\bkmkend _Toc389386842}DLL
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Finaliza comunica\'e7\'e3o serial com a impressora. Deve ser chamada antes do final do programa se a fun\'e7\'e3o }{\i\fs24 InicializaDLL}{\fs24  foi executada.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 N\'e3o tem par\'e2metros.
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:}{\fs24 
+\par 
+\par \tab \tab ret = FinalizaDLL( );
+\par \tab \tab If (ret != 0)
+\par \tab \tab \tab printf (\ldblquote Erro %d em FinalizaDLL\rdblquote ,ret);
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152477}{\*\bkmkstart _Toc381521881}{\*\bkmkstart _Toc382018943}{\*\bkmkstart _Toc382040182}{\*\bkmkstart _Toc382898698}
+{\*\bkmkstart _Toc382899806}{\*\bkmkstart _Toc382900009}{\*\bkmkstart _Toc388690390}{\*\bkmkstart _Toc389386844}ImprimeCabecalho{\*\bkmkend _Toc381152477}{\*\bkmkend _Toc381521881}{\*\bkmkend _Toc382018943}{\*\bkmkend _Toc382040182}
+{\*\bkmkend _Toc382898698}{\*\bkmkend _Toc382899806}{\*\bkmkend _Toc382900009}{\*\bkmkend _Toc388690390}{\*\bkmkend _Toc389386844}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Imprime o cabe\'e7alho do estabelecimento.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 N\'e3o tem par\'e2metros.}{\i\fs24  }{\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:}{\fs24 
+\par 
+\par \tab \tab ret = ImprimeCabecalho( );
+\par \tab \tab If (ret != 33)
+\par \tab \tab \tab Printf(\ldblquote Erro %d em ImprimeCabecalho\rdblquote ,ret);
+\par }\pard \nowidctlpar\widctlpar\adjustright {\fs24 
+\par 
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152478}{\*\bkmkstart _Toc381521882}{\*\bkmkstart _Toc382018944}{\*\bkmkstart _Toc382040183}{\*\bkmkstart _Toc382898699}
+{\*\bkmkstart _Toc382899807}{\*\bkmkstart _Toc382900010}{\*\bkmkstart _Toc388690391}{\*\bkmkstart _Toc389386845}VendaItem{\*\bkmkend _Toc381152478}{\*\bkmkend _Toc381521882}{\*\bkmkend _Toc382018944}{\*\bkmkend _Toc382040183}{\*\bkmkend _Toc382898699}
+{\*\bkmkend _Toc382899807}{\*\bkmkend _Toc382900010}{\*\bkmkend _Toc388690391}{\*\bkmkend _Toc389386845}
+\par }\pard\plain \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Inicia a venda de item, imprimindo as informa\'e7\'f5es de venda. O cabe\'e7alho do estabelecimento ser\'e1 impresso caso n\'e3
+o tenha sido enviado o comando de impress\'e3o de cabe\'e7alho (ImprimeCabecalho).
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 C\'f3digo:}{\fs24  String terminada em nulo com tamanho m\'e1ximo de 13 bytes contendo o c\'f3digo do item a ser vendido.}{\b\fs24 
+\par }{\fs24 \tab }{\b\fs24 Descri\'e7\'e3o:}{\fs24   String terminada em nulo com a descri\'e7\'e3o do item ou servi\'e7o. O tamanho m\'e1ximo para a descri\'e7\'e3o do item ou servi\'e7o \'e9 de 66 caracteres.
+\par \tab }{\b\fs24 Quantidade}{\fs24 : String terminada em nulo de 7 caracteres referenciando a quantidade de itens vendidos. No caso de quantidade fracion\'e1ria deve-se colocar o ponto decimal na quarta posi\'e7\'e3
+o deste campo separando a parte inteira da fracion\'e1ria.
+\par \tab }{\b\fs24 Valor Unit\'e1rio}{\fs24 : String terminada em nulo com at\'e9 9 d\'edgitos representando o pre\'e7o unit\'e1rio do item. Dependendo do campo }{\b\fs24 Tipo}{\fs24 , a impressora considera 2 ou 3 casas decimais. Este campo n\'e3
+o deve ser enviado formatado com v\'edrgula ou ponto para separa\'e7\'e3o das casas decimais.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Taxa:}{\fs24  String terminada em nulo. Situa\'e7\'e3o tribut\'e1ria de venda do item.
+\par \tab }{\b\fs24 Unidade:}{\fs24  String terminada em nulo. Unidade de medida (Kg, Un, etc). M\'e1ximo 2 bytes.
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Tipo:}{\fs24  String terminada em nulo: quando \lquote 0\rquote  - considera os 2 \'faltimos d\'edgitos do campo }{\b\i\fs24 Valor Unit\'e1rio}{\fs24 
+ como casas decimais; quando \lquote 1\rquote  \endash  considera que a venda ser\'e1 no formato exigido pelo INMETRO se a impressora estiver ligada com uma balan\'e7a; quando \lquote 2\rquote  - considera os 3 \'faltimos d\'edgitos do campo }{\b\i\fs24 
+Valor Unit\'e1rio}{\b\fs24  }{\fs24 como casas decimais;
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:}{\fs24 
+\par 
+\par \tab \tab char Codigo[] = \ldblquote 7890001210012\rdblquote ;\tab \tab \tab // C\'f3digo do item
+\par \tab \tab char Descricao[] = \ldblquote Refrigerante 2 Lt\rdblquote ;\tab \tab // Descri\'e7\'e3o do item
+\par \tab \tab char Quant[] = \ldblquote 6\rdblquote ;\tab \tab \tab \tab \tab // Quantidade
+\par \tab \tab char ValorUnit[] = \ldblquote 185\rdblquote ;\tab \tab \tab \tab // Valor Unit. R$ 1,85
+\par \tab \tab char Taxa[] = \ldblquote 1\rdblquote ;\tab \tab \tab \tab \tab // Situa\'e7\'e3o Tribut\'e1ria
+\par \tab \tab char Unidade[] = \ldblquote Un\rdblquote ;\tab \tab \tab \tab // Unidade de refrigerante
+\par \tab \tab char Tipo[] = \ldblquote 0\rdblquote ;\tab \tab \tab \tab \tab // Tipo do valor unit\'e1rio
+\par \tab \tab ret = VendaItem(Codigo,Descricao,Quant,ValorUnit,Taxa,Unidade,Tipo);
+\par \tab \tab If (ret != 33)
+\par \tab \tab \tab Printf(\ldblquote Erro %d em VendaItem\rdblquote ,ret);
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152479}{\*\bkmkstart _Toc381521883}{\*\bkmkstart _Toc382018945}{\*\bkmkstart _Toc382040184}{\*\bkmkstart _Toc382898700}
+{\*\bkmkstart _Toc382899808}{\*\bkmkstart _Toc382900011}{\*\bkmkstart _Toc388690392}{\*\bkmkstart _Toc389386846}CancelaItem{\*\bkmkend _Toc381152479}{\*\bkmkend _Toc381521883}{\*\bkmkend _Toc382018945}{\*\bkmkend _Toc382040184}{\*\bkmkend _Toc382898700}
+{\*\bkmkend _Toc382899808}{\*\bkmkend _Toc382900011}{\*\bkmkend _Toc388690392}{\*\bkmkend _Toc389386846}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Este comando realiza o cancelamento de uma transa\'e7\'e3o (venda de um ou mais itens) j\'e1 lan\'e7
+ada no cupom. A impressora fiscal possui uma lista de todas as transa\'e7\'f5es realizadas no cupom atual. Para realizar o cancelamento de uma transa\'e7\'e3o, basta informar o n\'famero da transa\'e7\'e3o que se deseja cancelar.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Descri\'e7\'e3o}{\fs24 : String terminada em nulo, de at\'e9 22 caracteres, explicativo da opera\'e7\'e3o de cancelamento.
+\par \tab }{\b\fs24 Transa\'e7\'e3o}{\fs24 : String terminada em nulo de at\'e9 3 (tr\'eas) posi\'e7\'f5es indicando o n\'famero da transa\'e7\'e3o a ser cancelada.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152480}{\*\bkmkstart _Toc381521884}{\*\bkmkstart _Toc382018946}{\*\bkmkstart _Toc382040185}{\*\bkmkstart _Toc382898701}
+{\*\bkmkstart _Toc382899809}{\*\bkmkstart _Toc382900012}{\*\bkmkstart _Toc388690393}{\*\bkmkstart _Toc389386847}DescontoItem{\*\bkmkend _Toc381152480}{\*\bkmkend _Toc381521884}{\*\bkmkend _Toc382018946}{\*\bkmkend _Toc382040185}{\*\bkmkend _Toc382898701}
+{\*\bkmkend _Toc382899809}{\*\bkmkend _Toc382900012}{\*\bkmkend _Toc388690393}{\*\bkmkend _Toc389386847}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Permite a opera\'e7\'e3o de desconto ao \'faltimo item lan\'e7ado.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Cancela:}{\fs24  String terminada em nulo de 1 caracter que ratifica a opera\'e7\'e3o de desconto (cancela = \ldblquote 0\rdblquote 
+) ou cancela o desconto dado anteriormente (cancela = \ldblquote 1\rdblquote ).
+\par \tab }{\b\fs24 Descri\'e7\'e3o}{\fs24 : String terminada em nulo, de at\'e9 26 caracteres, explicativo da opera\'e7\'e3o de desconto.
+\par \tab }{\b\fs24 Valor}{\fs24 : String terminada em nulo com at\'e9 11 d\'edgitos com o valor do desconto. Este valor n\'e3o pode ser igual ou superior ao valor do item.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152481}{\*\bkmkstart _Toc381521885}{\*\bkmkstart _Toc382018947}{\*\bkmkstart _Toc382040186}{\*\bkmkstart _Toc382898702}
+{\*\bkmkstart _Toc382899810}{\*\bkmkstart _Toc382900013}{\*\bkmkstart _Toc388690394}{\*\bkmkstart _Toc389386848}Pagamento{\*\bkmkend _Toc381152481}{\*\bkmkend _Toc381521885}{\*\bkmkend _Toc382018947}{\*\bkmkend _Toc382040186}{\*\bkmkend _Toc382898702}
+{\*\bkmkend _Toc382899810}{\*\bkmkend _Toc382900013}{\*\bkmkend _Toc388690394}{\*\bkmkend _Toc389386848}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza o pagamento do cupom.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Forma}{\fs24 : String terminada em nulo de 2 caracteres informando a forma de pagamento.
+\par \tab }{\b\fs24 Descri\'e7\'e3o}{\fs24 : String terminada em nulo de at\'e9 17 caracteres descritivo adicional da forma de pagamento.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Valor}{\fs24 : String terminada em nulo de at\'e9 11 caracteres com o valor do pagamento.
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Acumular:}{\fs24  String terminada em nulo. Se este pagamento deve ser acumulado na mem\'f3ria da impressora para posterior impress\'e3
+o de documento vinculado, deve-se atribuir \ldblquote 1\rdblquote , sen\'e3o \ldblquote 0\rdblquote .
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152482}{\*\bkmkstart _Toc381521886}{\*\bkmkstart _Toc382018948}{\*\bkmkstart _Toc382040187}{\*\bkmkstart _Toc382898703}
+{\*\bkmkstart _Toc382899811}{\*\bkmkstart _Toc382900014}{\*\bkmkstart _Toc388690395}{\*\bkmkstart _Toc389386849}F{\*\bkmkend _Toc381152482}{\*\bkmkend _Toc381521886}{\*\bkmkend _Toc382018948}{\*\bkmkend _Toc382040187}{\*\bkmkend _Toc382898703}
+{\*\bkmkend _Toc382899811}{\*\bkmkend _Toc382900014}{\*\bkmkend _Toc388690395}{\*\bkmkend _Toc389386849}echaCupom
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Este comando finaliza um cupom aberto (fiscal, vinculado ou n\'e3o vinculado).
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }{\i\fs24 \tab }{\b\fs24 Operador:}{\fs24  String terminada em nulo de at\'e9 8 bytes com a identifica\'e7\'e3o do operador.
+\par 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152483}{\*\bkmkstart _Toc381521887}{\*\bkmkstart _Toc382018949}{\*\bkmkstart _Toc382040188}{\*\bkmkstart _Toc382898704}
+{\*\bkmkstart _Toc382899812}{\*\bkmkstart _Toc382900015}{\*\bkmkstart _Toc388690396}{\*\bkmkstart _Toc389386850}Linhas{\*\bkmkend _Toc381152483}{\*\bkmkend _Toc381521887}{\*\bkmkend _Toc382018949}{\*\bkmkend _Toc382040188}{\*\bkmkend _Toc382898704}
+{\*\bkmkend _Toc382899812}{\*\bkmkend _Toc382900015}{\*\bkmkend _Toc388690396}{\*\bkmkend _Toc389386850}Livres
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o imprime at\'e9 10 (Dez) linhas livres de conte\'fado n\'e3o fiscal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Texto}{\fs24 : String terminada em nulo de at\'e9 480 caracteres com o texto a ser impresso. Cada 48 caracteres correspondem a uma linha.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152484}{\*\bkmkstart _Toc381521888}{\*\bkmkstart _Toc382018950}{\*\bkmkstart _Toc382040189}{\*\bkmkstart _Toc382898705}
+{\*\bkmkstart _Toc382899813}{\*\bkmkstart _Toc382900016}{\*\bkmkstart _Toc388690397}{\*\bkmkstart _Toc389386851}CancelaVenda{\*\bkmkend _Toc381152484}{\*\bkmkend _Toc381521888}{\*\bkmkend _Toc382018950}{\*\bkmkend _Toc382040189}{\*\bkmkend _Toc382898705}
+{\*\bkmkend _Toc382899813}{\*\bkmkend _Toc382900016}{\*\bkmkend _Toc388690397}{\*\bkmkend _Toc389386851}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o cancela um cupom de venda aberto.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }{\b\fs24 \tab Operador:}{\fs24  String terminada em nulo de at\'e9 8 caracteres com a identifica\'e7\'e3o do operador.
+\par 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152485}{\*\bkmkstart _Toc381521889}{\*\bkmkstart _Toc382018951}{\*\bkmkstart _Toc382040190}{\*\bkmkstart _Toc382898706}
+{\*\bkmkstart _Toc382899814}{\*\bkmkstart _Toc382900017}{\*\bkmkstart _Toc388690398}{\*\bkmkstart _Toc389386852}CancelaCupom{\*\bkmkend _Toc381152485}{\*\bkmkend _Toc381521889}{\*\bkmkend _Toc382018951}{\*\bkmkend _Toc382040190}{\*\bkmkend _Toc382898706}
+{\*\bkmkend _Toc382899814}{\*\bkmkend _Toc382900017}{\*\bkmkend _Toc388690398}{\*\bkmkend _Toc389386852}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o cancela o \'faltimo cupom de venda emitido e j\'e1 encerrado.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\i\fs24 \tab }{\b\fs24 Autoriza\'e7\'e3o}{\fs24 : String terminada em nulo. Se \lquote 1\rquote , imprime cupom de cancelamento deixando espa\'e7o para assinatura do supervisor e operador; se 
+\lquote 0\rquote , apenas emite o cupom de cancelamento.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\i\fs24 \tab }{\b\fs24 Operador:}{\fs24  String terminada em nulo de at\'e9 8 caracteres com a identifica\'e7\'e3o do operador}{\i\fs24 .
+\par }{\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152486}{\*\bkmkstart _Toc381521890}{\*\bkmkstart _Toc382018952}{\*\bkmkstart _Toc382040191}{\*\bkmkstart _Toc382898707}
+{\*\bkmkstart _Toc382899815}{\*\bkmkstart _Toc382900018}{\*\bkmkstart _Toc388690399}{\*\bkmkstart _Toc389386853}AcrescimoSubtotal{\*\bkmkend _Toc381152486}{\*\bkmkend _Toc381521890}{\*\bkmkend _Toc382018952}{\*\bkmkend _Toc382040191}
+{\*\bkmkend _Toc382898707}{\*\bkmkend _Toc382899815}{\*\bkmkend _Toc382900018}{\*\bkmkend _Toc388690399}{\*\bkmkend _Toc389386853}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza ou cancela a opera\'e7\'e3o de acr\'e9scimo no subtotal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Opera\'e7\'e3o: }{\fs24 String terminada em nulo formado por um caractere que indica se o acr\'e9scimo no subtotal \'e9 tributado (\ldblquote 0\rdblquote ), se o \'faltimo acr\'e9
+scimo tributado no subtotal deve ser cancelado (\ldblquote 1\rdblquote ), se o acr\'e9scimo no subtotal n\'e3o \'e9 tributado (\ldblquote 2\rdblquote ) ou ainda se o \'faltimo acr\'e9scimo no subtotal n\'e3o tributado deve ser cancelado (\ldblquote 3
+\rdblquote ).
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Descri\'e7\'e3o: }{\fs24 String terminada em nulo de at\'e9 10 caracteres com a descri\'e7\'e3o da opera\'e7\'e3o.
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Valor: }{\fs24 String terminada em nulo de at\'e9 10 caracteres com o valor do acr\'e9scimo a ser dado.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152487}{\*\bkmkstart _Toc381521891}{\*\bkmkstart _Toc382018953}{\*\bkmkstart _Toc382040192}{\*\bkmkstart _Toc382898708}
+{\*\bkmkstart _Toc382899816}{\*\bkmkstart _Toc382900019}{\*\bkmkstart _Toc388690400}{\*\bkmkstart _Toc389386854}DescontoSubtotal{\*\bkmkend _Toc381152487}{\*\bkmkend _Toc381521891}{\*\bkmkend _Toc382018953}{\*\bkmkend _Toc382040192}
+{\*\bkmkend _Toc382898708}{\*\bkmkend _Toc382899816}{\*\bkmkend _Toc382900019}{\*\bkmkend _Toc388690400}{\*\bkmkend _Toc389386854}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza ou cancela o desconto no subtotal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Opera\'e7\'e3o: }{\fs24 String terminada em nulo formado por um caractere que indica se \'e9 desconto no subtotal (\ldblquote 0\rdblquote ) ou se \'e9
+ cancelamento do desconto no subtotal (\ldblquote 1\rdblquote ).
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Descri\'e7\'e3o: }{\fs24 String terminada em nulo de at\'e9 10 caracteres com a descri\'e7\'e3o da opera\'e7\'e3o.
+\par }{\b\fs24 \tab Valor: }{\fs24 String terminada em nulo de at\'e9 10 caracteres com o valor do desconto a ser dado.
+\par 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 Relatorio_XZ
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Realiza a emiss\'e3o de uma leitura X com ou sem relat\'f3rio gerencial ou ainda uma redu\'e7\'e3o Z.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab TipoRel}{\fs24 : String terminada em nulo formado por 1 caractere que indica se \'e9 leitura X sem relat\'f3rio gerencial (\ldblquote 0\rdblquote ), redu\'e7\'e3o Z (\ldblquote 1
+\rdblquote ) ou ainda um relat\'f3rio X com relat\'f3rio gerencial (\ldblquote 2\rdblquote )..
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 FinalizaRelatorio
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o finaliza um relat\'f3rio gerencial.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }{\i\fs24 \tab }{\b\fs24 Operador:}{\fs24  String terminada em nulo de at\'e9 8 caracteres com a identifica\'e7\'e3o do operador}{\i\fs24 .
+\par }{\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }{\b\fs24 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152490}{\*\bkmkstart _Toc381521894}{\*\bkmkstart _Toc382018956}{\*\bkmkstart _Toc382040195}{\*\bkmkstart _Toc382898711}
+{\*\bkmkstart _Toc382899819}{\*\bkmkstart _Toc382900022}{\*\bkmkstart _Toc388690403}{\*\bkmkstart _Toc389386857}CargaAliq{\*\bkmkend _Toc381152490}{\*\bkmkend _Toc381521894}{\*\bkmkend _Toc382018956}{\*\bkmkend _Toc382040195}{\*\bkmkend _Toc382898711}
+{\*\bkmkend _Toc382899819}{\*\bkmkend _Toc382900022}{\*\bkmkend _Toc388690403}{\*\bkmkend _Toc389386857}uota
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite a programa\'e7\'e3o de al\'edquotas.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Al\'edquota}{\fs24 : String terminada em nulo (2 caracteres) com o n\'famero da al\'edquota que se deseja programar.
+\par }{\b\fs24 \tab Valor:}{\fs24  String terminada em nulo (4 caracteres) com o valor percentual a ser programado na al\'edquota. Os dois \'faltimos d\'edgitos s\'e3o automaticamente considerados como fracion\'e1rios.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 {\*\bkmkstart _Toc381152491}{\*\bkmkstart _Toc381521895}{\*\bkmkstart _Toc382018957}{\*\bkmkstart _Toc382040196}{\*\bkmkstart _Toc382898712}
+{\*\bkmkstart _Toc382899820}{\*\bkmkstart _Toc382900023}{\*\bkmkstart _Toc388690404}{\*\bkmkstart _Toc389386858}CargaCliche{\*\bkmkend _Toc381152491}{\*\bkmkend _Toc381521895}{\*\bkmkend _Toc382018957}{\*\bkmkend _Toc382040196}{\*\bkmkend _Toc382898712}
+{\*\bkmkend _Toc382899820}{\*\bkmkend _Toc382900023}{\*\bkmkend _Toc388690404}{\*\bkmkend _Toc389386858}
+\par }\pard\plain \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o \'e9 respons\'e1vel pela carga dos dados cadastrais do estabelecimento.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Tipo}{\fs24 : String terminada em nulo que indica se a primeira linha (}{\b\fs24 Linha 1}{\fs24 ) do clich\'ea deve ser impressa com caracteres normais (\ldblquote 0
+\rdblquote ) ou expandidos (\ldblquote 1\rdblquote ).
+\par \tab }{\b\fs24 Linha 1}{\fs24 : String terminada em nulo de at\'e9 48 caracteres com dados de identifica\'e7\'e3o do estabelecimento.
+\par \tab }{\b\fs24 Linha 2}{\fs24 : String terminada em nulo de at\'e9 48 caracteres com dados de identifica\'e7\'e3o do estabelecimento.
+\par \tab }{\b\fs24 Linha 3}{\fs24 : String terminada em nulo de at\'e9 48 caracteres com dados de identifica\'e7\'e3o do estabelecimento.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Loja}{\fs24 : String terminada em nulo de at\'e9 3 caracteres com o n\'famero da loja
+\par \tab }{\b\fs24 Seq}{\fs24 : String terminada em nulo de at\'e9 3 caracteres com o n\'famero do equipamento na loja.
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 CGC}{\fs24 : String terminada em nulo de 18 caracteres com o n\'famero da inscri\'e7\'e3o federal do estabelecimento.
+\par \tab }{\b\fs24 IE:}{\fs24  String terminada em nulo de at\'e9 15 caracteres com o n\'famero da inscri\'e7\'e3o estadual do estabelecimento.
+\par }\pard \qj\fi-1\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 Destino}{\fs24 : String terminada em nulo: se \lquote 0\rquote , apenas imprime o novo clich\'ea para visualiza\'e7\'e3o na bobina; se \lquote 1\rquote , envia para a mem\'f3ria f
+iscal o clich\'ea.
+\par }\pard \qj\fi708\nowidctlpar\widctlpar\adjustright {\fs24 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B). 
+\par 
+\par \tab OBS: Somente ser\'e3o impressos }{\b\fs24 caracteres alfanum\'e9ricos}{\fs24  na linha 1 caso a op\'e7\'e3o - no par\'e2metro tipo, seja com caracteres expandidos. Caso sejam enviado caracteres n\'e3o alfanum\'e9ricos nesta situa\'e7\'e3
+o, os caracteres impressos n\'e3o corresponder\'e3o aos transmitidos pela biblioteca \'e0 impressora (ver comando 15 no protocolo de comunica\'e7\'e3o com a impressora).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152492}{\*\bkmkstart _Toc381521896}{\*\bkmkstart _Toc382018958}{\*\bkmkstart _Toc382040197}{\*\bkmkstart _Toc382898713}
+{\*\bkmkstart _Toc382899821}{\*\bkmkstart _Toc382900024}{\*\bkmkstart _Toc388690405}{\*\bkmkstart _Toc389386859}LeituraMF{\*\bkmkend _Toc381152492}{\*\bkmkend _Toc381521896}{\*\bkmkend _Toc382018958}{\*\bkmkend _Toc382040197}{\*\bkmkend _Toc382898713}
+{\*\bkmkend _Toc382899821}{\*\bkmkend _Toc382900024}{\*\bkmkend _Toc388690405}{\*\bkmkend _Toc389386859}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza a leitura da mem\'f3ria fiscal por intervalo de datas ou por faixa de redu\'e7\'e3o.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Tipo: }{\fs24 String terminada em nulo formado por 1 caractere que indica o tipo de leitura que se deseja realizar:}{\b\fs24 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab \ldblquote 0\rdblquote :}{\fs24  Relat\'f3rio por intervalo de datas no cupom}{\b\fs24 
+\par \tab \ldblquote 1\rdblquote :}{\fs24  Relat\'f3rio por intervalo de redu\'e7\'f5es no cupom}{\b\fs24 
+\par \tab \ldblquote 2\rdblquote :}{\fs24  Relat\'f3rio por intervalo de datas via serial}{\b\fs24 
+\par \tab \ldblquote 3\rdblquote :}{\fs24  Relat\'f3rio por intervalo de redu\'e7\'f5es via serial}{\b\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Inicio:}{\fs24  String terminada em nulo de 6 bytes com a data ou redu\'e7\'e3o inicial da leitura, dependendo do par\'e2metro }{\b\i\fs24 Tipo}{\fs24 
+. Para a data, o formato deve ser DDMMAA.}{\b\fs24 
+\par \tab Fim}{\fs24 : String terminada em nulo de 6 bytes com a data ou redu\'e7\'e3o final da leitura, dependendo do par\'e2metro }{\b\i\fs24 Tipo}{\fs24 . Formato DDMMAA.
+\par }{\b\fs24 \tab Arquivo}{\fs24 : String terminada em nulo com o nome do arquivo que ser\'e1 gerado quando a leitura for realizada via serial (quando o par\'e2metro }{\b\i\fs24 Tipo}{\fs24  for igual a \ldblquote 2\rdblquote  ou \ldblquote 3\rdblquote 
+). Se a leitura n\'e3o for via serial, este campo \'e9 ignorado pela DLL.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152493}{\*\bkmkstart _Toc381521897}{\*\bkmkstart _Toc382018959}{\*\bkmkstart _Toc382040198}{\*\bkmkstart _Toc382898714}
+{\*\bkmkstart _Toc382899822}{\*\bkmkstart _Toc382900025}{\*\bkmkstart _Toc388690406}{\*\bkmkstart _Toc389386860}Propaganda{\*\bkmkend _Toc381152493}{\*\bkmkend _Toc381521897}{\*\bkmkend _Toc382018959}{\*\bkmkend _Toc382040198}{\*\bkmkend _Toc382898714}
+{\*\bkmkend _Toc382899822}{\*\bkmkend _Toc382900025}{\*\bkmkend _Toc388690406}{\*\bkmkend _Toc389386860}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Imprime um texto de propaganda no cupom de venda ap\'f3s o pagamento.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Tipo caracter}{\fs24 : String terminada em nulo de 1 byte que indica se a mensagem ser\'e1 impressa com caracteres normais (\ldblquote 0\rdblquote ) ou expandidos (\ldblquote 
+1\rdblquote ).
+\par }{\b\fs24 \tab Texto: }{\fs24 String terminada em nulo de at\'e9 192 caracteres com o texto a ser impresso. Se o }{\b\fs24 Tipo caracter}{\fs24  informado for \ldblquote 0\rdblquote , cada 48 caracteres representar\'e3o uma linha; caso seja \ldblquote 1
+\rdblquote , cada 22 bytes representar\'e3o uma linha.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {
+\par \page }{\fs32 {\*\bkmkstart _Toc381152494}{\*\bkmkstart _Toc381521898}{\*\bkmkstart _Toc382018960}{\*\bkmkstart _Toc382040199}{\*\bkmkstart _Toc382898715}{\*\bkmkstart _Toc382899823}{\*\bkmkstart _Toc382900026}{\*\bkmkstart _Toc388690407}
+{\*\bkmkstart _Toc389386861}ProgramaRelogio{\*\bkmkend _Toc381152494}{\*\bkmkend _Toc381521898}{\*\bkmkend _Toc382018960}{\*\bkmkend _Toc382040199}{\*\bkmkend _Toc382898715}{\*\bkmkend _Toc382899823}{\*\bkmkend _Toc382900026}{\*\bkmkend _Toc388690407}
+{\*\bkmkend _Toc389386861}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza a programa\'e7\'e3o do rel\'f3gio interno da impressora fiscal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }{\b\fs24 \tab Tipo: }{\fs24 Caracter (string terminada em zero) que indica o tipo de programa\'e7\'e3o
+\par }{\b\fs24 \tab \tab \lquote 0\rquote }{\fs24  - Acerto da data e hora
+\par }\pard \qj\li1418\nowidctlpar\widctlpar\adjustright {\b\fs24 \lquote 1\rquote }{\fs24 - Apenas soma uma hora no rel\'f3gio (hor\'e1rio de ver\'e3o). Os demais par\'e2metros s\'e3o desprezados.
+\par }{\b\fs24 \lquote 2\rquote }{\fs24  \endash  Apenas subtrai uma hora no rel\'f3gio (hor\'e1rio de ver\'e3o). Os demais par\'e2metros s\'e3o desprezados.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Data: }{\fs24 String terminada em nulo de 6 bytes com a nova data }{\b\fs24 DDMMAA
+\par \tab Hora: }{\fs24 String terminada em nulo de 6 bytes com a nova hora no formato}{\b\fs24  HHMMSS
+\par }{\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152495}{\*\bkmkstart _Toc381521899}{\*\bkmkstart _Toc382018961}{\*\bkmkstart _Toc382040200}{\*\bkmkstart _Toc382898716}
+{\*\bkmkstart _Toc382899824}{\*\bkmkstart _Toc382900027}{\*\bkmkstart _Toc388690408}{\*\bkmkstart _Toc389386862}AbreGaveta{\*\bkmkend _Toc381152495}{\*\bkmkend _Toc381521899}{\*\bkmkend _Toc382018961}{\*\bkmkend _Toc382040200}{\*\bkmkend _Toc382898716}
+{\*\bkmkend _Toc382899824}{\*\bkmkend _Toc382900027}{\*\bkmkend _Toc388690408}{\*\bkmkend _Toc389386862}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite realizar a abertura da gaveta de valores.
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24  N\'e3o tem par\'e2metros.
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152496}{\*\bkmkstart _Toc381521900}{\*\bkmkstart _Toc382018962}{\*\bkmkstart _Toc382040201}{\*\bkmkstart _Toc382898717}
+{\*\bkmkstart _Toc382899825}{\*\bkmkstart _Toc382900028}{\*\bkmkstart _Toc388690409}{\*\bkmkstart _Toc389386863}AvancaLinhas{\*\bkmkend _Toc381152496}{\*\bkmkend _Toc381521900}{\*\bkmkend _Toc382018962}{\*\bkmkend _Toc382040201}{\*\bkmkend _Toc382898717}
+{\*\bkmkend _Toc382899825}{\*\bkmkend _Toc382900028}{\*\bkmkend _Toc388690409}{\*\bkmkend _Toc389386863}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Este comando permite o avan\'e7o de \ldblquote n\rdblquote  linhas na esta\'e7\'e3o impressora selecionada.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par \tab }{\b\fs24 nLinhas}{\fs24 : String (2 bytes) terminada em zero, indicando o n\'famero de linhas a avan\'e7ar.
+\par 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par \page }{\fs18 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152499}{\*\bkmkstart _Toc381521903}{\*\bkmkstart _Toc382018965}{\*\bkmkstart _Toc382040204}{\*\bkmkstart _Toc382898720}
+{\*\bkmkstart _Toc382899828}{\*\bkmkstart _Toc382900031}{\*\bkmkstart _Toc388690412}{\*\bkmkstart _Toc389386866}EstadoImpressora{\*\bkmkend _Toc381152499}{\*\bkmkend _Toc381521903}{\*\bkmkend _Toc382018965}{\*\bkmkend _Toc382040204}
+{\*\bkmkend _Toc382898720}{\*\bkmkend _Toc382899828}{\*\bkmkend _Toc382900031}{\*\bkmkend _Toc388690412}{\*\bkmkend _Toc389386866}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Este comando retorna o estado atual da impressora.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 N\'e3o tem par\'e2metros.
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando o estado atual da impressora conforme ap\'eandice C.
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152500}{\*\bkmkstart _Toc381521904}{\*\bkmkstart _Toc382018966}{\*\bkmkstart _Toc382040205}{\*\bkmkstart _Toc382898721}
+{\*\bkmkstart _Toc382899829}{\*\bkmkstart _Toc382900032}{\*\bkmkstart _Toc388690413}{\*\bkmkstart _Toc389386867}LeRegistrador{\*\bkmkend _Toc381152500}{\*\bkmkend _Toc381521904}{\*\bkmkend _Toc382018966}{\*\bkmkend _Toc382040205}{\*\bkmkend _Toc382898721}
+{\*\bkmkend _Toc382899829}{\*\bkmkend _Toc382900032}{\*\bkmkend _Toc388690413}{\*\bkmkend _Toc389386867}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza a leitura de registradores da impressora fiscal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 N\'fameroRegistrador}{\fs24 : String terminada em nulo de 2 posi\'e7\'f5es com o n\'famero do registrador que se deseja ler.
+\par \tab }{\b\fs24 Valor}{\fs24 : Refer\'eancia de um string pr\'e9-alocado pela aplica\'e7\'e3o com pelo menos 22 bytes onde ser\'e1 escrito o valor do registrador lido da impressora fiscal. 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  N\'famero inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par \tab }{\i\fs24 Exemplo:
+\par \tab \tab }{\fs24 char registrador[] = \ldblquote 10\rdblquote ;}{\i\fs24 
+\par \tab \tab }{\fs24 char valor[22];
+\par \tab \tab ret = LeRegistrador(registrador, valor);
+\par \tab \tab If (ret != 33)
+\par \tab \tab \tab Printf(\ldblquote Erro %d em LeRegistrador( ).\rdblquote , ret);
+\par \tab \tab else printf(\ldblquote Valor do registrador %s = %s\rdblquote , registrador, valor);
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152501}{\*\bkmkstart _Toc381521905}{\*\bkmkstart _Toc382018967}{\*\bkmkstart _Toc382040206}{\*\bkmkstart _Toc382898722}
+{\*\bkmkstart _Toc382899830}{\*\bkmkstart _Toc382900033}{\*\bkmkstart _Toc388690414}{\*\bkmkstart _Toc389386868}Autentica{\*\bkmkend _Toc381152501}{\*\bkmkend _Toc381521905}{\*\bkmkend _Toc382018967}{\*\bkmkend _Toc382040206}{\*\bkmkend _Toc382898722}
+{\*\bkmkend _Toc382899830}{\*\bkmkend _Toc382900033}{\*\bkmkend _Toc388690414}{\*\bkmkend _Toc389386868}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o possibilita a autentica\'e7\'e3o de documentos.
+\par \tab }{\i\fs24 Par\'e2metros: }{\fs24 N\'e3o tem par\'e2metros.
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152503}{\*\bkmkstart _Toc381521907}{\*\bkmkstart _Toc382018969}{\*\bkmkstart _Toc382040208}{\*\bkmkstart _Toc382898724}
+{\*\bkmkstart _Toc382899832}{\*\bkmkstart _Toc382900035}{\*\bkmkstart _Toc388690416}{\*\bkmkstart _Toc389386869}LeSensor{\*\bkmkend _Toc381152503}{\*\bkmkend _Toc381521907}{\*\bkmkend _Toc382018969}{\*\bkmkend _Toc382040208}{\*\bkmkend _Toc382898724}
+{\*\bkmkend _Toc382899832}{\*\bkmkend _Toc382900035}{\*\bkmkend _Toc388690416}{\*\bkmkend _Toc389386869}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o possibilita a leitura dos sensores da impressora fiscal.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }{\b\fs24 \tab Sensor:}{\fs24  String (1 byte) terminada em nulo que seleciona o sensor a ser lido.
+\par \tab \tab }{\b\fs24 \lquote 0\rquote : }{\fs24 Sensor de fim de papel;
+\par \tab \tab \lquote }{\b\fs24 1\rquote : }{\fs24 Sensor de pouco papel;
+\par \tab \tab \lquote }{\b\fs24 2\rquote :}{\fs24  Sensor de autentica\'e7\'e3o;
+\par \tab \tab \lquote }{\b\fs24 3\rquote :}{\fs24  Sensor de gaveta.}{\b\fs24 
+\par }{\fs24 
+\par \tab }{\i\fs24 Retorno: }{\fs24 Inteiro, indicando o estado do sensor (Ver ap\'eandice D).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152504}{\*\bkmkstart _Toc381521908}{\*\bkmkstart _Toc382018970}{\*\bkmkstart _Toc382040209}{\*\bkmkstart _Toc382898725}
+{\*\bkmkstart _Toc382899833}{\*\bkmkstart _Toc382900036}{\*\bkmkstart _Toc388690417}{\*\bkmkstart _Toc389386870}IdComprador{\*\bkmkend _Toc381152504}{\*\bkmkend _Toc381521908}{\*\bkmkend _Toc382018970}{\*\bkmkend _Toc382040209}{\*\bkmkend _Toc382898725}
+{\*\bkmkend _Toc382899833}{\*\bkmkend _Toc382900036}{\*\bkmkend _Toc388690417}{\*\bkmkend _Toc389386870}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Este comando possibilita a identifica\'e7\'e3o do comprador (pessoa f\'edsica ou jur\'eddica) no cupom fiscal. O comando de identifica\'e7\'e3o deve ser enviado ap\'f3s o pagamento do cupom.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24   Todos s\'e3o tipo string terminada em nulo.
+\par \tab }{\b\fs24 Nome/Raz\'e3o Social }{\fs24 (42 bytes): Nome ou raz\'e3o social do comprador
+\par \tab }{\b\fs24 Tipo}{\fs24  (1 byte):
+\par \tab \tab }{\b\fs24 \ldblquote 0\rdblquote }{\fs24 : indica pessoa f\'edsica (CPF)
+\par \tab \tab }{\b\fs24 \ldblquote 1\rdblquote }{\fs24 : indica pessoa jur\'eddica (CGC)
+\par \tab }{\b\fs24 CPF/CGC}{\fs24  (18 bytes): N\'famero do CPF ou CGC do comprador
+\par \tab }{\b\fs24 Linha1}{\fs24  (42 bytes),
+\par }\pard \fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\b\fs24 Linha2}{\fs24  (42 bytes): Duas linhas para informa\'e7\'f5es adicionais (endere\'e7o, endere\'e7o de entrega, observa\'e7\'f5es, etc ...)
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152505}{\*\bkmkstart _Toc381521909}{\*\bkmkstart _Toc382018971}{\*\bkmkstart _Toc382040210}{\*\bkmkstart _Toc382898726}
+{\*\bkmkstart _Toc382899834}{\*\bkmkstart _Toc382900037}{\*\bkmkstart _Toc388690418}{\*\bkmkstart _Toc389386871}CupomStub{\*\bkmkend _Toc381152505}{\*\bkmkend _Toc381521909}{\*\bkmkend _Toc382018971}{\*\bkmkend _Toc382040210}{\*\bkmkend _Toc382898726}
+{\*\bkmkend _Toc382899834}{\*\bkmkend _Toc382900037}{\*\bkmkend _Toc388690418}{\*\bkmkend _Toc389386871}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Al\'e9m do cupom de venda (cupom fiscal), \'e9 poss\'edvel emitir o cupom de Stub ou segundo cupom. }{\b\fs24 
+\par }{\fs24 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24  
+\par }\pard \qj\fi708\nowidctlpar\widctlpar\adjustright {\b\fs24 Operador}{\fs24  (8 caracteres): String terminada em nulo. Identifica\'e7\'e3o do operador.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 {\*\bkmkstart _Toc381152506}{\*\bkmkstart _Toc381521910}{\*\bkmkstart _Toc382018972}{\*\bkmkstart _Toc382040211}{\*\bkmkstart _Toc382898727}
+{\*\bkmkstart _Toc382899835}{\*\bkmkstart _Toc382900038}{\*\bkmkstart _Toc388690419}{\*\bkmkstart _Toc389386872}SimboloMoeda{\*\bkmkend _Toc381152506}{\*\bkmkend _Toc381521910}{\*\bkmkend _Toc382018972}{\*\bkmkend _Toc382040211}{\*\bkmkend _Toc382898727}
+{\*\bkmkend _Toc382899835}{\*\bkmkend _Toc382900038}{\*\bkmkend _Toc388690419}{\*\bkmkend _Toc389386872}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\fs24 \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Carrega na impressora fiscal o s\'edmbolo da moeda corrente.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24  
+\par }\pard \qj\fi708\nowidctlpar\widctlpar\adjustright {\b\fs24 S\'edmbolo}{\fs24  (4 caracteres): String terminada em nulo com o s\'edmbolo da moeda corrente.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs32 FormaPagamento
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o realiza a carga das formas de pagamento.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Forma}{\fs24 : String terminada em nulo (2 caracteres) com o n\'famero da forma de pagamento a programar.
+\par }{\b\fs24 \tab Descri\'e7\'e3o:}{\fs24  String terminada em nulo (10 caracteres) com a descri\'e7\'e3o da forma de pagamento carregada.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 CargaNaoVinculado
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite a carga de documentos n\'e3o vinculados (n\'e3o fiscais).
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Codigo}{\fs24 : String terminada em nulo (2 caracteres) com o n\'famero de identifica\'e7\'e3o do documento n\'e3o vinculado a programar.
+\par }{\b\fs24 \tab Descricao:}{\fs24  String terminada em nulo (30 caracteres) com a descri\'e7\'e3o do documento n\'e3o vinculado cadastrado.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 EmiteNaoVinculado
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite um lan\'e7amento de um valor a um documento n\'e3o vinculado previamente cadastrado.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Codigo}{\fs24 : String terminada em nulo (2 caracteres) com o n\'famero de identifica\'e7\'e3o do documento n\'e3o vinculado.
+\par }{\b\fs24 \tab Descricao:}{\fs24  String terminada em nulo (20 caracteres) com a descri\'e7\'e3o complementar do documento n\'e3o vinculado a emitir, tal como n\'famero do documento ou conta, por exemplo.
+\par }{\b\fs24 \tab Valor: }{\fs24 String terminada em nulo (9 caracteres) com o valor a ser lan\'e7ado. O campo n\'e3o deve ser formatado com v\'edrgulas ou pontos. A impressora assumir\'e1 os dois \'faltimos d\'edgitos como centavos.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 EmiteVinculado
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite a emiss\'e3o de um documento vinculado a um cupom de venda.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab COO}{\fs24 : String terminada em nulo (6 caracteres) com o COO do cupom ao qual deseja-se emitir o documento vinculado.
+\par }{\b\fs24 \tab Sequencia:}{\fs24  String terminada em nulo (2 caracteres) com a seq\'fc\'eancia da forma de pagamento acumulada. 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 TransferFinanceira
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Esta fun\'e7\'e3o permite a transfer\'eancia de valores entre formas de pagamento (transfer\'eancia financeira).
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Valor}{\fs24 : String terminada em nulo (9 caracteres) com o valor a ser transferido entre as formas de pagamento relacionadas pelos pr\'f3ximos par\'e2metros.
+\par }{\b\fs24 \tab Forma Origem:}{\fs24  String terminada em nulo (2 caracteres) com o n\'famero da forma de pagamento que ser\'e1 debitado o valor.
+\par }{\b\fs24 \tab Forma Destino: }{\fs24 String terminada em nulo (2 caracteres) com o n\'famero da forma de pagamento que ser\'e1 creditado o valor.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\fs28 HabAcrescFinanceiro
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab }{\i\fs24 Descri\'e7\'e3o: }{\fs24 Habilita ou desabilita na impressora fiscal a caracter\'edstica de emitir acr\'e9scimos no subtotal n\'e3o tributados.
+\par 
+\par \tab }{\i\fs24 Par\'e2metros:}{\fs24 
+\par }\pard \qj\fi-709\li709\nowidctlpar\widctlpar\adjustright {\b\fs24 \tab Flag}{\fs24 : String terminada em nulo (1 caracter): se \ldblquote 0\rdblquote  n\'e3o permite a caracter\'edstica de emitir acr\'e9scimos no subtotal n\'e3o tributados; se 
+\ldblquote 1\rdblquote , habilita tal caracter\'edstica.
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab }{\i\fs24 Retorno:}{\fs24  Inteiro, indicando resultado da execu\'e7\'e3o da fun\'e7\'e3o (Ver ap\'eandice B).
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\page }{\fs28 {\*\bkmkstart _Toc381152510}{\*\bkmkstart _Toc381521913}{\*\bkmkstart _Toc382018975}{\*\bkmkstart _Toc382040214}{\*\bkmkstart _Toc382898730}
+{\*\bkmkstart _Toc382899838}{\*\bkmkstart _Toc382900041}{\*\bkmkstart _Toc388690423}{\*\bkmkstart _Toc389386876}Ap\'eandice A - Tempo M\'e1ximo de Espera de cada Comando{\*\bkmkend _Toc381152510}{\*\bkmkend _Toc381521913}{\*\bkmkend _Toc382018975}
+{\*\bkmkend _Toc382040214}{\*\bkmkend _Toc382898730}{\*\bkmkend _Toc382899838}{\*\bkmkend _Toc382900041}{\*\bkmkend _Toc388690423}{\*\bkmkend _Toc389386876}
+\par }\pard\plain \nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs24 
+\par \tab O Tempo M\'e1ximo de Espera para resposta a um comando que a DLL espera antes de retornar }{\i\fs24 Timeout}{\fs24  \'e9 de 3 segundos. Est\'e3o listados na tabela abaixo os comandos que necessitam de m
+ais tempo para retornarem uma resposta, os quais s\'e3o diferenciados pela DLL.
+\par 
+\par }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 
+\clbrdrb\brdrs\brdrw15\brdrcf1 \clcfpat1\clcbpat8\clshdng6000\cltxlrtb \cellx2163\clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \clcfpat1\clcbpat8\clshdng6000\cltxlrtb \cellx5137\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\cf8 Comando\cell Tempo M\'e1ximo de Espera\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\cf8 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 
+\trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx2163\clvertalt\clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr
+\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx5137\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 ImprimeCabecalho\cell 5 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 
+\trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx2163
+\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx5137\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 VendaItem\cell 8 segundos\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 DescontoItem\cell 5 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {
+\fs24 Pagamento\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 FechaCupom\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 LinhasLivres\cell 50 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 CancelaVenda\cell 10 segundos\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 CancelaCupom\cell 15 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {
+\fs24 Relatorio_XZ\cell 1 minuto\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 FinalizaRelatorio\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row 
+}\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 CargaCliche\cell 10 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 LeituraMF\cell 1 minuto\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 Propaganda\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 
+ProgramaRelogio\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 AvancaLinhas\cell 5 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 IdComprador\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 CupomStub\cell 10 segundos\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 EmiteNaoVinculado\cell 8 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\intbl\adjustright 
+{\fs24 EmiteVinculado\cell 10 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 
+\trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx2163\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \clbrdrr
+\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx5137\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 TransferFinanceira\cell 10 segundos\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \nowidctlpar\widctlpar\adjustright {\fs24 
+\par }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs18 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\b0\fs18 \page }{\fs28 {\*\bkmkstart _Toc381152511}{\*\bkmkstart _Toc381521914}{\*\bkmkstart _Toc382018976}{\*\bkmkstart _Toc382040215}
+{\*\bkmkstart _Toc382898731}{\*\bkmkstart _Toc382899839}{\*\bkmkstart _Toc382900042}{\*\bkmkstart _Toc388690424}{\*\bkmkstart _Toc389386877}Ap\'eandice B - C\'f3digos de Retorno das Fun\'e7\'f5es{\*\bkmkend _Toc381152511}{\*\bkmkend _Toc381521914}
+{\*\bkmkend _Toc382018976}{\*\bkmkend _Toc382040215}{\*\bkmkend _Toc382898731}{\*\bkmkend _Toc382899839}{\*\bkmkend _Toc382900042}{\*\bkmkend _Toc388690424}{\*\bkmkend _Toc389386877}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\b\fs24 
+\par }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 
+\clbrdrb\brdrs\brdrw15\brdrcf1 \clcfpat15\clcbpat8\clshdng10000\cltxlrtb \cellx1030\clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \clcfpat15\clcbpat8\clshdng10000\cltxlrtb \cellx9400\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\cf8 Retorno}{\b\fs24\ul\cf8 \cell }{\b\fs24\cf8 Descri\'e7\'e3o}{\b\fs24\ul\cf8 \cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\cf8 \row }\trowd \trgaph70\trleft-70\trbrdrt
+\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx1030\clvertalt
+\clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx9400\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 1\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 DLL j\'e1 inicializada\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt
+\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx1030\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx9400\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 2\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 DLL n\'e3o inicializada\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 3\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha no acesso a porta serial\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 4\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha na configura\'e7\'e3o da porta serial\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 5\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Porta serial n\'e3o inicializada\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 6\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha na transmiss\'e3o: outra transmiss\'e3o em andamento.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 7\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Tamanho do comando muito grande para a DLL\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 8\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Impressora fora de linha, desligada ou desconectada.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 9\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha geral na transmiss\'e3o do comando.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 10\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Timeout na recep\'e7\'e3o da resposta da impressora.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 11\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha geral na recep\'e7\'e3o da resposta.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 12\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha no acesso aos buffers internos da porta serial\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 13\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Erro de frame na comunica\'e7\'e3o\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 14\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Erro de overrun na comunica\'e7\'e3o\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 15\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Break detectado na comunica\'e7\'e3o\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 16\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Erro de acesso a porta serial durante a recep\'e7\'e3o\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 17\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Tamanho do buffer de recep\'e7\'e3o da porta serial insuficiente para recep\'e7\'e3o dos dados.\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 18\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Erro de paridade na comunica\'e7\'e3o\cell }\pard 
+\nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 19\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Tamanho do buffer de transmiss\'e3o da porta serial insuficiente para comunica
+\'e7\'e3o.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 20\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Falha no acesso ao arquivo de leitura da mem\'f3
+ria fiscal\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh
+\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx1030\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 
+\cltxlrtb \cellx9400\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 33\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Comando executado com sucesso.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard 
+\qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab Os c\'f3digos de retorno maiores que 33  (trinta e tr\'eas) representam c\'f3digos de erro da impressora. Consulte o manual da impressora.
+\par 
+\par \tab Apenas as fun\'e7\'f5es InicializaDLL e FinalizaDLL retornam 0 (zero) em caso de sucesso.
+\par 
+\par }{\fs18 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\b0\fs18 \page }{\fs32 {\*\bkmkstart _Toc381152512}{\*\bkmkstart _Toc381521915}{\*\bkmkstart _Toc382018977}{\*\bkmkstart _Toc382040216}
+{\*\bkmkstart _Toc382898732}{\*\bkmkstart _Toc382899840}{\*\bkmkstart _Toc382900043}{\*\bkmkstart _Toc388690425}{\*\bkmkstart _Toc389386878}Ap\'eandice C - C\'f3digos de Retorno da fun\'e7\'e3o EstadoImpressora{\*\bkmkend _Toc381152512}
+{\*\bkmkend _Toc381521915}{\*\bkmkend _Toc382018977}{\*\bkmkend _Toc382040216}{\*\bkmkend _Toc382898732}{\*\bkmkend _Toc382899840}{\*\bkmkend _Toc382900043}{\*\bkmkend _Toc388690425}{\*\bkmkend _Toc389386878}
+\par }\pard\plain \nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {
+\par }\trowd \trgaph70\trkeep\trhdr\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrl
+\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clcfpat15\clcbpat8\clshdng10000\cltxlrtb \cellx829\clvertalt\clbrdrt\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr\brdrs\brdrw30\brdrcf1 \clcfpat15\clcbpat8\clshdng10000\cltxlrtb 
+\cellx3214\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\b\cf8 C\'f3digo\cell Estado\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\b\cf8 \row }\trowd \trgaph70\trkeep\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 
+\trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 \trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx829\clvertalt\clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr
+\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx3214\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x75
+\par (117)\cell Interven\'e7\'e3o t\'e9cnica\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\trowd \trgaph70\trkeep\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 
+\trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \cltxlrtb \cellx829\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw15\brdrcf1 \clbrdrr
+\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx3214\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x76
+\par (118)\cell Em per\'edodo de venda\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x77
+\par (119)\cell Em venda de item\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x78
+\par (120)\cell Em pagamento\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x79
+\par (121)\cell Em comercial\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x7c
+\par (124)\cell Dia Fechado\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x7d
+\par (125)\cell Em documento n\'e3o vinculado\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x7e
+\par (126)\cell Em relat\'f3rio gerencial\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\trowd \trgaph70\trkeep\trbrdrt\brdrs\brdrw30\brdrcf1 \trbrdrl\brdrs\brdrw30\brdrcf1 \trbrdrb\brdrs\brdrw30\brdrcf1 \trbrdrr\brdrs\brdrw30\brdrcf1 
+\trbrdrh\brdrs\brdrw15\brdrcf1 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrl\brdrs\brdrw30\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx829\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf1 \clbrdrb\brdrs\brdrw30\brdrcf1 \clbrdrr
+\brdrs\brdrw30\brdrcf1 \cltxlrtb \cellx3214\pard \qj\sb20\sa20\nowidctlpar\widctlpar\intbl\adjustright {\fs18 0x7f
+\par (127)\cell Em documento vinculado\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs18 \row }\pard \qj\nowidctlpar\widctlpar\adjustright {\b\fs24 
+\par }\pard\plain \s15\qj\nowidctlpar\widctlpar\adjustright \lang1046\cgrid {\tab Caso o comando EstadoImpressora retorne qualquer outro c\'f3digo que n\'e3o seja nenhum dos referidos na tabela acima, o c\'f3digo de retorno dever\'e1
+ ser relacionado conforme os retornos normais da impressora fiscal.
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\b\fs24 
+\par 
+\par }\pard\plain \s3\sb240\sa60\keepn\nowidctlpar\widctlpar\outlinelevel2\adjustright \b\lang1046\cgrid {\b0\fs18 \page }{\fs32 {\*\bkmkstart _Toc381152513}{\*\bkmkstart _Toc381521916}{\*\bkmkstart _Toc382018978}{\*\bkmkstart _Toc382040217}
+{\*\bkmkstart _Toc382898733}{\*\bkmkstart _Toc382899841}{\*\bkmkstart _Toc382900044}{\*\bkmkstart _Toc388690426}{\*\bkmkstart _Toc389386879}Ap\'eandice D - C\'f3digos de Retorno da fun\'e7\'e3o LeSensor{\*\bkmkend _Toc381152513}{\*\bkmkend _Toc381521916}
+{\*\bkmkend _Toc382018978}{\*\bkmkend _Toc382040217}{\*\bkmkend _Toc382898733}{\*\bkmkend _Toc382899841}{\*\bkmkend _Toc382900044}{\*\bkmkend _Toc388690426}{\*\bkmkend _Toc389386879}
+\par }\pard\plain \qj\nowidctlpar\widctlpar\adjustright \fs20\lang1046\cgrid {\fs18 
+\par }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw15\brdrcf15 \trbrdrl\brdrs\brdrw15\brdrcf15 \trbrdrb\brdrs\brdrw15\brdrcf15 \trbrdrr\brdrs\brdrw15\brdrcf15 \trbrdrh\brdrs\brdrw15\brdrcf15 \trbrdrv\brdrs\brdrw15\brdrcf15 \clvertalt\clbrdrt
+\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb\brdrs\brdrw15\brdrcf15 \clbrdrr\brdrs\brdrw15\brdrcf15 \clcfpat1\clcbpat8\clshdng10000\cltxlrtb \cellx1030\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb
+\brdrs\brdrw15\brdrcf15 \clbrdrr\brdrs\brdrw15\brdrcf15 \clcfpat1\clcbpat8\clshdng10000\cltxlrtb \cellx3037\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\cf8 Retorno}{\b\fs24\ul\cf8 \cell }{\b\fs24\cf8 Descri\'e7\'e3o}{\b\fs24\ul\cf8 \cell 
+}\pard \nowidctlpar\widctlpar\intbl\adjustright {\b\fs24\ul\cf8 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw15\brdrcf15 \trbrdrl\brdrs\brdrw15\brdrcf15 \trbrdrb\brdrs\brdrw15\brdrcf15 \trbrdrr\brdrs\brdrw15\brdrcf15 \trbrdrh
+\brdrs\brdrw15\brdrcf15 \trbrdrv\brdrs\brdrw15\brdrcf15 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb\brdrs\brdrw15\brdrcf15 \clbrdrr\brdrs\brdrw15\brdrcf15 \cltxlrtb \cellx1030\clvertalt\clbrdrt
+\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb\brdrs\brdrw15\brdrcf15 \clbrdrr\brdrs\brdrw15\brdrcf15 \cltxlrtb \cellx3037\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {\fs24 48\cell }\pard 
+\qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Sensor Desligado.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\trowd \trgaph70\trleft-70\trbrdrt\brdrs\brdrw15\brdrcf15 \trbrdrl\brdrs\brdrw15\brdrcf15 \trbrdrb
+\brdrs\brdrw15\brdrcf15 \trbrdrr\brdrs\brdrw15\brdrcf15 \trbrdrh\brdrs\brdrw15\brdrcf15 \trbrdrv\brdrs\brdrw15\brdrcf15 \clvertalt\clbrdrt\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb\brdrs\brdrw15\brdrcf15 \clbrdrr
+\brdrs\brdrw15\brdrcf15 \cltxlrtb \cellx1030\clvertalt\clbrdrt\brdrs\brdrw15\brdrcf15 \clbrdrl\brdrs\brdrw15\brdrcf15 \clbrdrb\brdrs\brdrw15\brdrcf15 \clbrdrr\brdrs\brdrw15\brdrcf15 \cltxlrtb \cellx3037\pard \qc\nowidctlpar\widctlpar\intbl\adjustright {
+\fs24 49\cell }\pard \qj\nowidctlpar\widctlpar\intbl\adjustright {\fs24 Sensor Ligado.\cell }\pard \nowidctlpar\widctlpar\intbl\adjustright {\fs24 \row }\pard \qj\nowidctlpar\widctlpar\adjustright {\fs24 
+\par \tab Caso o comando LeituraSensor retorne qualquer outro c\'f3digo que n\'e3o seja nenhum dos referidos na tabela acima, o c\'f3digo de retorno dever\'e1 ser relacionado conforme os retornos normais da impressora fiscal.
+\par }{\fs18 
+\par }}

@@ -1,0 +1,206 @@
+object frm_ExportaFTP: Tfrm_ExportaFTP
+  Left = 135
+  Top = 98
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Transfer'#234'ncia do movimento - Via FTP'
+  ClientHeight = 229
+  ClientWidth = 518
+  Color = clTeal
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 7
+    Top = 59
+    Width = 101
+    Height = 13
+    Caption = 'Nome do arquivo:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Gauge1: TGauge
+    Left = 0
+    Top = 102
+    Width = 519
+    Height = 26
+    ForeColor = clBlue
+    Progress = 0
+    Visible = False
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 186
+    Width = 518
+    Height = 43
+    Align = alBottom
+    Color = clTeal
+    TabOrder = 0
+  end
+  object Panel4: TPanel
+    Left = 0
+    Top = 159
+    Width = 518
+    Height = 27
+    Align = alBottom
+    Alignment = taLeftJustify
+    Caption = '  Status da conex'#227'o de FTP'
+    Color = clTeal
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    object pnStatus: TPanel
+      Left = 170
+      Top = 4
+      Width = 103
+      Height = 20
+      BevelOuter = bvLowered
+      Color = clBlack
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clYellow
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object pnNomeArquivo: TPanel
+    Left = 7
+    Top = 74
+    Width = 498
+    Height = 23
+    Alignment = taLeftJustify
+    BevelOuter = bvLowered
+    Color = clTeal
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clYellow
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+  end
+  object pnBEnviado: TPanel
+    Left = 0
+    Top = 128
+    Width = 515
+    Height = 23
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' ? bytes enviados'
+    Color = clTeal
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 517
+    Height = 53
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    object pnServidorFtp: TPanel
+      Left = 1
+      Top = 1
+      Width = 515
+      Height = 18
+      Align = alTop
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      BevelOuter = bvNone
+      Caption = ' Host:'
+      Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+    end
+    object pnUsuarioFtp: TPanel
+      Left = 1
+      Top = 19
+      Width = 515
+      Height = 16
+      Align = alTop
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      BevelOuter = bvNone
+      Caption = ' Usu'#225'rio:'
+      Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+    object pnDiretorioInicial: TPanel
+      Left = 1
+      Top = 35
+      Width = 515
+      Height = 16
+      Align = alTop
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      BevelOuter = bvNone
+      Caption = ' Diret'#243'rio inicial:'
+      Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+    end
+  end
+  object timer: TTimer
+    Enabled = False
+    OnTimer = timerTimer
+    Left = 449
+    Top = 41
+  end
+  object NMFTP1: TNMFTP
+    Port = 21
+    ReportLevel = 0
+    OnPacketSent = NMFTP1PacketSent
+    Vendor = 2411
+    ParseList = False
+    ProxyPort = 0
+    Passive = False
+    FirewallType = FTUser
+    FWAuthenticate = False
+    Left = 480
+    Top = 41
+  end
+end

@@ -1,0 +1,81 @@
+package SistemaNativa;
+
+{$R *.res}
+{$R 'Componentes\Pesquisa.dcr'}
+{$R 'Componentes\abarra.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  dbrtl,
+  vcldb,
+  bdertl,
+  qrpt,
+  VclSmp,
+  vclx;
+
+contains
+  DBGridControle in 'Componentes\DBGridControle.pas',
+  DadosDbGrid in 'Componentes\DadosDbGrid.pas' {Frm_DadosDbGrid},
+  SelecaoRel in 'Componentes\SelecaoRel.pas',
+  QrpRelatorio in 'QrpRelatorio.pas' {Frm_QrpRelatorio},
+  FuncPrint in 'FuncPrint.pas',
+  QrpPrev in 'QrpPrev.pas' {FrmQrpPrev},
+  ExpQuickRep in 'ExpQuickRep.pas',
+  SetupGraf in 'SetupGraf.pas' {Frm_SetupGraf},
+  RadioGControle in 'Componentes\RadioGControle.pas',
+  MetadataParam in 'Componentes\MetadataParam.pas' {Frm_MetadataParam},
+  BitBtnControle in 'Componentes\BitBtnControle.pas',
+  Controle in 'Componentes\Controle.pas',
+  GridSql in 'Componentes\GridSql.pas',
+  ComboSql in 'Componentes\ComboSql.pas',
+  FuncoesGlobais in 'Componentes\FuncoesGlobais.pas',
+  CheckControle in 'Componentes\CheckControle.pas',
+  EditControle in 'Componentes\EditControle.pas',
+  Pesquisa in 'Componentes\Pesquisa.pas',
+  OpcoesMensagem in 'Componentes\OpcoesMensagem.pas' {FrmOpcao},
+  BuscaPath in 'Componentes\BuscaPath.pas' {FrmBuscaPath},
+  NovasExpressoes in 'Componentes\NovasExpressoes.pas',
+  ConsDinamica in 'Componentes\ConsDinamica.pas' {FrmConsDinamica},
+  GridCons in 'gridcons.pas' {Frm_GridCons},
+  un_AjudaCons in 'un_AjudaCons.pas' {frm_AjudaCons},
+  MaskEdit in 'Componentes\MaskEdit.pas',
+  CondPag in 'Componentes\CondPag.pas',
+  GridControl in 'Componentes\GridControl.pas',
+  VariaveisSAFI in 'VariaveisSAFI.pas',
+  SenhaPrecision in 'SenhaPrecision.pas' {Frm_SenhaPrecision},
+  MensPisca in 'MensPisca.pas' {FrmMensPisca},
+  PiscaLabel in 'Componentes\PiscaLabel.pas',
+  Direito in 'Componentes\Direito.pas',
+  Registro in 'Componentes\Registro.pas',
+  Campo in 'Componentes\Campo.pas',
+  TipoDef in 'Componentes\TipoDef.pas',
+  abarra in 'Componentes\abarra.pas',
+  ConstantesAppl in 'Componentes\ConstantesAppl.pas',
+  DigTexto in 'DigTexto.pas' {FrmDigTexto},
+  Serial in '..\SERIAL\TESTE1\Serial.pas',
+  PanelControle in 'Componentes\PanelControle.pas';
+
+end.

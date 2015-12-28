@@ -1,0 +1,31 @@
+COMPONENTE TEF
+==============
+
+Este componente permite a comunicação com o VERITEF e a aplicação de forma simplificada.
+
+
+PRÉ-REQUISITOS:
+
+1. Delphi 5.x
+2. Kit VERITEF, PINPAD SC552
+
+NOVIDADES:
+
+Atualizado para nova versão do gerenciador padrão que fica no path C:\TEF_DIAL
+
+PARA INSTALAR O COMPONENTE:
+
+1. Descompactar o arquivo TEF.ZIP em uma pasta. Ex: c:\fiscal
+2. Menu "Component"
+3. Opção "Install component..."
+4. Opção "Into new Packege"
+5. Unit file name: TEF.DCU
+6. Package file name: c:\fiscal\fiscal.dpk (caso a pasta de descompactação seja c:\fiscal)
+7. Confirmar com "Ok" e "Salvar"
+
+DÚVIDAS:
+
+- e-mail: suporte@consoftworld.com
+- fone/fax: (0xx48) 223.5746 ou 223.1735
+- www.consoftworld.com/delphi
+

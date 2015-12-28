@@ -1,0 +1,91 @@
+object frm_ExibeSituacao: Tfrm_ExibeSituacao
+  Left = 87
+  Top = 100
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsNone
+  ClientHeight = 265
+  ClientWidth = 569
+  Color = clTeal
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 569
+    Height = 265
+    Align = alClient
+    Color = clTeal
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object Bevel1: TBevel
+      Left = 8
+      Top = 8
+      Width = 553
+      Height = 201
+      Shape = bsFrame
+    end
+    object btnAbresessao: TButton
+      Left = 192
+      Top = 227
+      Width = 201
+      Height = 25
+      Cursor = crHandPoint
+      Caption = 'Nova sessão'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clTeal
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btnAbresessaoClick
+    end
+    object btnSair: TButton
+      Left = 475
+      Top = 224
+      Width = 81
+      Height = 25
+      Cursor = crHandPoint
+      Caption = 'SAIR'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clTeal
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnSairClick
+    end
+    object btnRetornar: TButton
+      Left = 192
+      Top = 222
+      Width = 201
+      Height = 25
+      Cursor = crHandPoint
+      Caption = 'Reabrir'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clTeal
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnRetornarClick
+    end
+  end
+end

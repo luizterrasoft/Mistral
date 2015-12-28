@@ -1,0 +1,56 @@
+File Name.......: BmAlias.Zip
+File Version....: Version 1.0
+File Description: Component allowing developer to create and delete BDE aliases.
+                  With this component, the same program compiles with all Delphi versions.
+Targets.........: Delphi 1, 2, 3, 4, C++ Builder 1, 3.
+Author Name.....: BOURMAD Mehdi
+EMail...........: bourmad@multimania.com
+WEB.............: http://www.multimania.com/bourmad
+File Status.....: Freeware
+Category........: Application with source.
+
+(-----------------------------------------------------------------)
+As usual :
+
+Free to use and redistribute, but my name must
+appear somewhere in the source code, or in the software.
+No warranty is given by the author, expressed or implied.
+
+WARNING! THE CODE IS PROVIDED AS IS WITH NO GUARANTEES OF ANY KIND!
+USE THIS AT YOUR OWN RISK - YOU ARE THE ONLY PERSON RESPONSIBLE FOR
+ANY DAMAGE THIS CODE MAY CAUSE - YOU HAVE BEEN WARNED!
+
+(-----------------------------------------------------------------)
+SPECIAL COPYRIGHTS :
+
+This component is totally freeware. You can use it freely, but I have some conditions :
+Please, do not alter component-source. If you want to improve it, send me a mail.
+
+(-----------------------------------------------------------------)
+
+Files :
+
+Sources
+-------
+BmAlias.*   : file for Register components. Install this one in Delphi.
+
+Resources Files
+---------------
+BmAlias.d*  : resources files for components library.
+
+How to use resources files
+--------------------------
+you need to do nothing...
+*.R16 and *.D16 files are automatically included in 16 bits (Delphi1)
+*.R32 and *.D32 files are automatically included in 32 bits (D2, D3, D4, BCB1, BCB3)
+
+Installation
+------------
+Simply add BmAlias.pas in your components.
+
+(-----------------------------------------------------------------)
+
+History :
+
+18/01/99 - Version 1.0 :
+  Primary version.
